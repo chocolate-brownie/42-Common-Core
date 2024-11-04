@@ -5,26 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/02 17:43:31 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/02 17:46:36 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/04 11:02:09 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/04 11:05:07 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *strpbrk(const char *s, const char *accept)
+char	*ft_strpbrk(const char *s1, const char *s2)
 {
 	int i = 0;
 	int j;
-	while (s[i])
+
+	while (s1[i])
 	{
 		j = 0;
-		while (accept[j])
+		while (s2[j])
 		{
-			if (s[i] == accept[j])
-				return (char *)&s[i];
+			if (s1[i] == s2[j])
+				return ((char *)&s1[i]);
 			j++;
 		}
 		i++;
 	}
 	return NULL;
 }
-

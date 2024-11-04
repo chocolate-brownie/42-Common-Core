@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter.c                                            :+:      :+:    :+:   */
+/*   wdmatch.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 11:21:06 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/04 11:35:21 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/04 13:23:02 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/04 13:37:32 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,33 @@ int main(int argc, char *argv[])
     {
         char *str1 = argv[1];
         char *str2 = argv[2];
-        int shown[256] = {0};
 
         int i = 0;
-        int j;
+        int j = 0;
+
+        int all_found = 1;
+
         while (str1[i])
         {
-            j = 0;
-            int found_in_s2 = 0;
-            while (str2[j])
-            {
-                if (str1[i] == str2[j])
-                {
-                    found_in_s2 = 1;
-                    break;
-                }
+            while (str2[j] && str2[j] != str1[i])
                 j++;
-            }
-
-            if (found_in_s2 && !shown[(unsigned char)str1[i]])
+            
+            if (str2[j] == '\0')
             {
-                write(1, &str1[i], 1);
-                shown[(unsigned char)str1[i]] = 1;
+                all_found = 0;
+                break;
             }
             i++;
+            j++;
         }
-    }
-    write(1, "\n", 1);
+
+        if (all_found == 1)
+        {
+            i = 0;
+            while (str1[i])
+                write(1, &str1[i++], 1);
+        }
+    }   
+    write(1, "\n", 1); 
     return 0;
 }

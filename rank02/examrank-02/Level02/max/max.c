@@ -1,19 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   max.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 10:14:59 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/04 10:15:40 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/04 11:53:51 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/04 12:03:04 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int    ft_strcmp(char *s1, char *s2)
+int		max(int* tab, unsigned int len)
 {
-    unsigned int i = 0;
-    while (s1[i] && s2[i] && s1[i] == s2[i])
+    if (len == 0)
+        return 0;
+
+    int max = tab[0];
+
+    int i = 1;
+    while (i < len)
+    {
+        if (tab[i] > max)
+            max = tab[i];
         i++;
-    return s1[i] - s2[i];
+    }
+    return max;
+}
+
+#include <stdio.h>
+
+int main(void) 
+{
+    int array1[] = {3, 5, 7, 2, 8};
+    printf("Max of array1: %d\n", max(array1, 5));  
+    return 0;
 }

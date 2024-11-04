@@ -5,19 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/02 16:30:43 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/02 16:44:20 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/04 09:40:13 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/04 09:47:30 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <unistd.h>
 
-int main(int argc, char **argv) {
-	char *str = argv[1];
-	int i = 0;
-
+int main(int argc, char **argv)
+{
 	if (argc == 2)
 	{
+		char *str = argv[1];
+		int i = 0;
+
 		while (str[i])
 		{
 			if (str[i] >= 'a' && str[i] <= 'z')

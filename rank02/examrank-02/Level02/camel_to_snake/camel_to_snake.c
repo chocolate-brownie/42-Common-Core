@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/02 16:51:19 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/02 16:55:29 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/04 09:49:23 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/04 09:54:45 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdlib.h>
 
-int main(int argc, char **argv)
+int	main(int argc, char *argv[])
 {
 	if (argc == 2)
 	{
@@ -24,13 +23,13 @@ int main(int argc, char **argv)
 		{
 			if (str[i] >= 'A' && str[i] <= 'Z')
 			{
-				str[i] = str[i] += 32;
 				write(1, "_", 1);
+				str[i] += 32;
 			}
 			write(1, &str[i], 1);
 			i++;
 		}
 	}
 	write(1, "\n", 1);
-	return 0;
+	return (0);
 }

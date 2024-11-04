@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   print_bits.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 10:14:59 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/04 10:15:40 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/04 12:03:23 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/04 12:35:28 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int    ft_strcmp(char *s1, char *s2)
+#include <unistd.h>
+
+void print_bits(unsigned char octet)
 {
-    unsigned int i = 0;
-    while (s1[i] && s2[i] && s1[i] == s2[i])
-        i++;
-    return s1[i] - s2[i];
+    unsigned char mask = 128;
+    while (mask > 0)
+    {
+        if (octet & mask)
+            write(1, "1", 1);
+        else
+            write(1, "0", 1);
+
+        mask = mask >> 1;           
+    }
+}
+
+int main(void)
+{
+    print_bits(2);
+    return 0;
 }
