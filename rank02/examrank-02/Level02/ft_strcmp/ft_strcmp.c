@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 10:14:59 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/04 10:15:40 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/18 19:01:45 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/18 19:03:59 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int    ft_strcmp(char *s1, char *s2)
+int ft_strcmp(char *s1, char *s2)
 {
     unsigned int i = 0;
-    while (s1[i] && s2[i] && s1[i] == s2[i])
+    while ((s1[i] || s2[i]) && s1[i] == s2[i])
         i++;
     return s1[i] - s2[i];
 }

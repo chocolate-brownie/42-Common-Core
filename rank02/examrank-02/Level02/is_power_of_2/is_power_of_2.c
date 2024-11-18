@@ -5,14 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 11:35:39 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/04 11:36:37 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/18 22:14:29 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/18 22:17:36 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	    is_power_of_2(unsigned int n)
+int is_power_of_2(unsigned int n)
 {
-    if (n == 0)
-        return 0;
-    return (n & (n - 1)) == 0;
+    return (n != 0) && ((n & (n - 1)) == 0);
 }

@@ -5,35 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 11:11:14 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/04 11:20:24 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/18 20:20:12 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/18 20:30:37 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-size_t	ft_strspn(const char *s, const char *accept)
+size_t ft_strspn(const char *s, const char *accept)
 {
-	int i = 0;
-	int k;
-	
-
+    int i = 0;
+    int j;
     while (s[i])
     {
-        int found = 0;
-        k = 0;
-        while (accept[k])
+        j = 0;
+        while (accept[j])
         {
-            if (s[i] == accept[k])
-            {
-                found = 1;
+            if (s[i] == accept[j])
                 break;
-            }
-            k++;
+            j++;
         }
-        if (!found)
-            break;
+        if (accept[j] == '\0')
+            return i;
         i++;
     }
     return i;
+}
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    const char *s = "123abc456";
+    const char *accept = "1234567890";
+
+    size_t result1 = strspn(s, accept);
+    size_t result2 = ft_strspn(s, accept);
+
+    printf("%ld\n", result1);
+    printf("%ld\n", result2);
+    return 0;
 }

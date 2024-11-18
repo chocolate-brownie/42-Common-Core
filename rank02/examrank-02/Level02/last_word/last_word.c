@@ -5,44 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 11:38:13 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/04 11:52:58 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/18 21:48:04 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/18 22:14:08 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int isspace(int c)
+int ft_isspace(char c)
 {
     return (c == ' ' || (c >= 9 && c <= 13));
+}
+
+void last_word(char *str)
+{
+    int end = 0;
+    int last_letter = 0;
+    while (str[end])
+        end++;
+    end--; // take the index away from the null terminator
+
+    while (ft_isspace(str[end]) && end >= 0)
+        end--;
+    last_letter = end;
+    while (!ft_isspace(str[end]) && end >= 0)
+        end--;
+    end++;                     // take the index to the first letter of the last word
+    while (end <= last_letter) // until reach the last letter print
+        write(1, &str[end++], 1);
 }
 
 int main(int argc, char *argv[])
 {
     if (argc == 2)
-    {
-        char *str = argv[1];
-        int i = 0;
-
-        // find the end of the string
-        while (str[i])
-            i++;
-        // move back to the last char from the null        
-        i--;
-        // skip spaces from the end
-        while (i >= 0 && isspace(str[i]))
-            i--;
-        // mark the position of the last char of the last word
-        int end = i;
-        // i-- until you find a space
-        while (i >= 0 && !isspace(str[i]))
-            i--;
-        // take the index from the space to a the beginning of the word
-        int start = i + 1;
-        // now write
-        while (start <= end)
-            write(1, &str[start++], 1);    
-    }
+        last_word(argv[1]);
     write(1, "\n", 1);
     return 0;
 }

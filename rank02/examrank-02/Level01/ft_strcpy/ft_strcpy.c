@@ -5,17 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/02 13:59:05 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/02 14:09:22 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/18 15:43:43 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/18 15:46:58 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-
-char    *ft_strcpy(char *s1, char *s2)
+char *ft_strcpy(char *s1, char *s2)
 {
-    int i = 0;
+    unsigned int i = 0;
     while (s2[i])
     {
         s1[i] = s2[i];
@@ -25,12 +22,13 @@ char    *ft_strcpy(char *s1, char *s2)
     return s1;
 }
 
+#include <stdio.h>
+#include <string.h>
+
 int main(void)
 {
     char *src = "Hello World";
     char dest[strlen(src)];
 
-    char *new = ft_strcpy(dest, src);
-
-    printf("%s\n", new);
+    printf("%s", ft_strcpy(dest, src));
 }

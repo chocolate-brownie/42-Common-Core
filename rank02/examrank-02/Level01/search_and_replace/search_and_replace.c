@@ -3,32 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   search_and_replace.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/02 15:52:18 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/02 16:19:50 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/18 17:41:04 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/18 17:46:14 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int main(int argc, char **argv)
+void search_and_replace(char *str, char search, char replace)
 {
-    char *str = argv[1];
-    char *replace = argv[2];
-    char *replace_with = argv[3];
-    unsigned int i = 0;
-
-    if (argc == 4 && replace[1] == '\0' && replace_with[1] == '\0')
+    int i = 0;
+    while (str[i])
     {
-        while (str[i])
-        {
-            if (str[i] == replace[0])
-                str[i] = replace_with[0];
-            write(1, &str[i], 1);
-            i++;
-        }
+        if (str[i] == search)
+            str[i] = replace;
+        write(1, &str[i], 1);
+        i++;
     }
+}
+
+int main(int argc, char *argv[])
+{
+    if (argc == 4 && !argv[2][1] && !argv[3][1])
+        search_and_replace(argv[1], argv[2][0], argv[3][0]);
     write(1, "\n", 1);
-    return (0);
+    return 0;
 }

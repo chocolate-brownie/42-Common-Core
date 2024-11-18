@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 12:03:23 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/04 12:35:28 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/18 22:25:35 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/18 22:27:52 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 void print_bits(unsigned char octet)
 {
-    unsigned char mask = 128;
-    while (mask > 0)
+    unsigned int i = 8;
+    char bits;
+    while (i--)
     {
-        if (octet & mask)
-            write(1, "1", 1);
-        else
-            write(1, "0", 1);
-
-        mask = mask >> 1;           
+        bits = (octet >> i & 1) + '0';
+        write(1, &bits, 1);
     }
 }
 
 int main(void)
 {
-    print_bits(2);
-    return 0;
+    unsigned char octet = 2;
+    print_bits(octet);
 }
