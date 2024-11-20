@@ -1,17 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flood_fill.h                                       :+:      :+:    :+:   */
+/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 18:54:32 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/20 18:54:48 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/20 19:09:30 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/20 19:12:00 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct s_point
+#include "ft_list.h"
+
+void ft_list_foreach(t_list *begin_list, void (*f)(void *))
 {
-    int x;
-    int y;
-} t_point;
+    while (begin_list)
+    {
+        (*f)(begin_list->data);
+        begin_list = begin_list->next;
+    }
+}

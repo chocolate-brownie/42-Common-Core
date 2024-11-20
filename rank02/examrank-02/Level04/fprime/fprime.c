@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 18:28:13 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/20 18:33:47 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/20 18:58:57 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/20 19:08:43 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 void fprime(int nbr)
 {

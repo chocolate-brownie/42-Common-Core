@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flood_fill.h                                       :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 18:54:32 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/20 18:54:48 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/20 19:09:38 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/20 19:09:44 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct s_point
+typedef struct s_list
 {
-    int x;
-    int y;
-} t_point;
+    struct s_list *next;
+    void *data;
+} t_list;
