@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/22 15:46:23 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:54:09 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,23 @@ int	main(int argc, char **argv)
 	t_list *stack_b;
 	init_stack_null(stack_a, stack_b);
 
-	/* check for invalid arguments where no arguments were provided (just the
-	program name of two arguments were provided but the second argument is
-	an empty string) */
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (1);
-	else if (argc == 2)
-		split_and_push(argv[1], stack_a);
+	if (argc < 2)
+		return (0);
+	/* parse and validate the arguments */
+	stack_a = handle_arguments(argc, argv);
+	/* check if the stack is already sorted */
+	if (!stack_sorted(stack_a))
+	{
+		free_stack(&stack_a);
+		return (0);
+	}
+	/* sort based on the number of elements */
+	if (argc == 4)
+		sort_three(&stack_a);
+	else
+		turk_algorithm(&stack_a, &stack_b);
+
+	free_stack(&stack_a);
+	free_stack(&stack_b);
+	return (0);
 }

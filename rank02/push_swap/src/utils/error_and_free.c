@@ -6,8 +6,14 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:29:56 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/22 14:56:35 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:44:34 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	error_exit(void)
+{
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
