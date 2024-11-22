@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/01 17:39:19 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/22 15:40:26 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void				free_split(char **split);
 void				print_list(t_list *head);
 
 /* stack manipulation */
-void				init_stack_null(t_list **stk_a, t_list **stk_b);
+void				init_stack_null(t_list **stack_a, t_list **stack_b);
 t_list				*split_and_push(char *str, t_list *stack);
 t_list				*create_node(int data);
 t_list				*push_numbers_to_stack(char *str, t_list *stk);
