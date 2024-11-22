@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/22 16:54:09 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/22 18:26:33 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,19 @@ int	main(int argc, char **argv)
 		return (0);
 	/* parse and validate the arguments */
 	stack_a = handle_arguments(argc, argv);
-	/* check if the stack is already sorted */
-	if (!stack_sorted(stack_a))
-	{
-		free_stack(&stack_a);
-		return (0);
-	}
-	/* sort based on the number of elements */
-	if (argc == 4)
-		sort_three(&stack_a);
-	else
-		turk_algorithm(&stack_a, &stack_b);
 
+	/*
+		if (!stack_sorted(stack_a))
+		{
+			free_stack(&stack_a);
+			return (0);
+		}
+		if (argc == 4)
+			sort_three(&stack_a);
+		else
+			turk_algorithm(&stack_a, &stack_b);
+
+	*/
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 	return (0);

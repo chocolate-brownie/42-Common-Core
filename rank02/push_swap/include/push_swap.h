@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/22 17:38:09 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/22 18:28:58 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ typedef struct s_list
 
 /* utility functions */
 void				error_exit(void);
-void				free_stack(t_list **stk);
-void				free_split(char **split);
+void				free_resources(t_list **stack, char **split);
 void				print_list(t_list *head);
 
 /* stack manipulation */
@@ -44,9 +43,12 @@ t_list				*create_node(int data);
 t_list				*push_numbers_to_stack(char *str, t_list *stk);
 
 /* argument parsing and validation */
-bool				check_duplicates(t_list *stk);
-bool				is_valid_input(char *str);
 t_list				*handle_arguments(int argc, char **argv);
+void				validate_and_push(char *token, t_list **stack,
+						char **split);
+bool				check_duplicates(t_list *stack, int num);
+bool				is_valid_input(char *str);
+void				append_node(t_list **stack, int num);
 
 /* stack sorting */
 bool				stack_sorted(t_list *stk);
