@@ -1,20 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utilities.c                                  :+:      :+:    :+:   */
+/*   libft_extra.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 16:37:17 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/26 17:46:48 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/26 17:57:20 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/26 18:00:56 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void init_stack_null(t_list **stack_a, t_list **stack_b)
-{
-    printf("🔧 Making stack_a & stack_b to NULL\n");
-    *stack_a = NULL;
-    *stack_b = NULL;
-}
