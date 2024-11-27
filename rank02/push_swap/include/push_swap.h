@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 15:23:48 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:42:43 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,13 @@ void				free_resources(t_list **stack, char **split);
 int					ft_isspace(char c);
 long				ft_atol(char *str);
 
+/* stack manipulation */
 void				init_stack_null(t_list **stack_a, t_list **stack_b);
-void				print_stack(t_list *stack);
 
+/* @note delete this functions afterwards its just for debugging purposes */
+void				print_stack_data(t_list *stack); 
+
+/* argument handing */
 t_list				*handle_arguments(int argc, char **argv);
 
 /* sorting operatings */

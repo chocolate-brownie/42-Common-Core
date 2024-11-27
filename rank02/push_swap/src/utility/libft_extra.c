@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 15:20:23 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 15:32:41 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:54:38 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ long	ft_atol(char *str)
 	result = 0;
 	sign = 1;
 	i = 0;
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
