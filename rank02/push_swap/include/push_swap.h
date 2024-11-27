@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 17:55:29 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:18:53 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,17 @@ void				validate_mixed_input(int argc, char **argv);
 bool				is_sorted(t_list *stack);
 void				sort_two(t_list **stack);
 void				sort_three(t_list **stack);
+void				sort_four(t_list **stack_a, t_list **stack_b);
+void				sort_five(t_list **stack_a, t_list **stack_b);
+void				push_smallest_to_b(t_list **stack_a, t_list **stack_b);
+void				move_smallest_to_top(t_list **stack, int position);
+int					find_smallest_element(t_list *stack);
+void				turk_algorithm(t_list **stack_a, t_list **stack_b);
+int					calculate_chunk_size(int total_nodes);
+void				push_chunks_to_b(t_list **stack_a, t_list **stack_b,
+						int chunk_size);
+void				push_back_to_a(t_list **stack_a, t_list **stack_b);
+int					find_largest_index(t_list *stack);
 
 /* sorting operatings */
 void				sa(t_list **stack, bool print);

@@ -6,11 +6,19 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:12:39 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 18:13:22 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:18:56 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/* The Turk algorithm works by dividing `stack_a` into smaller chunks based
+on the indices of the elements. These chunks are pushed to `stack_b` in order,
+starting with the smallest indices. Once all elements are in `stack_b`, they
+are pushed back to `stack_a` in sorted order. During this process, the largest
+element in `stack_b` is identified, moved to the top, and then pushed to
+`stack_a`. This ensures that `stack_a` is fully sorted by the end of the
+algorithm. */
 
 void	turk_algorithm(t_list **stack_a, t_list **stack_b)
 {
