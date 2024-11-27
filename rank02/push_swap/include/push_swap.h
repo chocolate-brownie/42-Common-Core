@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 16:33:32 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:55:59 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_list
 }					t_list;
 
 /* utility functions & some libft extra functions */
-void				error_exit(const char *error_msg);
+void				error_exit(char *error_msg);
 void				free_resources(t_list **stack, char **split);
 int					ft_isspace(char c);
 long				ft_atol(char *str);
@@ -45,10 +45,10 @@ void				print_stack_data(t_list *stack);
 
 /* main argument handling functions */
 t_list				*handle_arguments(int argc, char **argv);
-t_list				*handle_single_string(const char *arg);
+t_list				*handle_single_string(char *arg);
 t_list				*handle_multiple_arguments(int argc, char **argv);
 bool				has_duplicates(t_list *stack);
-bool				is_numeric(const char *str);
+bool				is_numeric(char *str);
 void				add_to_stack(t_list **stack, int data);
 
 /* sorting operatings */

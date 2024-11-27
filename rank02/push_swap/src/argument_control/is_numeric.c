@@ -6,13 +6,13 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:22:29 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 16:23:37 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:56:27 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	is_numeric(const char *str)
+bool	is_numeric(char *str)
 {
 	int	i;
 

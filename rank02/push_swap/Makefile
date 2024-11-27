@@ -7,12 +7,9 @@ LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
 INCLUDE_DIR = include/
 
-# Automatically include all .c files from specified directories
-SRCS = $(wildcard $(SRCS_DIR)*.c) \
-       $(wildcard $(SRCS_DIR)operations/*.c) \
-       $(wildcard $(SRCS_DIR)utils/*.c)
-
-OBJS = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
+# Automatically include all .c files recursively from the src directory
+SRCS = $(shell find $(SRCS_DIR) -type f -name "*.c")
+OBJS = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS))
 
 # Colors 🌈
 RESET = \033[0m

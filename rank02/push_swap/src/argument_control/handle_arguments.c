@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:07:44 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 16:21:13 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:56:14 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_list	*handle_arguments(int argc, char **argv)
 		error_exit("Invalid arguments\n");
 }
 
-t_list	*handle_single_string(const char *arg)
+t_list	*handle_single_string(char *arg)
 {
 	t_list	*stack;
 	long	num;
