@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 14:03:18 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:11:51 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ bool				stack_sorted(t_list *stack);
 void				sort_three(t_list **stack);
 void				turk_algorithm(t_list **stk_a, t_list **stk_b);
 
-/* operatings */
+/* sorting operatings */
 void				sa(t_list **stack, bool print);
 void				sb(t_list **stack, bool print);
 void				ss(t_list **stack_a, t_list **stack_b, bool print);
@@ -66,5 +66,8 @@ void				pb(t_list **stack_a, t_list **stack_b, bool print);
 void				ra(t_list **stack, bool print);
 void				rb(t_list **stack, bool print);
 void				rr(t_list **stack_a, t_list **stack_b, bool print);
+void				rra(t_list **stack, bool print);
+void				rrb(t_list **stack, bool print);
+void				rrr(t_list **stack_a, t_list **stack_b, bool print);
 
 #endif

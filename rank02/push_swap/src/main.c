@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 13:30:32 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:16:12 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,26 @@ int	main(int argc, char **argv)
 	t_list	*stack_a;
 	t_list	*stack_b;
 
-	printf("🛠️ Running main\n\n");
 	init_stack_null(&stack_a, &stack_b);
 	if (argc < 2)
 		error_exit();
 	stack_a = handle_arguments(argc, argv);
-	printf("\n\n🖨 Initial stack_a contents: ");
-	print_stack(stack_a);
 	if (stack_sorted(stack_a))
 	{
-		printf("🛠️ Stack is already sorted. Exiting...\n");
 		free_resources(&stack_a, NULL);
 		return (0);
 	}
-	if (argc == 4)
+	if (argc == 3)
+		sort_two(&stack_a);
+	else if (argc == 4)
 		sort_three(&stack_a);
+	else if (argc == 5)
+		sort_four(&stack_a, &stack_b);
+	else if (argc == 6)
+		sort_five(&stack_a, &stack_b);
 	else
 		turk_algorithm(&stack_a, &stack_b);
-	printf("\n\n🖨 Final stack_a contents: ");
-	print_stack(stack_a);
 	free_resources(&stack_a, NULL);
 	free_resources(&stack_b, NULL);
-	printf("\n\n🛠️ main End\n");
 	return (0);
 }
