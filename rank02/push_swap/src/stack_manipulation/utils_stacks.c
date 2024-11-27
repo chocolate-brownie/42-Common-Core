@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 15:36:18 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 16:31:25 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:05:49 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,6 @@ void	init_stack_null(t_list **stack_a, t_list **stack_b)
 {
 	*stack_a = NULL;
 	*stack_b = NULL;
-}
-
-void	print_stack(t_list *stack)
-{
-	t_list	*current;
-
-	current = stack;
-	ft_putstr_fd("🖨️ Stack content\n", 1);
-	while (current)
-	{
-		ft_putstr_fd("Data: ", 1);
-		ft_putnbr_fd(current->data, 1);
-		ft_putstr_fd("Index: ", 1);
-		ft_putnbr_fd(current->index, 1);
-		ft_putstr_fd("Push Cost: ", 1);
-		ft_putnbr_fd(current->push_cost, 1);
-		if (current->above_median == true)
-			ft_putstr_fd("Above Median: TRUE", 1);
-		else
-			ft_putstr_fd("Above Median: FALSE", 1);
-		if (current->cheapest == true)
-			ft_putstr_fd("Cheapest: TRUE", 1);
-		else
-			ft_putstr_fd("Cheapest: FALSE", 1);
-	}
-	ft_putstr_fd("🖨️ End of stack content\n", 1);
 }
 
 t_list	*create_node(int data)
@@ -60,4 +34,37 @@ t_list	*create_node(int data)
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);
+}
+
+void	print_stack(t_list *stack)
+{
+	t_list	*current;
+
+	current = stack;
+	printf("🖨️ Stack content:\n");
+	while (current)
+	{
+		printf("Data: %d\n", current->data);
+		printf("Index: %d\n", current->index);
+		printf("Push Cost: %d\n", current->push_cost);
+		printf("Above Median: %s\n", current->above_median ? "TRUE" : "FALSE");
+		printf("Cheapest: %s\n", current->cheapest ? "TRUE" : "FALSE");
+		printf("-------------------\n");
+		current = current->next;
+	}
+	printf("🖨️ End of stack content\n");
+}
+
+void	print_stack_data(t_list *stack_a)
+{
+	t_list *current;
+
+	current = stack_a;
+	printf("🖨️ Stack A Data:\n");
+	while (current)
+	{
+		printf("%d ", current->data);
+		current = current->next;
+	}
+	printf("\n🖨️ End of Stack A Data\n");
 }

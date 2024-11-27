@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 16:55:59 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:23:40 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void				init_stack_null(t_list **stack_a, t_list **stack_b);
 t_list				*create_node(int data);
 /* @note delete this functions afterwards its just for debugging purposes */
 void				print_stack_data(t_list *stack);
+void				print_stack(t_list *stack);
 
 /* main argument handling functions */
 t_list				*handle_arguments(int argc, char **argv);
@@ -50,6 +51,8 @@ t_list				*handle_multiple_arguments(int argc, char **argv);
 bool				has_duplicates(t_list *stack);
 bool				is_numeric(char *str);
 void				add_to_stack(t_list **stack, int data);
+bool				is_space_separated_string(const char *arg);
+void				validate_mixed_input(int argc, char **argv);
 
 /* sorting operatings */
 void				sa(t_list **stack, bool print);
