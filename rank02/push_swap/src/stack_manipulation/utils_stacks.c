@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 15:36:18 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 17:05:49 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:00:05 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,35 +36,40 @@ t_list	*create_node(int data)
 	return (new_node);
 }
 
-void	print_stack(t_list *stack)
+int	stack_size(t_list *stack)
 {
-	t_list	*current;
+	int	size;
 
-	current = stack;
-	printf("🖨️ Stack content:\n");
-	while (current)
+	size = 0;
+	while (stack)
 	{
-		printf("Data: %d\n", current->data);
-		printf("Index: %d\n", current->index);
-		printf("Push Cost: %d\n", current->push_cost);
-		printf("Above Median: %s\n", current->above_median ? "TRUE" : "FALSE");
-		printf("Cheapest: %s\n", current->cheapest ? "TRUE" : "FALSE");
-		printf("-------------------\n");
-		current = current->next;
+		size++;
+		stack = stack->next;
 	}
-	printf("🖨️ End of stack content\n");
+	return (size);
 }
 
-void	print_stack_data(t_list *stack_a)
+/* a function to maps each number in the stack to a normalized index based on
+its position in the sorted order. This normalization simplifies comparisons and
+makes sorting operations more efficient.*/
+void	assign_indices(t_list *stack)
 {
-	t_list *current;
+	t_list	*current;
+	t_list	*checker;
+	int		index;
 
-	current = stack_a;
-	printf("🖨️ Stack A Data:\n");
+	current = stack;
 	while (current)
 	{
-		printf("%d ", current->data);
+		index = 0;
+		checker = stack;
+		while (checker)
+		{
+			if (checker->data < current->data)
+				index++;
+			checker = checker->next;
+		}
+		current->index = index;
 		current = current->next;
 	}
-	printf("\n🖨️ End of Stack A Data\n");
 }
