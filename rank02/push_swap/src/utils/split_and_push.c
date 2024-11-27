@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:12:29 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 12:00:47 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:49:40 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,3 @@ bool	check_duplicates(t_list *stack, int num)
 	}
 	return (false);
 }
-
-

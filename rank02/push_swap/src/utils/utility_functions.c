@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:29:56 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 11:59:28 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:49:19 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,21 @@ int	ft_isspace(char c)
 
 long	ft_atol(char *str)
 {
-	long result = 0;
-	int sign = 1;
-	int i = 0;
+	long	result;
+	int		sign;
+	int		i;
 
+	result = 0;
+	sign = 1;
+	i = 0;
 	while (ft_isspace(str[i]))
 		i++;
-
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign = -1;
 		i++;
 	}
-
 	while (ft_isdigit(str[i]))
 	{
 		result = result * 10 + (str[i] - '0');

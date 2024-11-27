@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 12:45:57 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:50:51 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ int	main(int argc, char **argv)
 	printf("🛠️ Running main\n\n");
 	init_stack_null(&stack_a, &stack_b);
 	if (argc < 2)
-	{
-		printf("🛠️ Error: No arguments provided\n");
-		return (0);
-	}
+		error_exit();
 	stack_a = handle_arguments(argc, argv);
 	printf("\n\n🖨 Initial stack_a contents: ");
 	print_stack(stack_a);
