@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/26 17:46:10 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:44:19 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,44 +26,44 @@ if the numbers as argv[i] "MULTIPLE ARGUMENTS" and push them into the
 stack_a, if the numbers are as "SINGLE STRING" argv[1] split the string
 and push them into the stack_a
 
-    -- Handle integer overflows, duplicates, and sytax errors, (input must only
-    contains digits, '+' or '-' signs if errors found, free stack A and return
-    error)
-    -- Check for each input if it's a long integer, if it is convert it into
-    a long integer
+	-- Handle integer overflows, duplicates, and sytax errors, (input must only
+	contains digits, '+' or '-' signs if errors found, free stack A and return
+	error)
+	-- Check for each input if it's a long integer, if it is convert it into
+	a long integer
 
 if everything is good append the numbers as nodes to the stack_a */
 
 /* @note - step 4
 Check if the stack_a is sorted already, if not sorted implement the sorting
 algorithms...
-    -- check for 2 numbers ? if so simply swap the numebrs
-    -- check for 3 numbers ? if so implement simple sort three algorithm
-    -- check if the stack has more that 3 numbers ? if so turk algorithm */
+	-- check for 2 numbers ? if so simply swap the numebrs
+	-- check for 3 numbers ? if so implement simple sort three algorithm
+	-- check if the stack has more that 3 numbers ? if so turk algorithm */
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    printf("🛠️ Running main\n\n");
-    t_list *stack_a;
-    t_list *stack_b;
-    init_stack_null(&stack_a, &stack_b);
+	printf("🛠️ Running main\n\n");
+	t_list *stack_a;
+	t_list *stack_b;
+	init_stack_null(&stack_a, &stack_b);
 
-    if (argc < 2)
-        error_exit();
-    stack_a = handle_arguments(argc, argv);
+	if (argc < 2)
+		error_exit();
+	stack_a = handle_arguments(argc, argv);
 
-    /*
-        if (!stack_sorted(stack_a))
-        {
-            free_stack(&stack_a);
-            return (0);
-        }
-        if (argc == 4)
-            sort_three(&stack_a);
-        else
-            turk_algorithm(&stack_a, &stack_b);
+	/*
+		if (!stack_sorted(stack_a))
+		{
+			free_stack(&stack_a);
+			return (0);
+		}
+		if (argc == 4)
+			sort_three(&stack_a);
+		else
+			turk_algorithm(&stack_a, &stack_b);
 
-    */
-    printf("🛠️ main End\n");
-    return (0);
+	*/
+	printf("🛠️ main End\n");
+	return (0);
 }
