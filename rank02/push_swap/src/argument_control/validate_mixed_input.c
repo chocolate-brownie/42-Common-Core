@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:23:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 17:24:01 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:27:03 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	validate_mixed_input(int argc, char **argv)
 			has_standalone_number = true;
 
 		if (has_space_separated && has_standalone_number)
-			error_exit("[ERROR] Mixed arguments (strings and numbers) are not allowed");
+			error_exit("[ERROR] Mixed arguments are not allowed");
 	}
 }
