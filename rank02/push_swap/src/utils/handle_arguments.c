@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:59:16 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 12:04:58 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:06:24 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_list	*handle_arguments(int argc, char **argv)
 
 bool	is_valid_input(char *str)
 {
+	printf("🔧 [RUNNING] is_valid_input function\n");
 	int	i;
 
 	i = 0;
@@ -56,5 +57,6 @@ bool	is_valid_input(char *str)
 			return (false);
 		i++;
 	}
+	printf("🔧 [ENDING] is_valid_input function\n");
 	return (true);
 }

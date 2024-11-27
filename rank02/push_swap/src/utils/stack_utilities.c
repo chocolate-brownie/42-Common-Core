@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:37:17 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 12:00:51 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:16:29 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_stack_null(t_list **stack_a, t_list **stack_b)
 
 void	append_node(t_list **stack, int num)
 {
-	t_list *new_node;
+	t_list	*new_node;
 
 	new_node = malloc(sizeof(t_list));
 	if (!new_node)
@@ -40,4 +40,32 @@ void	append_node(t_list **stack, int num)
 	if (*stack)
 		(*stack)->prev = new_node;
 	*stack = new_node;
+}
+
+void	free_resources(t_list **stack, char **split)
+{
+	int		i;
+	t_list	*temp;
+
+	// Free the stack
+	if (stack && *stack)
+	{
+		while (*stack)
+		{
+			temp = (*stack)->next;
+			free(*stack);
+			*stack = temp;
+		}
+	}
+	// Free the split array
+	if (split)
+	{
+		i = 0;
+		while (split[i])
+		{
+			free(split[i]);
+			i++;
+		}
+		free(split);
+	}
 }
