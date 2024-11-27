@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:54:22 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 13:59:25 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:19:49 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	pa(t_list **stack_a, t_list **stack_b, bool print)
 	*stack_a = temp;
 	temp->prev = NULL;
 	if (print)
-		write(1, "pa\n", 3);
+		ft_putstr_fd("pa\n", 1);
 }
 
 void	pb(t_list **stack_a, t_list **stack_b, bool print)
@@ -47,5 +47,5 @@ void	pb(t_list **stack_a, t_list **stack_b, bool print)
 	*stack_b = temp;
 	temp->prev = NULL;
 	if (print)
-		write(1, "pb\n", 3);
+		ft_putstr_fd("pb\n", 1);
 }
