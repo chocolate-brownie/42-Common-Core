@@ -6,12 +6,24 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:23:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 17:27:03 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:28:56 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+is_space_separated_string:
+	Checks if an argument contains spaces. Returns true if spaces are detected.
+validate_mixed_input:
+	Iterates through all arguments and keeps track of whether space-separated
+	strings (has_space_separated) or standalone numbers (has_standalone_number)
+	are present.
+	If both are detected, it exits with an error message.
+Integration into handle_arguments:
+	The validate_mixed_input function is called before handling arguments to
+	reject mixed input early.
+*/
 bool	is_space_separated_string(const char *arg)
 {
 	while (*arg)
