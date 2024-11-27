@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 12:54:48 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:59:52 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,13 @@ void				append_node(t_list **stack, int num);
 /* stack sorting */
 bool				stack_sorted(t_list *stack);
 void				sort_three(t_list **stack);
-void				sa(t_list **stk, bool print);
 void				turk_algorithm(t_list **stk_a, t_list **stk_b);
+
+/* sorting operatings */
+void				sa(t_list **stack, bool print);
+void				sb(t_list **stack, bool print);
+void				ss(t_list **stack_a, t_list **stack_b, bool print);
+void				pa(t_list **stack_a, t_list **stack_b, bool print);
+void				pb(t_list **stack_a, t_list **stack_b, bool print);
 
 #endif

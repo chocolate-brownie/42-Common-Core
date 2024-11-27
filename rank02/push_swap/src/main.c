@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 13:29:00 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:30:32 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,21 @@ int	main(int argc, char **argv)
 	init_stack_null(&stack_a, &stack_b);
 	if (argc < 2)
 		error_exit();
-	// Handle arguments and populate stack_a
 	stack_a = handle_arguments(argc, argv);
-	// Print the initial stack
 	printf("\n\n🖨 Initial stack_a contents: ");
 	print_stack(stack_a);
-	// Check if the stack is already sorted
 	if (stack_sorted(stack_a))
 	{
 		printf("🛠️ Stack is already sorted. Exiting...\n");
 		free_resources(&stack_a, NULL);
 		return (0);
 	}
-	// Sort small stacks
-	if (argc == 4) // 3 numbers
+	if (argc == 4)
 		sort_three(&stack_a);
-	else // More than 3 numbers
+	else
 		turk_algorithm(&stack_a, &stack_b);
-	// Print the final sorted stack
 	printf("\n\n🖨 Final stack_a contents: ");
 	print_stack(stack_a);
-	// Free resources
 	free_resources(&stack_a, NULL);
 	free_resources(&stack_b, NULL);
 	printf("\n\n🛠️ main End\n");
