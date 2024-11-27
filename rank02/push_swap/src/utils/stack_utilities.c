@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:37:17 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 12:48:46 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:23:27 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,15 @@ void	print_stack(t_list *stack)
 		stack = stack->next;
 	}
 	printf("\n");
+}
+
+bool	stack_sorted(t_list *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->data > stack->next->data)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
 }
