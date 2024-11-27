@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 18:02:21 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:20:49 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,16 @@ int	main(int argc, char **argv)
 	stack_a = handle_arguments(argc, argv);
 	assign_indices(stack_a);
 	stack_count = stack_size(stack_a);
+	print_stack(stack_a);
+	print_stack_data(stack_a);
 	if (is_sorted(stack_a))
 	{
 		free_resources(&stack_a, NULL);
 		return (0);
 	}
 	choose_sorting_algorithm(&stack_a, &stack_b, stack_count);
+	print_stack(stack_a);
+	print_stack_data(stack_a);
 	free_resources(&stack_a, NULL);
 	free_resources(&stack_b, NULL);
 	return (0);
