@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 14:16:12 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:21:06 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 
 	init_stack_null(&stack_a, &stack_b);
 	if (argc < 2)
-		error_exit();
+		error_exit("");
 	stack_a = handle_arguments(argc, argv);
 	if (stack_sorted(stack_a))
 	{

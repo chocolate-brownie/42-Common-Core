@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 15:19:24 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:23:48 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_list
 	struct s_list	*prev;
 }					t_list;
 
+/* utility functions & some libft extra functions */
 void				error_exit(const char *error_msg);
 void				free_resources(t_list **stack, char **split);
 int					ft_isspace(char c);
@@ -40,8 +41,6 @@ void				init_stack_null(t_list **stack_a, t_list **stack_b);
 void				print_stack(t_list *stack);
 
 t_list				*handle_arguments(int argc, char **argv);
-
-
 
 /* sorting operatings */
 void				sa(t_list **stack, bool print);
