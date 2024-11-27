@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 18:18:53 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:27:02 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ long				ft_atol(char *str);
 void				init_stack_null(t_list **stack_a, t_list **stack_b);
 t_list				*create_node(int data);
 int					stack_size(t_list *stack);
+void				assign_indices(t_list *stack);
+int					get_position(t_list *stack, int target_index);
 /* @note delete this functions afterwards its just for debugging purposes */
 void				print_stack_data(t_list *stack);
 void				print_stack(t_list *stack);
@@ -56,6 +58,8 @@ bool				is_space_separated_string(const char *arg);
 void				validate_mixed_input(int argc, char **argv);
 
 /* algorithms */
+void				choose_algorithm(t_list **stack_a, t_list **stack_b,
+						int stack_count);
 bool				is_sorted(t_list *stack);
 void				sort_two(t_list **stack);
 void				sort_three(t_list **stack);

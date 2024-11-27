@@ -6,14 +6,13 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:02:52 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 18:03:02 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:23:21 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	choose_sorting_algorithm(t_list **stack_a, t_list **stack_b,
-		int stack_count)
+void	choose_algorithm(t_list **stack_a, t_list **stack_b, int stack_count)
 {
 	if (stack_count == 2)
 		sort_two(stack_a);

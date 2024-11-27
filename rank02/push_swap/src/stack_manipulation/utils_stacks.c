@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 15:36:18 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 18:00:05 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:30:47 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,19 @@ void	assign_indices(t_list *stack)
 		current->index = index;
 		current = current->next;
 	}
+}
+
+int	get_position(t_list *stack, int target_index)
+{
+	int	position;
+
+	position = 0;
+	while (stack)
+	{
+		if (stack->index == target_index)
+			return (position);
+		position++;
+		stack = stack->next;
+	}
+	return (-1);
 }
