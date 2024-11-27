@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 16:24:36 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:33:32 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ long				ft_atol(char *str);
 /* stack manipulation */
 void				init_stack_null(t_list **stack_a, t_list **stack_b);
 t_list				*create_node(int data);
-
 /* @note delete this functions afterwards its just for debugging purposes */
 void				print_stack_data(t_list *stack);
 
@@ -50,6 +49,7 @@ t_list				*handle_single_string(const char *arg);
 t_list				*handle_multiple_arguments(int argc, char **argv);
 bool				has_duplicates(t_list *stack);
 bool				is_numeric(const char *str);
+void				add_to_stack(t_list **stack, int data);
 
 /* sorting operatings */
 void				sa(t_list **stack, bool print);
