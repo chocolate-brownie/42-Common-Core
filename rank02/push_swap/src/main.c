@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 11:44:19 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:45:57 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,31 @@ algorithms...
 
 int	main(int argc, char **argv)
 {
+	t_list	*stack_a;
+	t_list	*stack_b;
+
 	printf("🛠️ Running main\n\n");
-	t_list *stack_a;
-	t_list *stack_b;
 	init_stack_null(&stack_a, &stack_b);
-
 	if (argc < 2)
-		error_exit();
+	{
+		printf("🛠️ Error: No arguments provided\n");
+		return (0);
+	}
 	stack_a = handle_arguments(argc, argv);
-
-	/*
-		if (!stack_sorted(stack_a))
-		{
-			free_stack(&stack_a);
-			return (0);
-		}
-		if (argc == 4)
-			sort_three(&stack_a);
-		else
-			turk_algorithm(&stack_a, &stack_b);
-
-	*/
-	printf("🛠️ main End\n");
+	printf("\n\n🖨 Initial stack_a contents: ");
+	print_stack(stack_a);
+	if (stack_sorted(stack_a))
+	{
+		printf("🛠️ Stack is already sorted. Exiting...\n");
+		free_resources(&stack_a, NULL);
+		return (0);
+	}
+	if (argc == 4)
+		sort_three(&stack_a);
+	else
+		turk_algorithm(&stack_a, &stack_b);
+	free_resources(&stack_a, NULL);
+	free_resources(&stack_b, NULL);
+	printf("\n\n🛠️ main End\n");
 	return (0);
 }

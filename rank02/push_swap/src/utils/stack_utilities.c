@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:37:17 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 12:16:29 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:43:54 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	free_resources(t_list **stack, char **split)
 	int		i;
 	t_list	*temp;
 
-	// Free the stack
 	if (stack && *stack)
 	{
 		while (*stack)
@@ -57,7 +56,6 @@ void	free_resources(t_list **stack, char **split)
 			*stack = temp;
 		}
 	}
-	// Free the split array
 	if (split)
 	{
 		i = 0;
@@ -68,4 +66,14 @@ void	free_resources(t_list **stack, char **split)
 		}
 		free(split);
 	}
+}
+
+void	print_stack(t_list *stack)
+{
+	while (stack)
+	{
+		printf("%d ", stack->data);
+		stack = stack->next;
+	}
+	printf("\n");
 }
