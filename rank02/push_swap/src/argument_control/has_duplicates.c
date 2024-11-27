@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_extra.c                                      :+:      :+:    :+:   */
+/*   has_duplicates.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 15:20:23 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 15:55:10 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/27 16:22:47 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/27 16:23:14 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isspace(char c)
+bool	has_duplicates(t_list *stack)
 {
-	return (c == ' ' || (c >= 9 && c <= 13));
-}
+	t_list *current = stack;
+	t_list *checker;
 
-long	ft_atol(char *str)
-{
-	long	result;
-	int		sign;
-	int		i;
-
-	result = 0;
-	sign = 1;
-	i = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	while (current)
 	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
+		checker = current->next;
+		while (checker)
+		{
+			if (current->data == checker->data)
+				return (true);
+			checker = checker->next;
+		}
+		current = current->next;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	return (false);
 }

@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_extra.c                                      :+:      :+:    :+:   */
+/*   is_numeric.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 15:20:23 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 15:55:10 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/11/27 16:22:29 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/11/27 16:23:37 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isspace(char c)
+bool	is_numeric(const char *str)
 {
-	return (c == ' ' || (c >= 9 && c <= 13));
-}
+	int	i;
 
-long	ft_atol(char *str)
-{
-	long	result;
-	int		sign;
-	int		i;
-
-	result = 0;
-	sign = 1;
 	i = 0;
-	while (ft_isspace(str[i]))
-		i++;
 	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!str[i])
+		return (false);
+	while (str[i])
 	{
-		if (str[i] == '-')
-			sign = -1;
+		if (str[i] < '0' || str[i] > '9')
+			return (false);
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	return (true);
 }

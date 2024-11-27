@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 15:21:06 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:14:13 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,14 @@ int	main(int argc, char **argv)
 
 	init_stack_null(&stack_a, &stack_b);
 	if (argc < 2)
-		error_exit("");
+		error_exit("Invalid arguments\n");
 	stack_a = handle_arguments(argc, argv);
 	if (stack_sorted(stack_a))
 	{
 		free_resources(&stack_a, NULL);
 		return (0);
 	}
+	/* this should happens according where the size of the stack */
 	if (argc == 3)
 		sort_two(&stack_a);
 	else if (argc == 4)
