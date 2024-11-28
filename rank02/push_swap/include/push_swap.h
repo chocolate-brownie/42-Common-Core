@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/28 17:33:26 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/28 17:50:55 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void					validate_argument(char **split_args, int argc, long nbr,
 							t_stack *stack_a);
 int						is_valid_integer(long nbr);
 int						is_duplicate(t_stack *stack, int nbr);
+void					push_to_stack(t_stack *stack, int nbr);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:53:30 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/28 15:54:39 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/28 17:51:22 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void	print_stack(t_stack *stack, char *name)
 
 	if (!stack || !stack->head)
 	{
-		ft_printf("Stack %s is empty.\n", name);
+		printf("Stack %s is empty.\n", name);
 		return ;
 	}
-	ft_printf("Stack %s: ", name);
+	printf("Stack %s: ", name);
 	current = stack->head;
 	while (current)
 	{
-		ft_printf("%d ", current->nbr);
+		printf("%d ", current->nbr);
 		current = current->next;
 	}
-	ft_printf("\n");
+	printf("\n");
 }
