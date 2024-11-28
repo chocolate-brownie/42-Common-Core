@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 18:28:43 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:11:29 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,22 @@ algorithms...
 
 int	main(int argc, char **argv)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-	int		stack_count;
+	t_stack	stack_a;
+	t_stack	stack_b;
 
-	init_stack_null(&stack_a, &stack_b);
+	initialize_stacks(&stack_a, &stack_b);
 	if (argc < 2)
-		error_exit("[ERROR] Invalid arguments");
-	stack_a = handle_arguments(argc, argv);
-	assign_indices(stack_a);
-	stack_count = stack_size(stack_a);
-	if (is_sorted(stack_a))
+		error_exit("[ERROR]: No arguments to process");
+	handle_arguments(argc, argv, &stack_a);
+	if (stack_a.list_size <= 1 || is_sorted(stack_a.bgn_list))
 	{
-		free_resources(&stack_a, NULL);
+		free_stack(&stack_a);
 		return (0);
 	}
-	choose_algorithm(&stack_a, &stack_b, stack_count);
-	free_resources(&stack_a, NULL);
-	free_resources(&stack_b, NULL);
+	choose_algorithm(&stack_a, &stack_b);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }
+
+
