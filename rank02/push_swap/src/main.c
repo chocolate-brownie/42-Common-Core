@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/28 12:11:29 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:15:11 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,4 @@ algorithms...
 
 int	main(int argc, char **argv)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
-
-	initialize_stacks(&stack_a, &stack_b);
-	if (argc < 2)
-		error_exit("[ERROR]: No arguments to process");
-	handle_arguments(argc, argv, &stack_a);
-	if (stack_a.list_size <= 1 || is_sorted(stack_a.bgn_list))
-	{
-		free_stack(&stack_a);
-		return (0);
-	}
-	choose_algorithm(&stack_a, &stack_b);
-	free_stack(&stack_a);
-	free_stack(&stack_b);
-	return (0);
 }
-
-
