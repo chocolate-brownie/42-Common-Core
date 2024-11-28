@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/27 18:27:02 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:55:58 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,62 +30,5 @@ typedef struct s_list
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;
-
-/* utility functions & some libft extra functions */
-void				error_exit(char *error_msg);
-void				free_resources(t_list **stack, char **split);
-int					ft_isspace(char c);
-long				ft_atol(char *str);
-
-/* stack manipulation */
-void				init_stack_null(t_list **stack_a, t_list **stack_b);
-t_list				*create_node(int data);
-int					stack_size(t_list *stack);
-void				assign_indices(t_list *stack);
-int					get_position(t_list *stack, int target_index);
-/* @note delete this functions afterwards its just for debugging purposes */
-void				print_stack_data(t_list *stack);
-void				print_stack(t_list *stack);
-
-/* main argument handling functions */
-t_list				*handle_arguments(int argc, char **argv);
-t_list				*handle_single_string(char *arg);
-t_list				*handle_multiple_arguments(int argc, char **argv);
-bool				has_duplicates(t_list *stack);
-bool				is_numeric(char *str);
-void				add_to_stack(t_list **stack, int data);
-bool				is_space_separated_string(const char *arg);
-void				validate_mixed_input(int argc, char **argv);
-
-/* algorithms */
-void				choose_algorithm(t_list **stack_a, t_list **stack_b,
-						int stack_count);
-bool				is_sorted(t_list *stack);
-void				sort_two(t_list **stack);
-void				sort_three(t_list **stack);
-void				sort_four(t_list **stack_a, t_list **stack_b);
-void				sort_five(t_list **stack_a, t_list **stack_b);
-void				push_smallest_to_b(t_list **stack_a, t_list **stack_b);
-void				move_smallest_to_top(t_list **stack, int position);
-int					find_smallest_element(t_list *stack);
-void				turk_algorithm(t_list **stack_a, t_list **stack_b);
-int					calculate_chunk_size(int total_nodes);
-void				push_chunks_to_b(t_list **stack_a, t_list **stack_b,
-						int chunk_size);
-void				push_back_to_a(t_list **stack_a, t_list **stack_b);
-int					find_largest_index(t_list *stack);
-
-/* sorting operatings */
-void				sa(t_list **stack, bool print);
-void				sb(t_list **stack, bool print);
-void				ss(t_list **stack_a, t_list **stack_b, bool print);
-void				pa(t_list **stack_a, t_list **stack_b, bool print);
-void				pb(t_list **stack_a, t_list **stack_b, bool print);
-void				ra(t_list **stack, bool print);
-void				rb(t_list **stack, bool print);
-void				rr(t_list **stack_a, t_list **stack_b, bool print);
-void				rra(t_list **stack, bool print);
-void				rrb(t_list **stack, bool print);
-void				rrr(t_list **stack_a, t_list **stack_b, bool print);
 
 #endif
