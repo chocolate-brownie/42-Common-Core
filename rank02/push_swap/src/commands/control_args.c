@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: milan-godawatta <milan-godawatta@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:06:17 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/28 17:30:38 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:30:40 by milan-godaw      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,3 +73,4 @@ int	is_duplicate(t_stack *stack, int nbr)
 	}
 	return (0);
 }
+

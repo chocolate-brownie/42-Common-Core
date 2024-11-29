@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: milan-godawatta <milan-godawatta@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:53:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/28 17:25:02 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:34:20 by milan-godaw      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 */
 void	init_stack_null(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_putstr_fd("[RUNNING] init_stack_null\n", 1);
 	*stack_a = (t_stack *)malloc(sizeof(t_stack));
 	*stack_b = (t_stack *)malloc(sizeof(t_stack));
 	if (!(*stack_a) || !(*stack_b))
@@ -32,5 +31,4 @@ void	init_stack_null(t_stack **stack_a, t_stack **stack_b)
 	(*stack_b)->head = NULL;
 	(*stack_b)->tail = NULL;
 	(*stack_b)->size = 0;
-	ft_putstr_fd("[ENDING] init_stack_null\n", 1);
 }
