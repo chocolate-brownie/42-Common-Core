@@ -6,7 +6,7 @@
 /*   By: milan-godawatta <milan-godawatta@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/01 19:31:31 by milan-godaw      ###   ########.fr       */
+/*   Updated: 2024/12/01 20:14:57 by milan-godaw      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ algorithms...
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack *stack_a;
+	t_stack *stack_b;
 
 	init_stack_null(&stack_a, &stack_b);
 	control_arguments(argc, argv, stack_a);
