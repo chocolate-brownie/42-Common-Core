@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: milan-godawatta <milan-godawatta@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/11/28 17:29:18 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:31:31 by milan-godaw      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ int	main(int argc, char **argv)
 
 	init_stack_null(&stack_a, &stack_b);
 	control_arguments(argc, argv, stack_a);
+	if (!is_sorted(stack_a))
+	{
+	}
 	print_stack(stack_a, "stack_a: ");
 	cleanup(stack_a, stack_b);
+	return (0);
 }
