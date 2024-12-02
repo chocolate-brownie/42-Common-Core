@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: milan-godawatta <milan-godawatta@studen    +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/01 20:14:57 by milan-godaw      ###   ########.fr       */
+/*   Updated: 2024/12/02 09:49:59 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,16 @@ algorithms...
 
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	init_stack_null(&stack_a, &stack_b);
 	control_arguments(argc, argv, stack_a);
 	if (!is_sorted(stack_a))
 	{
+		if (stack_a->size == 2)
 	}
 	print_stack(stack_a, "stack_a: ");
 	cleanup(stack_a, stack_b);
