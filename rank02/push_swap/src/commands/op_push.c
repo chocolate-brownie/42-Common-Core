@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:05:17 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 11:27:36 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:57:17 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	pa(t_stack *a, t_stack *b, bool print)
 	a->head = top_b;
 	a->size++;
 	if (print)
-		ft_putstr("pa\n");
+		ft_putstr_fd("pa\n", 1);
 }
 
 /* pb (push b): Takes the first element on top of a and puts it on b.
@@ -63,5 +63,5 @@ void	pb(t_stack *a, t_stack *b, bool print)
 	b->head = top_a;
 	b->size++;
 	if (print)
-		ft_putstr("pb\n");
+		ft_putstr_fd("pb\n", 1);
 }
