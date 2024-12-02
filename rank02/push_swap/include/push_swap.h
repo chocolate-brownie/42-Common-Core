@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 11:14:20 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 12:00:46 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,19 @@ void					sb(t_stack *stack_b, bool print);
 void					ss(t_stack *a, t_stack *b, bool print);
 void					pa(t_stack *a, t_stack *b, bool print);
 void					pb(t_stack *a, t_stack *b, bool print);
-void					ra(t_stack *stack, bool print);
-void					rb(t_stack *stack, bool print);
+void					ra(t_stack *a, bool print);
+void					rb(t_stack *b, bool print);
 void					rr(t_stack *a, t_stack *b, bool print);
-void					rra(t_stack *stack, bool print);
-void					rrb(t_stack *stack, bool print);
+void					rra(t_stack *a, bool print);
+void					rrb(t_stack *b, bool print);
 void					rrr(t_stack *a, t_stack *b, bool print);
 
 /* Sorting algorithms */
-void					sort_three(t_stack *a);
-void					sort_small(t_stack *a, t_stack *b);
-void					sort_stacks(t_stack *a, t_stack *b);
+void					sort_three(t_stack *stack_a);
+void					sort_four_five(t_stack *stack_a, t_stack *stack_b,
+							int size);
+int						find_smallest_index(t_stack *stack);
+void					move_to_top(t_stack *stack, int index);
 
 /* Error, clean up and other utils */
 void					error_exit(void);
