@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:27:00 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 17:06:18 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:20:49 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,33 @@ int	main(int argc, char **argv)
 	initialize_stack(&stack_b);
 	if (argc < 2)
 		return (0);
+	printf("🚀 Starting validation...\n");
 	check_arguments(argc, argv);
+	printf("📦 Populating stack A...\n");
 	initialize_stack_with_args(&stack_a, argc, argv);
+	print_stack(&stack_a);
+	printf("🔍 Checking if stack A is sorted...\n");
 	if (is_sorted(&stack_a))
 	{
+		printf("✅ Stack A is already sorted. Exiting...\n");
 		free_stack(&stack_a);
 		return (0);
 	}
+	printf("⚙️  Starting sorting process...\n");
 	if (stack_a.size <= 5)
+	{
+		printf("🔧 Sorting a small stack...\n");
 		sort_small_stack(&stack_a, &stack_b, stack_a.size);
+	}
 	else
+	{
+		printf("🔧 Sorting a large stack...\n");
 		sort_large_stack(&stack_a, &stack_b, stack_a.size);
+	}
+	printf("🧹 Cleaning up resources...\n");
 	free_stack(&stack_a);
 	free_stack(&stack_b);
+	printf("✅ Sorting complete! Exiting...\n");
 	return (0);
 }
 
