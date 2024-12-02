@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:12:47 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 16:58:39 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:07:08 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,5 @@ void				sort_large_stack(t_stack *stack_a, t_stack *stack_b,
 						int size);
 void				sort_three_nodes(t_stack *stack_a);
 void				finalize_stack_sort(t_stack *stack_a);
-
-// ***** Error Handling *****
-void				handle_error(void);
 
 #endif

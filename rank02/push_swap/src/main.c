@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:27:00 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 16:32:54 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:06:18 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ Argument Validation:
 	check_arguments ensures the inputs are valid integers without duplicates.
 	initialize_stack_with_args populates stack_a with the input values.
 Sorting Check:
-	The is_sorted function checks if stack_a is already sorted to avoid unnecessary operations.
+	The is_sorted function checks if stack_a is already sorted to avoid
+	unnecessary operations.
 Sorting Logic:
 	For stacks with ≤5 elements, sort_small_stack is used.
 	For larger stacks, sort_large_stack handles the sorting.
@@ -53,7 +54,7 @@ int	main(int argc, char **argv)
 
 static int	is_sorted(t_stack *stack)
 {
-	t_node *current;
+	t_node	*current;
 
 	current = stack->head;
 	while (current && current->next)
