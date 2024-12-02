@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 10:51:43 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:14:20 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ typedef struct s_stack
 void					print_stack(t_stack *stack, char *name);
 
 /* Push_swap commands */
-void					sa(t_stack *stack, bool print);
-void					sb(t_stack *stack, bool print);
+void					sa(t_stack *stack_a, bool print);
+void					sb(t_stack *stack_b, bool print);
 void					ss(t_stack *a, t_stack *b, bool print);
 void					pa(t_stack *a, t_stack *b, bool print);
 void					pb(t_stack *a, t_stack *b, bool print);

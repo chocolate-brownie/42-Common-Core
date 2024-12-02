@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: milan-godawatta <milan-godawatta@studen    +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 19:22:14 by milan-godaw       #+#    #+#             */
-/*   Updated: 2024/12/01 20:14:20 by milan-godaw      ###   ########.fr       */
+/*   Updated: 2024/12/02 11:14:39 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int is_sorted(t_stack *stack)
+int	is_sorted(t_stack *stack)
 {
-	t_stack_node *current;
+	t_stack_node	*current;
 
 	if (!stack->head || stack->size <= 1)
 		return (1);

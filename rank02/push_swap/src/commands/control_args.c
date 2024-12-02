@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   control_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: milan-godawatta <milan-godawatta@studen    +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:06:17 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/01 20:00:49 by milan-godaw      ###   ########.fr       */
+/*   Updated: 2024/12/02 11:15:34 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-** Controls argument parsing, validation, and populates stack_a.
-*/
+/* Controls argument parsing, validation, and populates stack_a. */
 void	control_arguments(int argc, char **argv, t_stack *stack_a)
 {
 	char	**split_args;
@@ -39,10 +37,6 @@ void	control_arguments(int argc, char **argv, t_stack *stack_a)
 		free_split(split_args);
 }
 
-/*
-** Validates an individual argument.
-** Checks for integer range and duplicates, exits on failure.
-*/
 void	validate_argument(char **split_args, int argc, long nbr,
 		t_stack *stack_a)
 {
@@ -73,4 +67,3 @@ int	is_duplicate(t_stack *stack, int nbr)
 	}
 	return (0);
 }
-
