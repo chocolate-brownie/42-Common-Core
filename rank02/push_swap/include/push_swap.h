@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:12:47 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 17:32:43 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:45:26 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,23 @@
 # include <unistd.h>
 
 // ***** Linked List Structure *****
-typedef struct s_node
+typedef struct s_stack_node
 {
-	int				value;
-	struct s_node	*prev;
-	struct s_node	*next;
-}					t_node;
+	int					nbr;
+	int					index;
+	int					push_cost;
+	int					above_median;
+	int					cheapest;
+	struct s_stack_node	*target_node;
+	struct s_stack_node	*next;
+	struct s_stack_node	*prev;
+}						t_stack_node;
 
 typedef struct s_stack
 {
-	t_node			*head;
-	t_node			*tail;
-	int				size;
-}					t_stack;
+	t_stack_node		*head;
+	t_stack_node		*tail;
+	int					size;
+}						t_stack;
 
 #endif
