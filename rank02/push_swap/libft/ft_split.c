@@ -6,109 +6,89 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:50:56 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/06/11 19:45:11 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:58:42 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdbool.h>
 #include <stdlib.h>
 
-int	safe_malloc(char **words_v, int position, size_t buffer)
+static bool	is_delimiter(char c)
 {
-	int	index;
-
-	index = 0;
-	words_v[position] = malloc(buffer);
-	if (words_v[position] == NULL)
-	{
-		while (index < position)
-			free(words_v[index++]);
-		return (1);
-	}
-	return (0);
+	return (c == ' ' || c == '\t');
 }
 
-int	fill_words(char **words_v, const char *s, char delimiter)
+static int	count_words(const char *s)
 {
-	size_t	len;
-	int		index;
+	int		count;
+	bool	in_word;
 
-	index = 0;
-	while (*s != '\0')
+	count = 0;
+	in_word = false;
+	while (*s)
 	{
-		len = 0;
-		while (*s == delimiter && *s != '\0')
-			++s;
-		while (*s != delimiter && *s != '\0')
+		if (!is_delimiter(*s) && !in_word)
 		{
-			++len;
-			++s;
+			in_word = true;
+			count++;
 		}
-		if (len > 0)
+		else if (is_delimiter(*s))
+			in_word = false;
+		s++;
+	}
+	return (count);
+}
+
+static char	*extract_word(const char **s)
+{
+	const char	*start;
+	char		*word;
+	int			len;
+
+	len = 0;
+	while (**s && is_delimiter(**s))
+		(*s)++;
+	start = *s;
+	while (**s && !is_delimiter(**s))
+	{
+		len++;
+		(*s)++;
+	}
+	word = (char *)malloc(len + 1);
+	if (!word)
+		return (NULL);
+	for (int i = 0; i < len; i++)
+		word[i] = start[i];
+	word[len] = '\0';
+	return (word);
+}
+
+char	**ft_split(const char *s)
+{
+	char	**result;
+	int		words;
+	int		i;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	words = count_words(s);
+	result = (char **)malloc((words + 1) * sizeof(char *));
+	if (!result)
+		return (NULL);
+	while (i < words)
+	{
+		result[i] = extract_word(&s);
+		if (!result[i])
 		{
-			if (safe_malloc(words_v, index, len + 1))
-				return (1);
-			ft_strlcpy(words_v[index], s - len, len + 1);
-			index++;
+			while (i > 0)
+				free(result[--i]);
+			free(result);
+			return (NULL);
 		}
+		i++;
 	}
-	words_v[index] = NULL;
-	return (0);
+	result[i] = NULL;
+	return (result);
 }
-
-size_t	count_words(const char *string, char delimiter)
-{
-	size_t	words;
-	int		inside_word;
-
-	words = 0;
-	while (*string != '\0')
-	{
-		inside_word = 0;
-		while (*string == delimiter && *string != '\0')
-			string++;
-		while (*string != delimiter && *string != '\0')
-		{
-			if (!inside_word)
-			{
-				words++;
-				inside_word = 1;
-			}
-			string++;
-		}
-	}
-	return (words);
-}
-
-char	**ft_split(const char *s, char c)
-{
-	size_t	words;
-	char	**words_vector;
-
-	if (s == NULL)
-		return (NULL);
-	words = count_words(s, c);
-	words_vector = malloc((words + 1) * sizeof(char *));
-	if (words_vector == NULL)
-		return (NULL);
-	if (fill_words(words_vector, s, c))
-	{
-		free(words_vector);
-		return (NULL);
-	}
-	return (words_vector);
-}
-
-/* int	main(void)
-{
-	char	*string;
-	char	**vector;
-
-	string = "     Hello   there, word!!  ";
-	vector = ft_split(string, ' ');
-	while (*vector)
-	{
-		printf("%s\n", *vector++);
-	}
-	return (0);
-} */
