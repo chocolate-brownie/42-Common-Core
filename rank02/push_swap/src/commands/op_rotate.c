@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:26:24 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 11:32:06 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:34:08 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ra(t_stack *a, bool print)
 	a->tail->next = old_head;
 	a->tail = old_head;
 	if (print)
-		write(1, "ra\n", 3);
+		ft_putstr("ra\n");
 }
 
 /* rb (rotate b) : Shifts all the elements of the stack b one position upwards.
@@ -47,7 +47,7 @@ void	rb(t_stack *b, bool print)
 	b->tail->next = old_head;
 	b->tail = old_head;
 	if (print)
-		write(1, "rb\n", 3);
+		ft_putstr("rb\n");
 }
 
 /* rr : ra and rb at the same time. */
@@ -56,5 +56,5 @@ void	rr(t_stack *a, t_stack *b, bool print)
 	ra(a, false);
 	rb(b, false);
 	if (print)
-		write(1, "rr\n", 3);
+		ft_putstr("rr\n");
 }
