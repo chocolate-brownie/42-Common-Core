@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 13:55:18 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:03:22 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void					rrr(t_stack *a, t_stack *b, bool print);
 
 /* Sorting algorithms and tools */
 void					sort_three(t_stack *stack_a);
-void					sort_four_five(t_stack *stack_a, t_stack *stack_b,
-							int size);
+void					sort_four_five(t_stack *stack_a, t_stack *stack_b);
 int						find_smallest_index(t_stack *stack);
 void					move_to_top(t_stack *stack, int index);
 void					turk_algorithm(t_stack *stack_a, t_stack *stack_b);
@@ -76,6 +75,8 @@ void					divide_into_chunks(t_stack *stack_a, t_stack *stack_b,
 							int chunk_size);
 void					calculate_push_cost(t_stack *stack);
 t_stack_node			*find_cheapest_node(t_stack *stack);
+void					reinsert_from_stack_b(t_stack *stack_a,
+							t_stack *stack_b);
 
 /* Error, clean up and other utils */
 void					error_exit(void);
@@ -92,6 +93,7 @@ void					validate_argument(char **split_args, int argc, long nbr,
 							t_stack *stack_a);
 int						is_valid_integer(long nbr);
 int						is_duplicate(t_stack *stack, int nbr);
+int						get_stack_size(t_stack *stack);
 void					push_to_stack(t_stack *stack, int nbr);
 int						is_sorted(t_stack *stack);
 void					swap_nodes(t_stack_node *node1, t_stack_node *node2);

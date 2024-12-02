@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:58:32 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 12:17:15 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:03:43 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 1. Pushing the smallest elements to stack_b.
 2. Sorting the remaining 3 elements in stack_a using sort_3.
 3. Pushing the elements back from stack_b to stack_a. */
-void	sort_four_five(t_stack *stack_a, t_stack *stack_b, int size)
+void	sort_four_five(t_stack *stack_a, t_stack *stack_b)
 {
 	int	smallest_index;
 
-	while (stack_a->size > 3)
+	while (get_stack_size(stack_a) > 3)
 	{
 		smallest_index = find_smallest_index(stack_a);
 		move_to_top(stack_a, smallest_index);
 		pb(stack_a, stack_b, true);
 	}
-	sort_3(stack_a);
-	while (stack_b->size > 0)
+	sort_three(stack_a);
+	while (get_stack_size(stack_b) > 0)
 		pa(stack_a, stack_b, true);
 }
 

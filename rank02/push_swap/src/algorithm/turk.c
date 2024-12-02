@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:21:16 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 13:50:57 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:03:03 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,26 @@ void	divide_into_chunks(t_stack *stack_a, t_stack *stack_b, int chunk_size)
 		}
 		if (stack_b->size == chunk_size)
 			current_chunk++;
+	}
+}
+
+/*Reinsert the elements from stack_b to stack_a in sorted
+order by finding and pushing the cheapest node.*/
+void	reinsert_from_stack_b(t_stack *stack_a, t_stack *stack_b)
+{
+	t_stack_node	*cheapest;
+
+	while (stack_b->size > 0)
+	{
+		calculate_push_cost(stack_b);
+		cheapest = find_cheapest_node(stack_b);
+		while (stack_b->head != cheapest)
+		{
+			if (cheapest->push_cost <= stack_b->size / 2)
+				rb(stack_b, true);
+			else
+				rrb(stack_b, true);
+		}
+		pa(stack_a, stack_b, true);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 09:25:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 11:51:45 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:01:34 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,24 @@ algorithms...
 	-- check for 3 numbers ? if so implement simple sort three algorithm
 	-- check if the stack has more that 3 numbers ? if so turk algorithm */
 
-#include "push_swap.h"
-
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	int		size;
 
 	init_stack_null(&stack_a, &stack_b);
 	control_arguments(argc, argv, stack_a);
 	print_stack(stack_a, "stack_a before sorting: ");
 	if (!is_sorted(stack_a))
 	{
-		if (stack_a->size == 2)
+		size = get_stack_size(stack_a);
+		if (size == 2)
 			sa(stack_a, true);
-		else if (stack_a->size == 3)
+		else if (size == 3)
 			sort_three(stack_a);
-		else if (stack_a->size <= 5)
-			sort_four_five(stack_a, stack_b, stack_a->size);
+		else if (size <= 5)
+			sort_four_five(stack_a, stack_b);
 		else
 			turk_algorithm(stack_a, stack_b);
 	}

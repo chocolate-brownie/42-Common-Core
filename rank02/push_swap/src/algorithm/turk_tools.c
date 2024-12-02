@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:49:19 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 13:54:44 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:03:00 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,25 +49,4 @@ t_stack_node	*find_cheapest_node(t_stack *stack)
 		current = current->next;
 	}
 	return (cheapest);
-}
-
-/*Reinsert the elements from stack_b to stack_a in sorted
-order by finding and pushing the cheapest node.*/
-void	reinsert_from_stack_b(t_stack *stack_a, t_stack *stack_b)
-{
-	t_stack_node	*cheapest;
-
-	while (stack_b->size > 0)
-	{
-		calculate_push_cost(stack_b);
-		cheapest = find_cheapest_node(stack_b);
-		while (stack_b->head != cheapest)
-		{
-			if (cheapest->push_cost <= stack_b->size / 2)
-				rb(stack_b, true);
-			else
-				rrb(stack_b, true);
-		}
-		pa(stack_a, stack_b, true);
-	}
 }
