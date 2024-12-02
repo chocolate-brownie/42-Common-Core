@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:28:08 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 12:00:46 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:53:22 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,18 @@ void					rra(t_stack *a, bool print);
 void					rrb(t_stack *b, bool print);
 void					rrr(t_stack *a, t_stack *b, bool print);
 
-/* Sorting algorithms */
+/* Sorting algorithms and tools */
 void					sort_three(t_stack *stack_a);
 void					sort_four_five(t_stack *stack_a, t_stack *stack_b,
 							int size);
 int						find_smallest_index(t_stack *stack);
 void					move_to_top(t_stack *stack, int index);
+void					turk_algorithm(t_stack *stack_a, t_stack *stack_b);
+void					assign_indices(t_stack *stack);
+void					divide_into_chunks(t_stack *stack_a, t_stack *stack_b,
+							int chunk_size);
+void					calculate_push_cost(t_stack *stack);
+t_stack_node			*find_cheapest_node(t_stack *stack);
 
 /* Error, clean up and other utils */
 void					error_exit(void);
