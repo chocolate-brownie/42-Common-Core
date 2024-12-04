@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: milan-godawatta <milan-godawatta@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:12:47 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/02 17:45:26 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:31:23 by milan-godaw      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include <limits.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -22,21 +23,25 @@
 // ***** Linked List Structure *****
 typedef struct s_stack_node
 {
-	int					nbr;
-	int					index;
-	int					push_cost;
+	int					value;
+	int					current_position;
+	int					final_index;
+	int					push_price;
 	int					above_median;
-	int					cheapest;
 	struct s_stack_node	*target_node;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
 }						t_stack_node;
 
-typedef struct s_stack
-{
-	t_stack_node		*head;
-	t_stack_node		*tail;
-	int					size;
-}						t_stack;
+// ***** Utils *****
+void					error_exit(void);
+// ***** Custom Split Function *****
+char					**custom_split(char *str, char seperator);
+static int				count_words(char *str, char seperator);
+
+// ***** Main Process *****
+void					init_stack(t_stack_node **a, t_stack_node **b);
+int						control_arguments(int argc, char **argv,
+							t_stack_node **a);
 
 #endif
