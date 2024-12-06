@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 11:42:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/06 12:07:37 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/12/06 13:16:01 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/12/06 13:56:05 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
-#include <stdlib.h>
 
 static int	count_words(const char *str, const char separator)
 {
@@ -84,7 +83,7 @@ static int	complete_array(char **words, const char *str, char separator,
 	i = 0;
 	words[i] = malloc(1);
 	if (!words[i])
-		return (0);
+		return (NULL);
 	words[i++][0] = '\0';
 	while (i <= word_count)
 	{
@@ -93,7 +92,7 @@ static int	complete_array(char **words, const char *str, char separator,
 		{
 			while (--i >= 0)
 				free(words[i]);
-			return (0);
+			return (NULL);
 		}
 		i++;
 	}
@@ -109,7 +108,7 @@ char	**split(char *str, char separator)
 	word_count = count_words(str, separator);
 	words_array = (char **)malloc(sizeof(char *) * (word_count + 2));
 	if (!words_array)
-		return (NULL);
+		return (0);
 	if (!complete_array(words_array, str, separator, word_count))
 	{
 		free(words_array);
@@ -117,28 +116,31 @@ char	**split(char *str, char separator)
 	}
 	return (words_array);
 }
+
 /*
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    if (argc == 2)
-    {
-        char **words_array = split(argv[1], ' ');
-        printf("Input numbers as a single string\n");
-        for (int i = 0; words_array[i]; i++) {
-            printf("%s\n", words_array[i]);
-            free(words_array[i]);
-        }
-        free(words_array);
-        return 0;
-    }
-    else if (argc > 2)
-    {
-        for (int i = 1; i < argc; i++) {
-            printf("[%d]: %s\n",i - 1, argv[i]);
-        }
-        return 0;
-    }
-    else
-        printf("Error\n");
+	char	**words_array;
+
+	if (argc == 2)
+	{
+		words_array = split(argv[1], ' ');
+		printf("Input numbers as a single string\n");
+		for (int i = 0; words_array[i]; i++) {
+			printf("%s\n", words_array[i]);
+			free(words_array[i]);
+		}
+		free(words_array);
+		return (0);
+	}
+	else if (argc > 2)
+	{
+		for (int i = 1; i < argc; i++) {
+			printf("[%d]: %s\n",i - 1, argv[i]);
+		}
+		return (0);
+	}
+	else
+		printf("Error\n");
 }
 */

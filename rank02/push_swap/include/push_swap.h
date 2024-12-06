@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 16:45:06 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/06 11:18:02 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/12/06 13:15:35 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/12/06 15:10:58 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ char					**split(char *str, char delimiter);
 
 // ***** Main Process *****
 void					init_stack(t_stack_node **a, t_stack_node **b);
-int						control_arguments(int argc, char **argv,
+int						control_arguments(const int argc, char **argv,
 							t_stack_node **a);
+void					create_stack(t_stack_node **a, char **argv);
+
+// ***** Input Validation  *****
+int						is_valid_input(char **args);
+int						duplicates(char **split_args);
+
 #endif
