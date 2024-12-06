@@ -46,29 +46,29 @@ int	ft_atoi(const char *str)
 }
 
 /* FUNCTION ft_atoi(str)
-    IF str IS NULL
-        RETURN 0
+	IF str IS NULL
+		RETURN 0
 
-    SET index TO 0
-    SET sign TO 1
-    SET result TO 0
+	SET index TO 0
+	SET sign TO 1
+	SET result TO 0
 
-    // Skip leading whitespace
-    WHILE str[index] IS whitespace
-        INCREMENT index
+	// Skip leading whitespace
+	WHILE str[index] IS whitespace
+		INCREMENT index
 
-    // Check for sign
-    IF str[index] IS '-'
-        SET sign TO -1
-        INCREMENT index
-    ELSE IF str[index] IS '+'
-        INCREMENT index
+	// Check for sign
+	IF str[index] IS '-'
+		SET sign TO -1
+		INCREMENT index
+	ELSE IF str[index] IS '+'
+		INCREMENT index
 
-    // Process each digit
-    WHILE str[index] IS a digit
-        SET digit TO ASCII value of str[index] - ASCII value of '0'
-        SET result TO result * 10 + digit
-        INCREMENT index
+	// Process each digit
+	WHILE str[index] IS a digit
+		SET digit TO ASCII value of str[index] - ASCII value of '0'
+		SET result TO result * 10 + digit
+		INCREMENT index
 
-    RETURN result * sign
+	RETURN result * sign
 END FUNCTION */
