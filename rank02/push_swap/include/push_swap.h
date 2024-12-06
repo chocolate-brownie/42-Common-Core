@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: milan-godawatta <milan-godawatta@studen    +#+  +:+       +#+        */
+/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 16:12:47 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/04 17:31:23 by milan-godaw      ###   ########.fr       */
+/*   Created: 2024/12/04 16:45:06 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/12/06 11:18:02 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <unistd.h>
 
 // ***** Linked List Structure *****
 typedef struct s_stack_node
@@ -35,13 +34,12 @@ typedef struct s_stack_node
 
 // ***** Utils *****
 void					error_exit(void);
+
 // ***** Custom Split Function *****
-char					**custom_split(char *str, char seperator);
-static int				count_words(char *str, char seperator);
+char					**split(char *str, char delimiter);
 
 // ***** Main Process *****
 void					init_stack(t_stack_node **a, t_stack_node **b);
 int						control_arguments(int argc, char **argv,
 							t_stack_node **a);
-
 #endif
