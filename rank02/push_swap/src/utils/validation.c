@@ -36,19 +36,24 @@ int	is_valid_input(char **args)
 
 int	duplicates(char **split_args)
 {
-	int i = 0;
+	int	i;
+	int	num1;
+	int	j;
+	int	num2;
+
+	i = 0;
 	while (split_args[i])
 	{
-		int num1 = ft_atol(split_args[i]);
-		int j = i + 1;
+		num1 = ft_atol(split_args[i]);
+		j = i + 1;
 		while (split_args[j])
 		{
-			int num2 = ft_atol(split_args[j]);
+			num2 = ft_atol(split_args[j]);
 			if (num1 == num2)
-				return 1;
+				return (1);
 			j++;
 		}
 		i++;
 	}
-	return 0;
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:15:35 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/06 15:10:58 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/07 03:58:54 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ typedef struct s_stack_node
 
 // ***** Utils *****
 void					error_exit(void);
+void					free_stack(t_stack_node **stack);
+void					free_split(char **split_args);
+void					clean_resources(t_stack_node **stack,
+							char **split_args);
 
 // ***** Custom Split Function *****
 char					**split(char *str, char delimiter);

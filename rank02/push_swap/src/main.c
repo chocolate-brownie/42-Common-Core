@@ -25,30 +25,30 @@ int	main(const int argc, char *argv[])
 	return (0);
 }
 
-int control_arguments(const int argc, char **argv, t_stack_node **a)
+int	control_arguments(const int argc, char **argv, t_stack_node **a)
 {
-    char **split_args;
+	char	**split_args;
 
-    if (argc == 1 || (argc == 2 && !argv[1][0]))
-        return (1);
-    if (argc == 2)
-    {
-        split_args = split(argv[1], ' ');
-        if (!split_args)
-            error_exit();
-        if (!is_valid_input(split_args + 1) || duplicates(split_args + 1))
-        {
-            free_split(split_args);
-            error_exit();
-        }
-        create_stack(a, split_args + 1);
-        free_split(split_args);
-    }
-    else
-    {
-        if (!is_valid_input(argv + 1) || duplicates(argv + 1))
-            error_exit();
-        create_stack(a, argv + 1);
-    }
-    return (1);
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (1);
+	if (argc == 2)
+	{
+		split_args = split(argv[1], ' ');
+		if (!split_args)
+			error_exit();
+		if (!is_valid_input(split_args + 1) || duplicates(split_args + 1))
+		{
+			free_split(split_args);
+			error_exit();
+		}
+		create_stack(a, split_args + 1);
+		free_split(split_args);
+	}
+	else
+	{
+		if (!is_valid_input(argv + 1) || duplicates(argv + 1))
+			error_exit();
+		create_stack(a, argv + 1);
+	}
+	return (1);
 }
