@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:15:48 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/06 15:35:41 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/07 04:30:10 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 int	main(const int argc, char *argv[])
 {
 	t_stack_node	*stack_a;
-	t_stack_node	*stack_b;
 
 	stack_a = NULL;
-	stack_b = NULL;
 	if (!control_arguments(argc, argv, &stack_a))
-		exit(EXIT_FAILURE);
+		error_exit();
+	print_stack_details(stack_a, 'A');
 	free_stack(&stack_a);
 	return (0);
 }

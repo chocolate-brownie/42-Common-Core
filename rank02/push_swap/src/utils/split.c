@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:16:01 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/06 13:56:05 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/07 04:31:35 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int	complete_array(char **words, const char *str, char separator,
 	i = 0;
 	words[i] = malloc(1);
 	if (!words[i])
-		return (NULL);
+		return (1);
 	words[i++][0] = '\0';
 	while (i <= word_count)
 	{
@@ -92,12 +92,12 @@ static int	complete_array(char **words, const char *str, char separator,
 		{
 			while (--i >= 0)
 				free(words[i]);
-			return (NULL);
+			return (2);
 		}
 		i++;
 	}
 	words[i] = NULL;
-	return (1);
+	return (0);
 }
 
 char	**split(char *str, char separator)
