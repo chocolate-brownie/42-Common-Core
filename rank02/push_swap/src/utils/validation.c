@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:58:14 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/06 15:13:26 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/10 01:50:46 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 int	is_valid_input(char **args)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	long	num;
 
 	i = 0;
 	while (args[i])
 	{
+		num = ft_atol(args[i]);
+		if (num > INT_MAX || num < INT_MIN)
+			return (0);
 		j = 0;
 		if (args[i][j] == '-' || args[i][j] == '+')
 			j++;
@@ -56,4 +60,26 @@ int	duplicates(char **split_args)
 		i++;
 	}
 	return (0);
+}
+
+int	is_consistent(int argc, char **argv)
+{
+	bool	spaces;
+	bool	direct_nums;
+	int		i;
+
+	spaces = false;
+	direct_nums = false;
+	i = 1;
+	while (i < argc)
+	{
+		if (ft_strchr(argv[i], ' '))
+			spaces = true;
+		else
+			direct_nums = true;
+		if (spaces && direct_nums)
+			return (0);
+		i++;
+	}
+	return (1);
 }
