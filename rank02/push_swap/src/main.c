@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:15:48 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/15 15:53:51 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/15 16:47:58 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(const int argc, char *argv[])
 {
 	t_stack_node	*stack_a;
-	t_stack_node *stack_b;
+	t_stack_node	*stack_b;
 
 	stack_a = NULL;
 	if (!is_consistent(argc, argv))
