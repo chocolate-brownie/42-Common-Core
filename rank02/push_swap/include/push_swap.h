@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:15:35 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/16 19:55:33 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/16 23:53:59 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ typedef struct s_stack_node
 {
 	int					value;
 	int					current_position;
-	int					final_index;
 	int					push_price;
 	int					above_median;
+	bool				cheapest;
 	struct s_stack_node	*target_node;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
@@ -56,7 +56,7 @@ int						stack_len(t_stack_node *stack);
 static t_stack_node		*find_last_node(t_stack_node *stack);
 static t_stack_node		*find_highest(t_stack_node *stack);
 
-// ***** Algorithms *****
+// ***** Sorting Algorithms *****
 static void				swap(t_stack_node **head);
 void					sa(t_stack_node **a, bool print);
 void					sb(t_stack_node **b, bool print);
@@ -73,6 +73,13 @@ void					rra(t_stack_node **a, bool print);
 void					rrb(t_stack_node **b, bool print);
 void					rrs(t_stack_node **a, t_stack_node **b, bool print);
 void					tiny_sort(t_stack_node **a);
+
+// ***** Turk Algorithms *****
+void					push_swap(t_stack_node **a, t_stack_node **b);
+void					init_nodes(t_stack_node *a, t_stack_node *b);
+void					set_current_position(t_stack_node *stack);
+static void				set_target_node(t_stack_node *a, t_stack_node *b);
+void					set_price(t_stack_node *a, t_stack_node *b);
 
 // ***** Input Validation  *****
 int						is_valid_input(char **args);

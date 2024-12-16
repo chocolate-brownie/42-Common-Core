@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 03:48:34 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/16 18:33:20 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/16 23:57:09 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,24 @@ static t_stack_node	*find_last_node(t_stack_node *stack)
 	while (stack->next)
 		stack = stack->next;
 	return (stack);
+}
+
+static t_stack_node    *find_smallest(t_stack_node *stack)
+{
+    t_stack_node    *smallest;
+    t_stack_node    *current;
+
+    if (!stack)
+        return NULL;
+
+    smallest = stack;
+    current = stack;
+
+    while (current)
+    {
+        if (current->value < smallest->value)
+            smallest = current;
+        current = current->next;
+    }
+    return smallest;
 }
