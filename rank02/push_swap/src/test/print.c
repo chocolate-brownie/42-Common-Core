@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 16:46:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/15 16:47:10 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/16 18:24:05 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,17 @@ void	print_stack_details(t_stack_node *stack, char stack_name)
 
 void	print_stack_normal(t_stack_node *stack)
 {
+	t_stack_node	*curr;
+
 	if (!stack)
 	{
 		printf("Stack is empty\n");
 		return ;
 	}
-	for (t_stack_node *curr = stack; curr; curr = curr->next)
+	curr = stack;
+	while (curr)
+	{
 		printf("%d ", curr->value);
+		curr = curr->next;
+	}
 }

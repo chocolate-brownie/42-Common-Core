@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:29:21 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/16 18:20:38 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/16 18:25:30 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,22 @@ static void	push(t_stack_node **dest, t_stack_node **src)
 	*dest = node;
 }
 
-/* push a - take the first element at the top of b and put it at the top of a. Do
+/* push a
+	- take the first element at the top of b and put it at the top of a. Do
 nothing if b is empty. push to A from B */
-void pa(t_stack_node **a, t_stack_node **b, bool print) {
-    push(a, b);
-    if (print)
+void	pa(t_stack_node **a, t_stack_node **b, bool print)
+{
+	push(a, b);
+	if (print)
 		write(1, "pa\n", 3);
 }
 
-/* push a - take the first element at the top of b and put it at the top of a. Do
+/* push a
+	- take the first element at the top of b and put it at the top of a. Do
 nothing if b is empty. push to B from A */
-void pb(t_stack_node **b, t_stack_node **a, bool print) {
-    push(b, a);
-    if (print)
+void	pb(t_stack_node **b, t_stack_node **a, bool print)
+{
+	push(b, a);
+	if (print)
 		write(1, "pb\n", 3);
 }
