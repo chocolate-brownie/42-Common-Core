@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 03:48:34 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/16 23:57:09 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/17 00:32:25 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	stack_len(t_stack_node *stack)
 	return (len);
 }
 
-static t_stack_node	*find_last_node(t_stack_node *stack)
+t_stack_node	*find_last_node(t_stack_node *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -59,7 +59,7 @@ static t_stack_node	*find_last_node(t_stack_node *stack)
 	return (stack);
 }
 
-static t_stack_node	*find_smallest(t_stack_node *stack)
+t_stack_node	*find_smallest(t_stack_node *stack)
 {
 	t_stack_node	*smallest;
 	t_stack_node	*current;

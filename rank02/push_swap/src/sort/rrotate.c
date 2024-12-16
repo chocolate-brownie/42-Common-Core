@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 19:27:06 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/16 19:35:54 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/17 00:46:16 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	rrb(t_stack_node **b, bool print)
 		write(1, "rrb\n", 4);
 }
 
-void	rrs(t_stack_node **a, t_stack_node **b, bool print)
+void	rrr(t_stack_node **a, t_stack_node **b, bool print)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
