@@ -59,22 +59,20 @@ static t_stack_node	*find_last_node(t_stack_node *stack)
 	return (stack);
 }
 
-static t_stack_node    *find_smallest(t_stack_node *stack)
+static t_stack_node	*find_smallest(t_stack_node *stack)
 {
-    t_stack_node    *smallest;
-    t_stack_node    *current;
+	t_stack_node	*smallest;
+	t_stack_node	*current;
 
-    if (!stack)
-        return NULL;
-
-    smallest = stack;
-    current = stack;
-
-    while (current)
-    {
-        if (current->value < smallest->value)
-            smallest = current;
-        current = current->next;
-    }
-    return smallest;
+	if (!stack)
+		return (NULL);
+	smallest = stack;
+	current = stack;
+	while (current)
+	{
+		if (current->value < smallest->value)
+			smallest = current;
+		current = current->next;
+	}
+	return (smallest);
 }

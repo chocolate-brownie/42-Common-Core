@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:15:35 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/16 23:53:59 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/17 00:18:46 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,14 @@ void					init_nodes(t_stack_node *a, t_stack_node *b);
 void					set_current_position(t_stack_node *stack);
 static void				set_target_node(t_stack_node *a, t_stack_node *b);
 void					set_price(t_stack_node *a, t_stack_node *b);
+static void				move_nodes(t_stack_node **a, t_stack_node **b);
+static void				rotate_both(t_stack_node **a, t_stack_node **b,
+							t_stack_node *cheapest);
+static void				reverse_rotate_both(t_stack_node **a, t_stack_node **b,
+							t_stack_node *cheapest);
+void					finish_rotation(t_stack_node **stack,
+							t_stack_node *top_node, char stack_name);
+static t_stack_node		*return_cheapest(t_stack_node *stack);
 
 // ***** Input Validation  *****
 int						is_valid_input(char **args);
