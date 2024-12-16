@@ -35,13 +35,17 @@ void	create_stack(t_stack_node **a, char **argv)
 	}
 }
 
-int stack_len(t_stack_node *stack) {
-    int len = 0;
-    t_stack_node *curr = stack;
-    while (curr)
-    {
-        curr = curr->next;
-        len++;
-    }
-    return len;
+int	stack_len(t_stack_node *stack)
+{
+	int				len;
+	t_stack_node	*curr;
+
+	len = 0;
+	curr = stack;
+	while (curr)
+	{
+		curr = curr->next;
+		len++;
+	}
+	return (len);
 }
