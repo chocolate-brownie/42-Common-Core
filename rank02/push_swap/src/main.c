@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:15:48 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/17 00:49:48 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:52:14 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	control_arguments(const int argc, char **argv, t_stack_node **a)
 		return (1);
 	if (argc == 2)
 	{
-		printf("[DEBUGGING] Argument is a string\n");
 		split_args = split(argv[1], ' ');
 		if (!split_args)
 			error_exit();
@@ -65,7 +64,8 @@ int	main(const int argc, char *argv[])
 	if (!control_arguments(argc, argv, &stack_a))
 		error_exit();
 	print_stack_normal(stack_a);
-	if (stack_sorted(stack_a))
+	printf("\n");
+	if (!stack_sorted(stack_a))
 	{
 		if (stack_len(stack_a) == 2)
 			sa(&stack_a, true);
@@ -74,7 +74,7 @@ int	main(const int argc, char *argv[])
 		else
 			push_swap(&stack_a, &stack_b);
 	}
-	print_stack_details(stack_a, 'A');
+	// print_stack_details(stack_a, 'A');
 	print_stack_normal(stack_a);
 	printf("\n");
 	free_stack(&stack_a);

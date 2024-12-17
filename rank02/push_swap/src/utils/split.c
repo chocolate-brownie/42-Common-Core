@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:16:01 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/12 14:53:21 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:50:08 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ static int	complete_array(char **words, const char *str, char separator,
 				free(words[i]);
 			return (2);
 		}
-		printf("\twords[%d]: %s\n", i, words[i]);
 		i++;
 	}
 	words[i] = NULL;
@@ -106,7 +105,6 @@ char	**split(char *str, char separator)
 	int		word_count;
 	char	**words_array;
 
-	printf("[RUNNING] split\n");
 	word_count = count_words(str, separator);
 	words_array = (char **)malloc(sizeof(char *) * (word_count + 2));
 	if (!words_array)
@@ -116,8 +114,6 @@ char	**split(char *str, char separator)
 		free(words_array);
 		return (NULL);
 	}
-	printf("\ttotal word count: %d\n", word_count);
-	printf("[ENDING] split\n\n");
 	return (words_array);
 }
 
