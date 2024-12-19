@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:15:35 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/17 00:52:02 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:41:55 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void					print_stack_details(t_stack_node *stack,
 void					print_stack_normal(t_stack_node *stack);
 
 // ***** Main Process *****
-void					init_stack(t_stack_node **a, t_stack_node **b);
 int						control_arguments(const int argc, char **argv,
 							t_stack_node **a);
 
@@ -55,6 +54,7 @@ void					create_stack(t_stack_node **a, char **argv);
 int						stack_len(t_stack_node *stack);
 t_stack_node			*find_last_node(t_stack_node *stack);
 t_stack_node			*find_smallest(t_stack_node *stack);
+t_stack_node			*return_cheapest(t_stack_node *stack);
 
 // ***** Sorting Algorithms *****
 void					sa(t_stack_node **a, bool print);
@@ -69,6 +69,12 @@ void					rra(t_stack_node **a, bool print);
 void					rrb(t_stack_node **b, bool print);
 void					rrr(t_stack_node **a, t_stack_node **b, bool print);
 void					tiny_sort(t_stack_node **a);
+
+// ***** Turk Algorithm *****
+void					push_swap(t_stack_node **a, t_stack_node **b);
+void					init_nodes(t_stack_node *a, t_stack_node *b);
+void					move_nodes(t_stack_node **a, t_stack_node **b);
+void					set_current_position(t_stack_node *stack);
 
 // ***** Input Validation  *****
 int						is_valid_input(char **args);
