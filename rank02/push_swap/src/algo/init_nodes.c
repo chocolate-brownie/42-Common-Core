@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 18:01:22 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/19 17:44:19 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:54:11 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	set_current_position(t_stack_node *stack)
 		i++;
 	}
 }
+
 /*
 For each number in B, we need to know: set_target_node
 	- Where should it go in stack A?
@@ -71,6 +72,7 @@ static void	set_target_node(t_stack_node *a, t_stack_node *b)
 		b = b->next;
 	}
 }
+
 /*
 The purpose of set_price is to calculate the total cost (number of operations)
 needed to move a number from stack B to its correct position in stack A.
@@ -116,6 +118,7 @@ static void	set_price(t_stack_node *a, t_stack_node *b)
 		b = b->next;
 	}
 }
+
 /*
 Among all numbers in B: set_cheapest
 	- Compare their total costs
