@@ -5,49 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 19:27:06 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/17 00:46:16 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/12/19 19:51:45 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/12/19 19:53:22 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-static void	reverse_rotate(t_stack_node **stack)
+/**
+ * Rotates stack by moving bottom node to top
+ * Handles all pointer adjustments for doubly linked list
+ * Requires minimum of two nodes for operation
+ *
+ * @param stack Pointer to stack head
+ */
+static void	rotate_down(t_stack_node **stack)
 {
-	t_stack_node	*last;
-	t_stack_node	*head;
-	int				len;
+	t_stack_node	*last_node;
+	int				stack_size;
 
-	len = stack_len(*stack);
-	if (!stack || !*stack || len == 1)
+	if (!stack || !*stack)
 		return ;
-	head = *stack;
-	last = find_last_node(*stack);
-	last->prev->next = NULL;
-	last->next = head;
-	last->prev = NULL;
-	head->prev = last;
-	*stack = last;
+	stack_size = get_stack_size(*stack);
+	if (stack_size == 1)
+		return ;
+	last_node = get_last_node(*stack);
+	last_node->prev->next = NULL;
+	last_node->next = *stack;
+	last_node->prev = NULL;
+	*stack = last_node;
+	last_node->next->prev = last_node;
 }
 
-void	rra(t_stack_node **a, bool print)
+void	reverse_rotate_a(t_stack_node **stack_a, bool is_checker)
 {
-	reverse_rotate(a);
-	if (print)
-		write(1, "rra\n", 4);
+	rotate_down(stack_a);
+	if (!is_checker)
+		write(STDOUT_FILENO, "rra\n", 4);
 }
 
-void	rrb(t_stack_node **b, bool print)
+void	reverse_rotate_b(t_stack_node **stack_b, bool is_checker)
 {
-	reverse_rotate(b);
-	if (print)
-		write(1, "rrb\n", 4);
+	rotate_down(stack_b);
+	if (!is_checker)
+		write(STDOUT_FILENO, "rrb\n", 4);
 }
 
-void	rrr(t_stack_node **a, t_stack_node **b, bool print)
+void	reverse_rotate_both(t_stack_node **stack_a, t_stack_node **stack_b,
+		bool is_checker)
 {
-	reverse_rotate(a);
-	reverse_rotate(b);
-	if (print)
-		write(1, "rrr\n", 4);
+	rotate_down(stack_a);
+	rotate_down(stack_b);
+	if (!is_checker)
+		write(STDOUT_FILENO, "rrr\n", 4);
 }

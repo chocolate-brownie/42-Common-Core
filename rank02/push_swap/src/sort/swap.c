@@ -5,57 +5,79 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/15 17:16:02 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/16 18:19:22 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/12/19 19:49:28 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/12/19 19:49:58 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-/* Function to swap the first two nodes the stack passed as the argument */
-static void	swap(t_stack_node **head)
+/**
+ * Swaps the first two nodes of a stack
+ * Handles all pointer adjustments for doubly linked list
+ * Minimum of two nodes required for operation
+ *
+ * @param stack Pointer to stack head
+ */
+static void	swap_nodes(t_stack_node **stack)
 {
-	int				len;
-	t_stack_node	*first;
-	t_stack_node	*second;
+	int	stack_size;
 
-	len = stack_len(*head);
-	if (!*head || !head || len == 1)
+	if (!stack || !*stack)
 		return ;
-	first = *head;
-	second = first->next;
-	first->next = second->next;
-	first->prev = second;
-	second->next = first;
-	second->prev = NULL;
-	if (first->next)
-		first->next->prev = first;
-	*head = second;
+	stack_size = get_stack_size(*stack);
+	if (stack_size == 1)
+		return ;
+	*stack = (*stack)->next;
+	(*stack)->prev->prev = *stack;
+	(*stack)->prev->next = (*stack)->next;
+	if ((*stack)->next)
+		(*stack)->next->prev = (*stack)->prev;
+	(*stack)->next = (*stack)->prev;
+	(*stack)->prev = NULL;
 }
 
-/* swap a - swap the first 2 elements at the top of stack a. Do nothing if there
-is only one or no elements). */
-void	sa(t_stack_node **a, bool print)
+/**
+ * Swaps the first two elements of stack A
+ * Prints 'sa' if not in checker mode
+ *
+ * @param stack_a Pointer to stack A head
+ * @param is_checker Flag indicating if in checker mode
+ */
+void	swap_a(t_stack_node **stack_a, bool is_checker)
 {
-	swap(a);
-	if (print)
-		write(1, "sa\n", 3);
+	swap_nodes(stack_a);
+	if (!is_checker)
+		write(STDOUT_FILENO, "sa\n", 3);
 }
 
-/* swap b - swap the first 2 elements at the top of stack b. Do nothing if there
-is only one or no elements). */
-void	sb(t_stack_node **b, bool print)
+/**
+ * Swaps the first two elements of stack B
+ * Prints 'sb' if not in checker mode
+ *
+ * @param stack_b Pointer to stack B head
+ * @param is_checker Flag indicating if in checker mode
+ */
+void	swap_b(t_stack_node **stack_b, bool is_checker)
 {
-	swap(b);
-	if (print)
-		write(1, "sb\n", 3);
+	swap_nodes(stack_b);
+	if (!is_checker)
+		write(STDOUT_FILENO, "sb\n", 3);
 }
 
-/* sa and sb at the same time. */
-void	ss(t_stack_node **a, t_stack_node **b, bool print)
+/**
+ * Swaps the first two elements of both stacks
+ * Prints 'ss' if not in checker mode
+ *
+ * @param stack_a Pointer to stack A head
+ * @param stack_b Pointer to stack B head
+ * @param is_checker Flag indicating if in checker mode
+ */
+void	swap_both(t_stack_node **stack_a, t_stack_node **stack_b,
+		bool is_checker)
 {
-	swap(a);
-	swap(b);
-	if (print)
-		write(1, "ss\n", 3);
+	swap_nodes(stack_a);
+	swap_nodes(stack_b);
+	if (!is_checker)
+		write(STDOUT_FILENO, "ss\n", 3);
 }

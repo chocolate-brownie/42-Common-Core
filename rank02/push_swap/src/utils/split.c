@@ -5,142 +5,104 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 13:16:01 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/17 16:50:08 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/12/19 19:42:56 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/12/19 19:47:15 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-static int	count_words(const char *str, const char separator)
+static int	count_string_words(const char *str, char separator)
 {
-	int	count;
-	int	inside_word;
+	int		word_count;
+	bool	in_word;
 
-	count = 0;
-	inside_word = 0;
+	word_count = 0;
 	while (*str)
 	{
-		if (*str != separator && !inside_word)
+		in_word = false;
+		while (*str == separator && *str)
+			++str;
+		while (*str != separator && *str)
 		{
-			count++;
-			inside_word = 1;
+			if (!in_word)
+			{
+				++word_count;
+				in_word = true;
+			}
+			++str;
 		}
-		else if (*str == separator)
-			inside_word = 0;
-		str++;
 	}
-	return (count);
+	return (word_count);
 }
 
-static int	find_next_word(const char *str, char separator, int *current_index,
-		int *length)
+static char	*extract_next_word(const char *str, char separator)
 {
-	int	start;
+	static int	cursor = 0;
+	char		*word;
+	int			word_len;
+	int			i;
 
-	start = *current_index;
-	while (str[start] == separator)
-		start++;
-	*current_index = start;
-	*length = 0;
-	while (str[*current_index] != separator && str[*current_index] != '\0')
-	{
-		(*length)++;
-		(*current_index)++;
-	}
-	return (start);
-}
-
-static char	*get_next_word(const char *str, char separator, int *current_index)
-{
-	int		length;
-	int		start;
-	char	*word;
-	int		i;
-
-	length = 0;
-	start = find_next_word(str, separator, current_index, &length);
-	word = malloc(length + 1);
-	i = 0;
+	while (str[cursor] == separator)
+		++cursor;
+	word_len = 0;
+	while (str[cursor + word_len] != separator && str[cursor + word_len])
+		++word_len;
+	word = malloc((size_t)word_len * sizeof(char) + 1);
 	if (!word)
 		return (NULL);
-	while (i < length)
-	{
-		word[i] = str[start + i];
-		i++;
-	}
-	word[length] = '\0';
+	i = 0;
+	while (str[cursor] != separator && str[cursor])
+		word[i++] = str[cursor++];
+	word[i] = '\0';
 	return (word);
 }
 
-static int	complete_array(char **words, const char *str, char separator,
-		int word_count)
+static char	**init_input_array(int word_count)
 {
-	int	current_index;
-	int	i;
+	char	**input_array;
 
-	current_index = 0;
-	i = 0;
-	words[i] = malloc(1);
-	if (!words[i])
-		return (1);
-	words[i++][0] = '\0';
-	while (i < word_count + 1)
+	input_array = malloc(sizeof(char *) * (size_t)(word_count + 2));
+	if (!input_array)
+		return (NULL);
+	input_array[0] = malloc(sizeof(char));
+	if (!input_array[0])
 	{
-		words[i] = get_next_word(str, separator, &current_index);
-		if (!words[i])
-		{
-			while (--i >= 0)
-				free(words[i]);
-			return (2);
-		}
-		i++;
-	}
-	words[i] = NULL;
-	return (0);
-}
-
-char	**split(char *str, char separator)
-{
-	int		word_count;
-	char	**words_array;
-
-	word_count = count_words(str, separator);
-	words_array = (char **)malloc(sizeof(char *) * (word_count + 2));
-	if (!words_array)
-		return (0);
-	if (complete_array(words_array, str, separator, word_count))
-	{
-		free(words_array);
+		free(input_array);
 		return (NULL);
 	}
-	return (words_array);
+	input_array[0][0] = '\0';
+	return (input_array);
 }
 
-/*
-int	main(int argc, char **argv)
+/**
+ * Splits input string into array of strings based on separator
+ * Creates argv-like structure with empty string at index 0
+ *
+ * @param str String to split
+ * @param separator Character used to separate words
+ * @return Array of strings, or NULL if allocation fails
+ */
+char	**split_input(char *str, char separator)
 {
-	char	**words_array;
+	int		word_count;
+	char	**input_array;
+	int		i;
 
-	if (argc == 2)
+	word_count = count_string_words(str, separator);
+	if (!word_count)
+		exit(EXIT_FAILURE);
+	input_array = init_input_array(word_count);
+	if (!input_array)
+		return (NULL);
+	i = 1;
+	while (word_count-- > 0)
 	{
-		words_array = split(argv[1], ' ');
-		printf("Input numbers as a single string\n");
-		for (int i = 0; words_array[i]; i++) {
-			printf("%s\n", words_array[i]);
-			free(words_array[i]);
-		}
-		free(words_array);
-		return (0);
+		input_array[i] = extract_next_word(str, separator);
+		if (!input_array[i])
+			return (NULL);
+		i++;
 	}
-	else if (argc > 2)
-	{
-		for (int i = 1; i < argc; i++) {
-			printf("[%d]: %s\n",i - 1, argv[i]);
-		}
-		return (0);
-	}
-	else
-		printf("Error\n");
+	input_array[i] = NULL;
+	return (input_array);
 }
-*/
