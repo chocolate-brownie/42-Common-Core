@@ -6,20 +6,15 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 19:40:26 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/19 19:40:58 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:38:56 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-/**
- * Transfers the top node from source stack to destination stack
- * Handles all pointer adjustments for doubly linked list
- *
- * @param dest_stack Pointer to destination stack head
- * @param src_stack Pointer to source stack head
- * @return void
- */
+/* One function that transfers the top node from source stack to destination
+stack handling all pointer adjustments and the manipulation of the doubly linked
+list using this function you can easily create the pa and pb functions */
 static void	push_node(t_stack_node **dest_stack, t_stack_node **src_stack)
 {
 	t_stack_node	*node_to_transfer;
@@ -44,14 +39,6 @@ static void	push_node(t_stack_node **dest_stack, t_stack_node **src_stack)
 	}
 }
 
-/**
- * Pushes top element from stack B to stack A
- * Prints 'pa' if not in checker mode
- *
- * @param stack_a Pointer to stack A head
- * @param stack_b Pointer to stack B head
- * @param is_checker Flag indicating if in checker mode
- */
 void	push_to_a(t_stack_node **stack_a, t_stack_node **stack_b,
 		bool is_checker)
 {
@@ -60,14 +47,6 @@ void	push_to_a(t_stack_node **stack_a, t_stack_node **stack_b,
 		write(STDOUT_FILENO, "pa\n", 3);
 }
 
-/**
- * Pushes top element from stack A to stack B
- * Prints 'pb' if not in checker mode
- *
- * @param stack_b Pointer to stack B head
- * @param stack_a Pointer to stack A head
- * @param is_checker Flag indicating if in checker mode
- */
 void	push_to_b(t_stack_node **stack_b, t_stack_node **stack_a,
 		bool is_checker)
 {

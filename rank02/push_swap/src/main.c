@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 19:14:50 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/20 14:41:48 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:33:38 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	input_array = process_input(argc, argv, &is_split_input);
 	if (!input_array)
-		return (EXIT_FAILURE);
+		handle_error_and_exit(NULL, NULL, NULL);
 	initialize_stack(&stack_a, input_array, is_split_input);
 	if (!is_stack_sorted(stack_a))
 		execute_sort(&stack_a, &stack_b);

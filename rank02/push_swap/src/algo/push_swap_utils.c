@@ -6,16 +6,14 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 20:11:22 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/20 14:30:25 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:37:28 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-/**
- * Updates position and median information for each node
- * @param stack Stack to update positions for
- */
+/** Updates position and median information for each node @param stack
+Stack to update positions for */
 void	update_positions(t_stack_node *stack)
 {
 	int	position;
@@ -34,12 +32,8 @@ void	update_positions(t_stack_node *stack)
 	}
 }
 
-/**
- * Assigns target nodes in stack_a for each node in stack_b
- * Target is the smallest larger number, or the smallest number if none larger
- * @param stack_a Reference stack
- * @param stack_b Stack to assign targets for
- */
+/* Write a function that assigns target nodes in stack_a for each node in stack_b
+Target is the smallest larger number, or the smallest number if none larger */
 static void	assign_target_nodes(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	t_stack_node	*current_a;
@@ -68,11 +62,9 @@ static void	assign_target_nodes(t_stack_node *stack_a, t_stack_node *stack_b)
 	}
 }
 
-/**
- * Calculates the cost of moving each node from stack_b to its target in stack_a
- * @param stack_a Reference stack
- * @param stack_b Stack to calculate costs for
- */
+/** Write a function to alculates the cost of moving each node from stack_b to
+its target in stack_a @param stack_a Reference stack @param stack_b Stack to
+calculate costs for */
 void	calculate_move_costs(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	int	size_a;
@@ -93,10 +85,6 @@ void	calculate_move_costs(t_stack_node *stack_a, t_stack_node *stack_b)
 	}
 }
 
-/**
- * Marks the node with lowest move cost as cheapest
- * @param stack_b Stack to find cheapest node in
- */
 void	mark_cheapest_moves(t_stack_node *stack_b)
 {
 	long			lowest_cost;
@@ -118,12 +106,8 @@ void	mark_cheapest_moves(t_stack_node *stack_b)
 	cheapest_node->is_cheapest = true;
 }
 
-/**
- * Initializes all metadata for nodes in both stacks
- * Sets positions, targets, costs, and marks cheapest moves
- * @param stack_a Reference stack
- * @param stack_b Stack to initialize metadata for
- */
+/* Initializes all metadata for nodes in both stacks Sets positions, targets,
+costs, and marks cheapest moves */
 void	initialize_node_metadata(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	update_positions(stack_a);

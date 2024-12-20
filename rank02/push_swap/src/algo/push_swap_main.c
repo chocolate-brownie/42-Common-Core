@@ -6,19 +6,15 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:24:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/20 14:25:02 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:27:40 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-/**
- * Rotates both stacks until target nodes reach top
- *
- * @param stack_a Pointer to stack A head
- * @param stack_b Pointer to stack B head
- * @param current_node Node being moved
- */
+/* Write a function to rotates both stacks until target nodes reach top
+Reverse rotates both stack, as well as a function to complete the rotiation to
+bring target node to top  */
 static void	rotate_stacks_up(t_stack_node **stack_a, t_stack_node **stack_b,
 		t_stack_node *current_node)
 {
@@ -28,13 +24,6 @@ static void	rotate_stacks_up(t_stack_node **stack_a, t_stack_node **stack_b,
 	update_positions(*stack_b);
 }
 
-/**
- * Reverse rotates both stacks until target nodes reach top
- *
- * @param stack_a Pointer to stack A head
- * @param stack_b Pointer to stack B head
- * @param current_node Node being moved
- */
 static void	rotate_stacks_down(t_stack_node **stack_a, t_stack_node **stack_b,
 		t_stack_node *current_node)
 {
@@ -44,13 +33,6 @@ static void	rotate_stacks_down(t_stack_node **stack_a, t_stack_node **stack_b,
 	update_positions(*stack_b);
 }
 
-/**
- * Completes rotation to bring target node to top
- *
- * @param stack Pointer to stack head
- * @param top_node Node to bring to top
- * @param stack_id Identifier for stack ('a' or 'b')
- */
 void	complete_rotation(t_stack_node **stack, t_stack_node *top_node,
 		char stack_id)
 {
@@ -73,13 +55,8 @@ void	complete_rotation(t_stack_node **stack, t_stack_node *top_node,
 	}
 }
 
-/**
- * Moves node from stack B to correct position in stack A
- * Uses node metadata to determine optimal movement
- *
- * @param stack_a Pointer to stack A head
- * @param stack_b Pointer to stack B head
- */
+/* Moves node from stack B to correct position in stack A Uses node metadata
+to determine optimal movement */
 static void	transfer_node(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	t_stack_node	*cheapest_node;
@@ -96,17 +73,14 @@ static void	transfer_node(t_stack_node **stack_a, t_stack_node **stack_b)
 	push_to_a(stack_a, stack_b, false);
 }
 
-/**
- * Main sorting algorithm for stack
- * Implements optimized sorting strategy:
- * 1. Push nodes to B (except 3)
- * 2. Sort remaining 3 nodes in A
- * 3. Move nodes back to A in sorted order
- * 4. Rotate A to position smallest at top
- *
- * @param stack_a Pointer to stack A head
- * @param stack_b Pointer to stack B head
- */
+/*
+Main sorting algorithm for stack
+Implements optimized sorting strategy:
+	1. Push nodes to B (except 3)
+	2. Sort remaining 3 nodes in A
+	3. Move nodes back to A in sorted order
+	4. Rotate A to position smallest at top
+*/
 void	sort_stack(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	t_stack_node	*min_node;
