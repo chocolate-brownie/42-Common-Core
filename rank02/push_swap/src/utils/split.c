@@ -6,103 +6,100 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 19:42:56 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/19 19:47:15 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/20 15:29:20 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-static int	count_string_words(const char *str, char separator)
+static int	get_word_length(const char *str, char separator, int start)
 {
-	int		word_count;
-	bool	in_word;
+	int	len;
 
-	word_count = 0;
-	while (*str)
-	{
-		in_word = false;
-		while (*str == separator && *str)
-			++str;
-		while (*str != separator && *str)
-		{
-			if (!in_word)
-			{
-				++word_count;
-				in_word = true;
-			}
-			++str;
-		}
-	}
-	return (word_count);
+	len = 0;
+	while (str[start + len] && str[start + len] != separator)
+		len++;
+	return (len);
 }
 
-static char	*extract_next_word(const char *str, char separator)
+static char	*extract_word(const char *str, char separator, int *index)
 {
-	static int	cursor = 0;
-	char		*word;
-	int			word_len;
-	int			i;
+	char	*word;
+	int		len;
+	int		i;
 
-	while (str[cursor] == separator)
-		++cursor;
-	word_len = 0;
-	while (str[cursor + word_len] != separator && str[cursor + word_len])
-		++word_len;
-	word = malloc((size_t)word_len * sizeof(char) + 1);
+	while (str[*index] == separator)
+		(*index)++;
+	len = get_word_length(str, separator, *index);
+	word = malloc(sizeof(char) * (len + 1));
 	if (!word)
 		return (NULL);
 	i = 0;
-	while (str[cursor] != separator && str[cursor])
-		word[i++] = str[cursor++];
+	while (str[*index] && str[*index] != separator)
+		word[i++] = str[(*index)++];
 	word[i] = '\0';
 	return (word);
 }
 
-static char	**init_input_array(int word_count)
+static int	count_words(const char *str, char separator)
 {
-	char	**input_array;
+	int	count;
+	int	i;
+	int	in_word;
 
-	input_array = malloc(sizeof(char *) * (size_t)(word_count + 2));
-	if (!input_array)
-		return (NULL);
-	input_array[0] = malloc(sizeof(char));
-	if (!input_array[0])
+	i = 0;
+	count = 0;
+	in_word = 0;
+	while (str[i])
 	{
-		free(input_array);
-		return (NULL);
-	}
-	input_array[0][0] = '\0';
-	return (input_array);
-}
-
-/**
- * Splits input string into array of strings based on separator
- * Creates argv-like structure with empty string at index 0
- *
- * @param str String to split
- * @param separator Character used to separate words
- * @return Array of strings, or NULL if allocation fails
- */
-char	**split_input(char *str, char separator)
-{
-	int		word_count;
-	char	**input_array;
-	int		i;
-
-	word_count = count_string_words(str, separator);
-	if (!word_count)
-		exit(EXIT_FAILURE);
-	input_array = init_input_array(word_count);
-	if (!input_array)
-		return (NULL);
-	i = 1;
-	while (word_count-- > 0)
-	{
-		input_array[i] = extract_next_word(str, separator);
-		if (!input_array[i])
-			return (NULL);
+		if (str[i] != separator && !in_word)
+		{
+			in_word = 1;
+			count++;
+		}
+		else if (str[i] == separator)
+			in_word = 0;
 		i++;
 	}
-	input_array[i] = NULL;
-	return (input_array);
+	return (count);
+}
+
+static char	*create_empty_string(void)
+{
+	char	*empty;
+
+	empty = malloc(sizeof(char));
+	if (!empty)
+		return (NULL);
+	empty[0] = '\0';
+	return (empty);
+}
+
+char	**split_input(char *str, char separator)
+{
+	char	**result;
+	int		word_count;
+	int		index;
+	int		i;
+
+	word_count = count_words(str, separator);
+	if (!word_count)
+		return (NULL);
+	result = malloc(sizeof(char *) * (word_count + 2));
+	if (!result)
+		return (NULL);
+	index = 0;
+	i = 0;
+	result[i++] = create_empty_string();
+	while (--word_count >= 0 && result[0])
+	{
+		result[i] = extract_word(str, separator, &index);
+		if (!result[i++])
+		{
+			deallocate_string_array(result);
+			return (NULL);
+		}
+	}
+	result[i] = NULL;
+	return (result);
 }

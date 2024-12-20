@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 19:15:01 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/19 19:59:24 by mgodawat         ###   ########.fr       */
+/*   Created: 2024/12/20 14:32:34 by mgodawat          #+#    #+#             */
+/*   Updated: 2024/12/20 14:36:19 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 
 /**
  * Stack Node Structure
- * Represents a node in the stack containing value and metadata for sorting
- * Used to track position, costs, and relationships between nodes
+ * Contains node value and metadata for sorting operations
  */
 typedef struct s_stack_node
 {
@@ -39,24 +38,21 @@ typedef struct s_stack_node
 
 /**
  * Input Processing Functions
- * Handle command line arguments and string parsing
  */
 char					**split_input(char *str, char separator);
-int						validate_syntax(char *number_str);
-int						check_duplicates(t_stack_node *stack, int number);
+int						validate_number_syntax(char *number_str);
+bool					check_duplicate_value(t_stack_node *stack, int number);
 
 /**
  * Memory Management Functions
- * Handle memory allocation and cleanup operations
  */
-void					free_string_array(char **array);
-void					cleanup_and_exit(t_stack_node **stack_a, char **array,
-							bool is_split_input);
-void					destroy_stack(t_stack_node **stack);
+void					deallocate_string_array(char **array);
+void					handle_error_and_exit(t_stack_node **stack_a,
+							char **array, bool is_split_input);
+void					deallocate_stack(t_stack_node **stack);
 
 /**
- * Stack Initialization and Setup Functions
- * Create and initialize stack structures with required metadata
+ * Stack Initialization Functions
  */
 void					initialize_stack(t_stack_node **stack_a, char **input,
 							bool is_split_input);
@@ -69,7 +65,6 @@ void					mark_cheapest_moves(t_stack_node *stack_b);
 
 /**
  * Stack Utility Functions
- * Helper functions for stack operations and node management
  */
 void					add_node(t_stack_node **stack, int value);
 t_stack_node			*get_last_node(t_stack_node *stack);
@@ -82,7 +77,6 @@ void					complete_rotation(t_stack_node **stack,
 
 /**
  * Sorting Algorithm Functions
- * Implementation of different sorting strategies
  */
 void					sort_three_elements(t_stack_node **stack_a);
 void					sort_five_elements(t_stack_node **stack_a,
@@ -91,25 +85,28 @@ void					sort_stack(t_stack_node **stack_a,
 							t_stack_node **stack_b);
 
 /**
- * Stack Operations
- * Basic stack manipulation operations
- * Each function has a checker parameter to control output
+ * Stack Operations - All operations have checker parameter to control output
  */
-void					swap_a(t_stack_node **stack_a, bool checker);
-void					swap_b(t_stack_node **stack_b, bool checker);
+void					swap_a(t_stack_node **stack_a, bool is_checker);
+void					swap_b(t_stack_node **stack_b, bool is_checker);
 void					swap_both(t_stack_node **stack_a,
-							t_stack_node **stack_b, bool checker);
+							t_stack_node **stack_b, bool is_checker);
+
 void					push_to_a(t_stack_node **stack_a,
-							t_stack_node **stack_b, bool checker);
+							t_stack_node **stack_b, bool is_checker);
 void					push_to_b(t_stack_node **stack_b,
-							t_stack_node **stack_a, bool checker);
-void					rotate_a(t_stack_node **stack_a, bool checker);
-void					rotate_b(t_stack_node **stack_b, bool checker);
+							t_stack_node **stack_a, bool is_checker);
+
+void					rotate_a(t_stack_node **stack_a, bool is_checker);
+void					rotate_b(t_stack_node **stack_b, bool is_checker);
 void					rotate_both(t_stack_node **stack_a,
-							t_stack_node **stack_b, bool checker);
-void					reverse_rotate_a(t_stack_node **stack_a, bool checker);
-void					reverse_rotate_b(t_stack_node **stack_b, bool checker);
+							t_stack_node **stack_b, bool is_checker);
+
+void					reverse_rotate_a(t_stack_node **stack_a,
+							bool is_checker);
+void					reverse_rotate_b(t_stack_node **stack_b,
+							bool is_checker);
 void					reverse_rotate_both(t_stack_node **stack_a,
-							t_stack_node **stack_b, bool checker);
+							t_stack_node **stack_b, bool is_checker);
 
 #endif

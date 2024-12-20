@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 19:59:40 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/19 20:10:20 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/20 15:39:33 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ void	initialize_stack(t_stack_node **stack_a, char **input,
 	long	number;
 	int		i;
 
+	printf("[DEBUGGING] Running initialize_stack\n");
 	i = 0;
+	if (is_split_input)
+		i = 1;
 	while (input[i])
 	{
 		if (validate_number_syntax(input[i]))

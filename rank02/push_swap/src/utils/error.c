@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 19:39:02 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/19 19:39:59 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/20 15:37:52 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,19 @@
  *
  * @param string_array Array of strings to be freed
  */
-void	deallocate_string_array(char **string_array)
+void	deallocate_string_array(char **array)
 {
-	int	index;
+	int	i;
 
-	if (!string_array || !*string_array)
+	if (!array)
 		return ;
-	index = -1;
-	while (string_array[index])
+	i = 0;
+	while (array[i])
 	{
-		ft_bzero(string_array[index], ft_strlen(string_array[index]));
-		free(string_array[index]);
-		index++;
+		free(array[i]);
+		i++;
 	}
-	free(string_array - 1);
+	free(array);
 }
 
 /**
@@ -85,25 +84,46 @@ void	handle_error_and_exit(t_stack_node **stack_a, char **input_array,
  * @param number_str String to validate
  * @return 0 if valid, 1 if invalid
  */
-int	validate_number_syntax(const char *number_str)
+int	validate_number_syntax(char *number_str)
 {
 	size_t	i;
+	long	num;
 
+	printf("[DEBUG] Validating string: '%s'\n", number_str);
 	if (!number_str || !*number_str)
+	{
+		printf("[DEBUG] Empty string or NULL\n");
 		return (1);
+	}
 	i = 0;
 	if (number_str[i] == '+' || number_str[i] == '-')
+	{
+		printf("[DEBUG] Found sign: %c\n", number_str[i]);
 		i++;
+	}
 	if (!ft_isdigit(number_str[i]))
+	{
+		printf("[DEBUG] First char not digit: %c\n", number_str[i]);
 		return (1);
+	}
 	while (number_str[i])
 	{
 		if (!ft_isdigit(number_str[i]))
+		{
+			printf("[DEBUG] Non-digit found: %c at position %zu\n",
+				number_str[i], i);
 			return (1);
+		}
 		i++;
 	}
-	if (ft_atoi(number_str) > INT_MAX || ft_atoi(number_str) < INT_MIN)
+	num = ft_atoi(number_str);
+	printf("[DEBUG] Number value: %ld\n", num);
+	if (num > INT_MAX || num < INT_MIN)
+	{
+		printf("[DEBUG] Number out of INT range\n");
 		return (1);
+	}
+	printf("[DEBUG] Validation passed\n");
 	return (0);
 }
 
@@ -114,7 +134,7 @@ int	validate_number_syntax(const char *number_str)
  * @param value Value to look for
  * @return true if duplicate found, false otherwise
  */
-bool	check_duplicate_value(const t_stack_node *stack, int value)
+bool	check_duplicate_value(t_stack_node *stack, int value)
 {
 	if (!stack)
 		return (false);

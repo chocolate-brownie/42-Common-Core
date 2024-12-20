@@ -6,19 +6,12 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 19:14:50 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/20 14:28:31 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:41:48 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/**
- * Validates command line arguments
- *
- * @param argc Argument count
- * @param argv Argument values
- * @return true if arguments are valid, false otherwise
- */
 static bool	validate_input(int argc, char **argv)
 {
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
@@ -26,14 +19,6 @@ static bool	validate_input(int argc, char **argv)
 	return (true);
 }
 
-/**
- * Processes command line arguments into input array
- *
- * @param argc Argument count
- * @param argv Argument values
- * @param is_split_input Pointer to flag indicating if input was split
- * @return Processed input array
- */
 static char	**process_input(int argc, char **argv, bool *is_split_input)
 {
 	char	**input_array;
@@ -50,12 +35,6 @@ static char	**process_input(int argc, char **argv, bool *is_split_input)
 	return (argv + 1);
 }
 
-/**
- * Executes appropriate sorting algorithm based on stack size
- *
- * @param stack_a Pointer to main stack
- * @param stack_b Pointer to auxiliary stack
- */
 static void	execute_sort(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	int	stack_size;
