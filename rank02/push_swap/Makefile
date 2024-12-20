@@ -1,57 +1,63 @@
-NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
-SRCS_DIR = src/
-OBJS_DIR = obj/
-LIBFT_DIR = libft/
-LIBFT = $(LIBFT_DIR)libft.a
-INCLUDE_DIR = include/
+CFLAGS = -Wall -Wextra -Werror
 
-# Automatically include all .c files recursively from the src directory
-SRCS = $(shell find $(SRCS_DIR) -type f -name "*.c")
-OBJS = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS))
+NAME = push_swap
 
-# Colors 🌈
-RESET = \033[0m
-GREEN = \033[32m
-BLUE = \033[34m
-YELLOW = \033[33m
-CYAN = \033[36m
+SRC_DIR = src
+ALGO_DIR = $(SRC_DIR)/algo
+SORT_DIR = $(SRC_DIR)/sort
+UTILS_DIR = $(SRC_DIR)/utils
+OBJ_DIR = obj
+INCLUDE_DIR = include
+LIBFT_DIR = libft
+
+LIBFT = $(LIBFT_DIR)/libft.a
+
+ALGO_SRC = $(ALGO_DIR)/push_swap_main.c \
+           $(ALGO_DIR)/push_swap_utils.c
+
+SORT_SRC = $(SORT_DIR)/push.c \
+           $(SORT_DIR)/rotate.c \
+           $(SORT_DIR)/rrotate.c \
+           $(SORT_DIR)/swap.c \
+           $(SORT_DIR)/tiny_sort.c
+
+UTILS_SRC = $(UTILS_DIR)/error.c \
+            $(UTILS_DIR)/split.c \
+            $(UTILS_DIR)/stack_init.c \
+            $(UTILS_DIR)/stack_utils.c \
+            $(SRC_DIR)/main.c
+
+OBJ_FILES = $(ALGO_SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o) \
+            $(SORT_SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o) \
+            $(UTILS_SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+HEADERS = $(INCLUDE_DIR)/push_swap.h
 
 all: $(NAME)
 
-# Compiling Push_swap 🚀
-$(NAME): $(LIBFT) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-	@echo "$(GREEN)✅ Build completed: $(NAME)$(RESET)"
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)/algo
+	@mkdir -p $(OBJ_DIR)/sort
+	@mkdir -p $(OBJ_DIR)/utils
 
-# Compiling objects 📦
-$(OBJS_DIR)%.o: $(SRCS_DIR)%.c | $(OBJS_DIR)
-	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -I $(INCLUDE_DIR) -c $< -o $@
-	@echo "$(BLUE)🔨 Compiling $< $(RESET)"
-
-# Build Libft 📚
 $(LIBFT):
-	@echo "$(CYAN)📦 Building libft...$(RESET)"
-	@$(MAKE) -C $(LIBFT_DIR)
+	@make -C $(LIBFT_DIR)
 
-# Clean up 🧹
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -c $< -o $@
+
+$(NAME): $(LIBFT) $(OBJ_FILES)
+	$(CC) $(CFLAGS) $(OBJ_FILES) $(LIBFT) -o $(NAME)
+
 clean:
-	@rm -rf $(OBJS_DIR)
-	@$(MAKE) -C $(LIBFT_DIR) clean
-	@echo "$(YELLOW)🧹 Objects cleaned$(RESET)"
+	@rm -rf $(OBJ_DIR)
+	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -f $(LIBFT)
-	@echo "$(YELLOW)🧹 All cleaned$(RESET)"
+	@make fclean -C $(LIBFT_DIR)
 
-# Rebuild ♻️
 re: fclean all
-
-# Directory creation helper 🗂️
-$(OBJS_DIR):
-	@mkdir -p $(OBJS_DIR)
 
 .PHONY: all clean fclean re
