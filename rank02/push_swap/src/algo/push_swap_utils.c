@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 20:11:22 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/20 17:37:28 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:43:01 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void	update_positions(t_stack_node *stack)
 	}
 }
 
-/* Write a function that assigns target nodes in stack_a for each node in stack_b
-Target is the smallest larger number, or the smallest number if none larger */
+/* Write a function that assigns target nodes in stack_a for each node in
+stack_b Target is the smallest larger number, or the smallest number if none
+larger */
 static void	assign_target_nodes(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	t_stack_node	*current_a;
