@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 19:15:01 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/19 19:21:48 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/19 19:59:24 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,25 +95,18 @@ void					sort_stack(t_stack_node **stack_a,
  * Basic stack manipulation operations
  * Each function has a checker parameter to control output
  */
-// Swap Operations
 void					swap_a(t_stack_node **stack_a, bool checker);
 void					swap_b(t_stack_node **stack_b, bool checker);
 void					swap_both(t_stack_node **stack_a,
 							t_stack_node **stack_b, bool checker);
-
-// Push Operations
 void					push_to_a(t_stack_node **stack_a,
 							t_stack_node **stack_b, bool checker);
 void					push_to_b(t_stack_node **stack_b,
 							t_stack_node **stack_a, bool checker);
-
-// Rotate Operations
 void					rotate_a(t_stack_node **stack_a, bool checker);
 void					rotate_b(t_stack_node **stack_b, bool checker);
 void					rotate_both(t_stack_node **stack_a,
 							t_stack_node **stack_b, bool checker);
-
-// Reverse Rotate Operations
 void					reverse_rotate_a(t_stack_node **stack_a, bool checker);
 void					reverse_rotate_b(t_stack_node **stack_b, bool checker);
 void					reverse_rotate_both(t_stack_node **stack_a,
