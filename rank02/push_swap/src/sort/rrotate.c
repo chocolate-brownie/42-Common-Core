@@ -6,19 +6,12 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 19:51:45 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/19 19:53:22 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:40:26 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-/**
- * Rotates stack by moving bottom node to top
- * Handles all pointer adjustments for doubly linked list
- * Requires minimum of two nodes for operation
- *
- * @param stack Pointer to stack head
- */
 static void	rotate_down(t_stack_node **stack)
 {
 	t_stack_node	*last_node;

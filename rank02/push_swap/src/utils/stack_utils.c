@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stacks.c                                           :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 19:56:49 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/19 19:57:28 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:41:49 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,7 @@ t_stack_node	*find_min_node(t_stack_node *stack)
 	return (min_node);
 }
 
-/**
- * Returns the node marked as cheapest to move
- *
- * @param stack Stack to search
- * @return Pointer to cheapest node, NULL if none found
- */
+/* Returns the node marked as cheapest to move */
 t_stack_node	*get_cheapest_node(t_stack_node *stack)
 {
 	if (!stack)

@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 19:59:40 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/20 15:40:41 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:41:31 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,6 @@ static long	ft_atol(const char *str)
  * - Syntax validation
  * - Integer overflow/underflow
  * - Duplicate values
- *
- * @param stack_a Pointer to stack head
- * @param input Array of input strings
- * @param is_split_input Flag indicating if input was split from single argument
  */
 void	initialize_stack(t_stack_node **stack_a, char **input,
 		bool is_split_input)
