@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 19:39:02 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/20 15:37:52 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/20 15:41:17 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,41 +89,22 @@ int	validate_number_syntax(char *number_str)
 	size_t	i;
 	long	num;
 
-	printf("[DEBUG] Validating string: '%s'\n", number_str);
 	if (!number_str || !*number_str)
-	{
-		printf("[DEBUG] Empty string or NULL\n");
 		return (1);
-	}
 	i = 0;
 	if (number_str[i] == '+' || number_str[i] == '-')
-	{
-		printf("[DEBUG] Found sign: %c\n", number_str[i]);
 		i++;
-	}
 	if (!ft_isdigit(number_str[i]))
-	{
-		printf("[DEBUG] First char not digit: %c\n", number_str[i]);
 		return (1);
-	}
 	while (number_str[i])
 	{
 		if (!ft_isdigit(number_str[i]))
-		{
-			printf("[DEBUG] Non-digit found: %c at position %zu\n",
-				number_str[i], i);
 			return (1);
-		}
 		i++;
 	}
 	num = ft_atoi(number_str);
-	printf("[DEBUG] Number value: %ld\n", num);
 	if (num > INT_MAX || num < INT_MIN)
-	{
-		printf("[DEBUG] Number out of INT range\n");
 		return (1);
-	}
-	printf("[DEBUG] Validation passed\n");
 	return (0);
 }
 
