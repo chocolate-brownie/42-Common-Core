@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:55:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/23 17:13:05 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/23 17:43:59 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_vars
 {
 	void	*mlx_conn;
 	void	*mlx_win;
-
 }			t_vars;
 
 t_vars		*open_window(char *program_name);
