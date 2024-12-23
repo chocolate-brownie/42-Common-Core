@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 16:11:50 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/23 16:17:44 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:41:56 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static int	mouse_close(t_vars *vars)
 	free(vars);
 	exit(0);
 }
+
 void	close_window(t_vars *vars)
 {
 	mlx_hook(vars->mlx_win, KEY_PRESS, 1L << 0, esc_close, vars);
