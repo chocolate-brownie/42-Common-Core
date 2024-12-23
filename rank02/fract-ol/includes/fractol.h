@@ -6,13 +6,14 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:55:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/23 16:28:57 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/23 17:13:05 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+# include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include <stdlib.h>
 
