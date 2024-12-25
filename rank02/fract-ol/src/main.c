@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:58:10 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/23 18:09:56 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/24 18:52:59 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ static int	control_arguments(int argc, char **argv)
 int	main(int argc, char *argv[])
 {
 	t_vars	*vars;
-	t_vars	*fractol;
 
 	vars = NULL;
-	fractol = NULL;
 	if (control_arguments(argc, argv) == 1)
 		exit(EXIT_FAILURE);
 	vars = open_window(ft_strjoin(argv[0], argv[1]));

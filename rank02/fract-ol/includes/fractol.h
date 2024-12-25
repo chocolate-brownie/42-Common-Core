@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:55:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/23 17:43:59 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/25 15:17:01 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ typedef struct s_vars
 
 t_vars		*open_window(char *program_name);
 void		close_window(t_vars *vars);
+
 #endif
