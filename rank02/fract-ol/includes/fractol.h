@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:55:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/25 22:10:42 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/25 22:19:49 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 # define WIDTH 960
 # define HEIGHT 540
-# define KEY_PRESS 2
-# define DESTROY_NOTIFY 17
+# define MANDELBROT 1
+# define JULIA 2
 
 typedef struct s_fractol
 {
@@ -45,8 +45,6 @@ typedef struct s_fractol
 	int		color_shift;
 }			t_fractol;
 
-t_fractol	*open_window(char *program_name);
-void		close_window(t_fractol *vars);
 int			clean_exit(t_fractol *fractol, char *message, int exit_code);
 
 #endif
