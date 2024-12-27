@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:58:10 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/25 22:18:13 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/27 17:01:06 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	main(int argc, char *argv[])
 			fractol->name);
 	if (!fractol->window)
 		return (clean_exit(fractol, "Failed to create a window!", 1));
-	init_view(fractol);
-	setup_hooks(fractol);
-	render_fractal(fractol);
+	// init_view(fractol);
+	// setup_hooks(fractol);
+	// render_fractal(fractol);
 	mlx_loop(fractol->connection);
 	return (0);
 }

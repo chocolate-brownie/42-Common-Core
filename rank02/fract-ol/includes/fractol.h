@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:55:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/25 22:19:49 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/27 17:01:02 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define HEIGHT 540
 # define MANDELBROT 1
 # define JULIA 2
+# define BURNING_SHIP 3
 
 typedef struct s_fractol
 {
@@ -38,13 +39,15 @@ typedef struct s_fractol
 	double	max_re;
 	double	min_im;
 	double	max_im;
-	double	julia_real;
-	double	julia_imag;
+	double	real;
+	double	imag;
 	double	zoom;
 	int		max_iter;
 	int		color_shift;
 }			t_fractol;
 
 int			clean_exit(t_fractol *fractol, char *message, int exit_code);
+double		ft_atof(const char *str);
+t_fractol	*control_args(char argc, char **argv);
 
 #endif
