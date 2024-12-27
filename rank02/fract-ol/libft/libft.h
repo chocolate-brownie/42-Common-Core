@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 16:41:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/24 18:37:12 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/27 17:28:34 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+
+/* Custom functions */
+int					ft_strncasecmp(const char *s1, const char *s2, size_t n);
+double				ft_atof(const char *str);
 
 /* // Part 3: Bonus functions
 typedef struct s_list

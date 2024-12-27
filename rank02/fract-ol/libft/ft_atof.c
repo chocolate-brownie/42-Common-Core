@@ -6,11 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:51:47 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/27 16:53:02 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/27 17:39:53 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fractol.h"
+#include "libft.h"
 
 double	ft_atof(const char *str)
 {
