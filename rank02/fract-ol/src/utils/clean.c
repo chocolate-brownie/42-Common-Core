@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 21:53:57 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/25 22:10:17 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/28 18:36:15 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	free_mlx(t_fractol *fractol)
 {
-	if (fractol->img && fractol->connection)
-		mlx_destroy_image(fractol->connection, fractol->img);
+	if (fractol->image.ptr_img && fractol->connection)
+		mlx_destroy_image(fractol->connection, fractol->image.ptr_img);
 	if (fractol->window && fractol->connection)
 		mlx_destroy_window(fractol->connection, fractol->window);
 	if (fractol->connection)
@@ -35,14 +35,17 @@ static void	print_message(char *message, int exit_code)
 			ft_putendl_fd(message, 2);
 	}
 }
-
+/**
+ * @brief Performs clean program exit with proper resource cleanup
+ * 1. Frees all MLX resources if fractol exists
+ * 2. Prints exit message
+ * 3. Exits program with provided exit code
+ */
 int	clean_exit(t_fractol *fractol, char *message, int exit_code)
 {
 	if (fractol)
 	{
 		free_mlx(fractol);
-		if (fractol->name)
-			free(fractol->name);
 		free(fractol);
 	}
 	print_message(message, exit_code);
