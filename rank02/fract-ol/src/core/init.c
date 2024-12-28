@@ -6,8 +6,12 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:57:22 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/27 17:44:35 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/28 17:06:54 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../../includes/fractol.h"
+#include "../../includes/fractol.h"
+
+void	init_view(t_fractol *fractol)
+{
+}

@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 21:51:44 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/27 18:06:46 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/28 18:45:56 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,15 @@ static char	*window_name(char **argv)
 	return ("ERROR: Invalid window name!");
 }
 
+/**
+ * @brief this function controls the user input, handle errors and init some
+ * necessary variables
+ *
+ * the only acceptable scenario is ./fractol <frac_type> <nbr_real> <nbr_imag>
+ * control the window opening with the correct window title according to the
+ * user input
+ * and finally @return fractol
+ */
 t_fractol	*control_args(char argc, char **argv)
 {
 	t_fractol	*fractol;
@@ -80,16 +89,16 @@ t_fractol	*control_args(char argc, char **argv)
 	fractol = malloc(sizeof(t_fractol));
 	if (!fractol)
 		return (NULL);
-	fractol->fractal_type = is_valid_fractal(argv[1]);
-	if (!fractol->fractal_type)
+	fractol->params.id = is_valid_fractal(argv[1]);
+	if (!fractol->params.id)
 	{
 		free(fractol);
 		print_usage();
 	}
-	fractol->name = window_name(argv);
-	fractol->imag = ft_atof(argv[2]);
-	fractol->real = ft_atof(argv[3]);
-	fractol->img = NULL;
-	fractol->addr = NULL;
+	fractol->params.name = window_name(argv);
+	fractol->math.real = ft_atof(argv[3]);
+	fractol->math.imaginary = ft_atof(argv[2]);
+	fractol->connection = NULL;
+	fractol->window = NULL;
 	return (fractol);
 }
