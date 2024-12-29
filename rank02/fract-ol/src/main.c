@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:58:10 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/28 18:19:24 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/29 22:42:38 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,13 @@
  * Initial render
  * Start MLX loop
  */
+
 int	main(int argc, char *argv[])
 {
 	t_fractol	*fractol;
 
 	fractol = control_args(argc, argv);
-	if (!fractol)
-		return (clean_exit(NULL, "Failed to initialize the program!", 1));
-	fractol->connection = mlx_init();
-	if (!fractol->connection)
-		return (clean_exit(fractol, "Failed to initialize the mlx!", 1));
-	fractol->window = mlx_new_window(fractol->connection, WIDTH, HEIGHT,
-			fractol->params.name);
-	if (!fractol->window)
-		return (clean_exit(fractol, "Failed to create a window!", 1));
-	// init_view(fractol);
-	// setup_hooks(fractol);
-	// render_fractal(fractol);
+	init_mlx(fractol);
 	mlx_loop(fractol->connection);
 	return (0);
 }

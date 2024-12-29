@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:55:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/28 18:46:23 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/29 22:44:33 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ typedef struct s_math
 {
 	double		real;
 	double		imaginary;
+	double		min_real;
+	double		max_real;
+	double		min_imag;
+	double		max_imag;
+	double		zoom;
+	int			max_iter;
 }				t_math;
 
 /**
@@ -76,5 +82,6 @@ typedef struct s_fractol
 int				clean_exit(t_fractol *fractol, char *message, int exit_code);
 double			ft_atof(const char *str);
 t_fractol		*control_args(char argc, char **argv);
+void			init_mlx(t_fractol *fractol);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 21:53:57 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/28 18:36:15 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/28 18:58:49 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	print_message(char *message, int exit_code)
 	}
 }
 /**
- * @brief Performs clean program exit with proper resource cleanup
+ * Performs clean program exit with proper resource cleanup
  * 1. Frees all MLX resources if fractol exists
  * 2. Prints exit message
  * 3. Exits program with provided exit code

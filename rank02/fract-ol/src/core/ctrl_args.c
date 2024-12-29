@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 21:51:44 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/28 18:45:56 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/29 20:18:29 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,7 @@ static char	*window_name(char **argv)
 }
 
 /**
- * @brief this function controls the user input, handle errors and init some
- * necessary variables
- *
+ * @brief tParse arguments and initialize fractol structure
  * the only acceptable scenario is ./fractol <frac_type> <nbr_real> <nbr_imag>
  * control the window opening with the correct window title according to the
  * user input
@@ -100,5 +98,7 @@ t_fractol	*control_args(char argc, char **argv)
 	fractol->math.imaginary = ft_atof(argv[2]);
 	fractol->connection = NULL;
 	fractol->window = NULL;
+	fractol->image.ptr_img = NULL;
+	fractol->image.ptr_pixels = NULL;
 	return (fractol);
 }
