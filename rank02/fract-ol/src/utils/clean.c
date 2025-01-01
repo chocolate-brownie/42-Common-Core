@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 21:53:57 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/01 17:31:39 by milan-god        ###   ########.fr       */
+/*   Updated: 2025/01/01 20:13:53 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 static void	free_mlx(t_fractol *fractol)
 {
-	if (fractol->image.ptr_img && fractol->connection)
+	if (!fractol->connection)
+		return ;
+	if (fractol->image.ptr_img_back)
+		mlx_destroy_image(fractol->connection, fractol->image.ptr_img_back);
+	if (fractol->image.ptr_img)
 		mlx_destroy_image(fractol->connection, fractol->image.ptr_img);
-	if (fractol->window && fractol->connection)
+	if (fractol->window)
 		mlx_destroy_window(fractol->connection, fractol->window);
-	if (fractol->connection)
-	{
-		mlx_destroy_display(fractol->connection);
-		free(fractol->connection);
-	}
+	mlx_destroy_display(fractol->connection);
+	free(fractol->connection);
 }
 
 static void	print_message(char *message, int exit_code)

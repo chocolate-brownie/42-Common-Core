@@ -13,6 +13,7 @@ SRCS = 	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/core/ctrl_args.c \
 		$(SRC_DIR)/core/init_mlx.c \
 		$(SRC_DIR)/core/init_view.c \
+		$(SRC_DIR)/core/setup_hooks.c \
 		$(SRC_DIR)/utils/clean.c \
 		$(SRC_DIR)/utils/swap_buffer.c \
 		$(SRC_DIR)/utils/custom_pixel_put.c \

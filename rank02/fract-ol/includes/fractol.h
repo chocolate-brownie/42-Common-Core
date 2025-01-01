@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:55:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/01 19:10:08 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/01 19:30:36 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@
 # define BURNING_SHIP 3
 
 # define KEY_PRESS 2
-# define BUTTON_PRESS 4
+# define MOUSE_PRESS 4
 # define MOUSE_MOVE 6
 # define CLOSE_BUTTON 17
 
-# define ESC 53
-# define LEFT 123
-# define RIGHT 124
-# define UP 126
-# define DOWN 125
+# define ESC 65307
+# define LEFT 65361
+# define RIGHT 65363
+# define UP 65362
+# define DOWN 65364
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 
@@ -108,5 +108,6 @@ void			init_mlx(t_fractol *fractol);
 void			swap_buffers(t_fractol *fractol);
 void			custom_pixel_put(t_fractol *img, int x, int y, int color);
 void			init_view(t_fractol *fractol);
+void			setup_hooks(t_fractol *fractol);
 
 #endif
