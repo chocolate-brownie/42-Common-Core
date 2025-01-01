@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 22:34:42 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/29 22:44:51 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/01 17:04:00 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,36 +24,43 @@
  *You need to know what part of the fractal to draw (view boundaries)
  */
 
+static void	init_mandelbrot(t_math *math)
+{
+	math->min_real = -2.0;
+	math->max_real = 1.0;
+	math->min_imag = -1.5;
+	math->max_imag = 1.5;
+	math->max_iter = 100;
+}
+
+static void	init_julia(t_math *math)
+{
+	math->min_real = -2.0;
+	math->max_real = 2.0;
+	math->min_imag = -2.0;
+	math->max_imag = 2.0;
+	math->max_iter = 100;
+}
+
+static void	init_burning_ship(t_math *math)
+{
+	math->min_real = -2.0;
+	math->max_real = 1.0;
+	math->min_imag = -2.0;
+	math->max_imag = 1.0;
+	math->max_iter = 100;
+}
+
 void	init_view(t_fractol *fractol)
 {
 	if (!fractol)
 		clean_exit(NULL, "Failed to initialize the view!", 1);
-
 	if (fractol->params.id == MANDELBROT)
-	{
-		fractol->math.min_real = -2.0;
-		fractol->math.max_real = 1.0;
-		fractol->math.min_imag = -1.5;
-		fractol->math.max_imag = 1.5;
-		fractol->math.max_iter = 100;
-	}
+		init_mandelbrot(&fractol->math);
 	else if (fractol->params.id == JULIA)
-	{
-		fractol->math.min_real = -2.0;
-		fractol->math.max_real = 2.0;
-		fractol->math.min_imag = -2.0;
-		fractol->math.max_imag = 2.0;
-		fractol->math.max_iter = 100;
-	}
+		init_julia(&fractol->math);
 	else if (fractol->params.id == BURNING_SHIP)
-	{
-		fractol->math.min_real = -2.0;
-		fractol->math.max_real = 1.0;
-		fractol->math.min_imag = -2.0;
-		fractol->math.max_imag = 1.0;
-		fractol->math.max_iter = 100;
-	}
-
+		init_burning_ship(&fractol->math);
 	fractol->math.zoom = WIDTH / (fractol->math.max_real
 			- fractol->math.min_real);
 }

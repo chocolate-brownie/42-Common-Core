@@ -1,6 +1,6 @@
 NAME = fractol
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 SRC_DIR = src
 OBJ_DIR = obj
 INC_DIR = includes
@@ -11,7 +11,11 @@ LIBFT = $(LIBFT_PATH)/libft.a
 
 SRCS = 	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/core/ctrl_args.c \
+		$(SRC_DIR)/core/init_mlx.c \
+		$(SRC_DIR)/core/init_view.c \
 		$(SRC_DIR)/utils/clean.c \
+		$(SRC_DIR)/utils/swap_buffer.c \
+		$(SRC_DIR)/utils/custom_pixel_put.c \
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 INCLUDES = -I$(INC_DIR) -I$(MLX) -I$(LIBFT_PATH)

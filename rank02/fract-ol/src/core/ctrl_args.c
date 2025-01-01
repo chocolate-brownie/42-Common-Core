@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 21:51:44 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/29 20:18:29 by mgodawat         ###   ########.fr       */
+/*   Updated: 2024/12/30 01:14:08 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,7 @@ t_fractol	*control_args(char argc, char **argv)
 	fractol->window = NULL;
 	fractol->image.ptr_img = NULL;
 	fractol->image.ptr_pixels = NULL;
+	fractol->image.ptr_img_back = NULL;
+	fractol->image.ptr_pixels_back = NULL;
 	return (fractol);
 }

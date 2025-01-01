@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:55:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/29 22:44:33 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/01 16:51:47 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ typedef struct s_math
 	double		max_imag;
 	double		zoom;
 	int			max_iter;
+	double		x_offset;
+	double		y_offset;
+	double		zoom_factor;
 }				t_math;
 
 /**
@@ -49,6 +52,9 @@ typedef struct s_params
 {
 	char		*name;
 	int			id;
+	int			mouse_x;
+	int			mouse_y;
+	int			is_pressed;
 }				t_params;
 
 /**
@@ -59,7 +65,9 @@ typedef struct s_params
 typedef struct s_image
 {
 	void		*ptr_img;
+	void		*ptr_img_back;
 	char		*ptr_pixels;
+	char		*ptr_pixels_back;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
@@ -83,5 +91,8 @@ int				clean_exit(t_fractol *fractol, char *message, int exit_code);
 double			ft_atof(const char *str);
 t_fractol		*control_args(char argc, char **argv);
 void			init_mlx(t_fractol *fractol);
+void			swap_buffers(t_fractol *fractol);
+void			custom_pixel_put(t_fractol *img, int x, int y, int color);
+void			init_view(t_fractol *fractol);
 
 #endif
