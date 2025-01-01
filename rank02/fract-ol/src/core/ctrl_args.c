@@ -6,11 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 21:51:44 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/30 01:14:08 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/01 17:30:48 by milan-god        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "../../includes/fractol.h"
 
 static void	print_usage(void)
 {

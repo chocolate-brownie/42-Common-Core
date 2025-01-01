@@ -6,11 +6,11 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 21:53:57 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/12/28 18:58:49 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/01 17:31:39 by milan-god        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "../../includes/fractol.h"
 
 static void	free_mlx(t_fractol *fractol)
 {

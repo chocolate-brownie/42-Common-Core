@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:55:12 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/01 16:51:47 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/01 19:10:08 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,23 @@
 
 # define WIDTH 960
 # define HEIGHT 540
+
 # define MANDELBROT 1
 # define JULIA 2
 # define BURNING_SHIP 3
+
+# define KEY_PRESS 2
+# define BUTTON_PRESS 4
+# define MOUSE_MOVE 6
+# define CLOSE_BUTTON 17
+
+# define ESC 53
+# define LEFT 123
+# define RIGHT 124
+# define UP 126
+# define DOWN 125
+# define SCROLL_UP 4
+# define SCROLL_DOWN 5
 
 /**
  * @brief struct for the math stuff
