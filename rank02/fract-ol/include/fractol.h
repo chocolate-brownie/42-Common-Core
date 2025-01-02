@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:09:02 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/02 22:25:15 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/02 23:04:06 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,20 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
+typedef struct s_param
+{
+	bool	is_julia;
+	bool	is_mandel;
+}			t_param;
+
 typedef struct s_fractal
 {
 	void	*conn;
 	void	*win;
 	t_img	img;
+	t_param	param;
 }			t_fractal;
+
+bool		is_valid_number(char *str);
 
 #endif
