@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:09:53 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/03 04:24:39 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 04:50:17 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	parsing(int argc, char **argv, t_fractal *ptr)
 	if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 11))
 	{
 		ptr->param.is_mandel = true;
-		ptr->param.program_name = "MANDELBROT";
+		ptr->param.program_name = "Mandelbrot";
 		return (0);
 	}
 	if (argc == 4 && !ft_strncmp(argv[1], "julia", 6))
@@ -25,7 +25,7 @@ static int	parsing(int argc, char **argv, t_fractal *ptr)
 		if (is_valid_number(argv[2]) && is_valid_number(argv[3]))
 		{
 			ptr->param.is_julia = true;
-			ptr->param.program_name = "JULIA";
+			ptr->param.program_name = "Julia";
 			ptr->param.julia_x = ft_atof(argv[2]);
 			ptr->param.julia_y = ft_atof(argv[3]);
 			return (0);

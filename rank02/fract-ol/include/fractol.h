@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:09:02 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/03 04:20:30 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 04:47:58 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdbool.h>
 # include <stdlib.h>
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 700
+# define HEIGHT 700
 
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
@@ -48,7 +48,6 @@ typedef struct s_img
 {
 	void	*img_ptr;
 	char	*pix_ptr;
-
 	int		bpp;
 	int		line_len;
 	int		endian;
@@ -76,11 +75,9 @@ typedef struct s_fractal
 {
 	void	*conn;
 	void	*win;
-
 	t_param	param;
 	t_math	math;
 	t_img	img;
-
 }			t_fractal;
 
 void		error_exit(char *msg, t_fractal *fractal, int error_stage);
