@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 03:03:19 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/03 20:09:31 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 20:15:33 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,5 @@ void	init_mlx(t_fractal *fractal)
 	if (!fractal->win)
 		error_exit(ERR_WIN_INIT, fractal, 1);
 	init_image_buffers(fractal);
-	data_init(fractal);
+	// data_init(fractal);
 }
