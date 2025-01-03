@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:09:53 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/03 03:59:54 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 04:24:39 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ int	main(int argc, char *argv[])
 	if (parsing(argc, argv, &fractal) == 1)
 		exit_message(&fractal);
 	init_mlx(&fractal);
+	init_events(&fractal);
 	mlx_loop(fractal.conn);
 }

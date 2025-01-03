@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 03:03:19 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/03 04:03:14 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 04:20:24 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	error_exit(char *msg, t_fractal *fractal, int error_stage)
  * @brief  Initializes fractal parameters with default values
  * Sets up zoom, position, iterations, and Julia set parameters
  */
-static void	data_init(t_fractal *fractal)
+void	data_init(t_fractal *fractal)
 {
 	fractal->math.shift_x = 0;
 	fractal->math.shift_y = 0;
