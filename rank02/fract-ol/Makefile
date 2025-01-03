@@ -6,7 +6,7 @@
 #    By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 22:17:10 by mgodawat          #+#    #+#              #
-#    Updated: 2025/01/02 22:17:42 by mgodawat         ###   ########.fr        #
+#    Updated: 2025/01/03 03:58:54 by mgodawat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ OBJ_DIR = objs
 INC_DIR = include
 LIBFT_DIR = lib/libft
 
-SRC_FILES = main.c \
+SRC_FILES =	main.c \
+			valid.c \
+			init_mlx.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 

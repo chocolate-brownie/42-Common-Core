@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 16:41:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/06/13 12:30:09 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 03:56:38 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-
+double				ft_atof(const char *str);
 /* // Part 3: Bonus functions
 typedef struct s_list
 {
@@ -72,6 +72,6 @@ void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
-t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *)); */
 #endif
