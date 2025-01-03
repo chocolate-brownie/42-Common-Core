@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:09:02 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/03 04:14:24 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 04:19:38 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,9 @@ typedef struct s_fractal
 
 }			t_fractal;
 
-void		error_exit(char *msg);
+void		error_exit(char *msg, t_fractal *fractal, int error_stage);
 bool		is_valid_number(char *str);
 void		init_mlx(t_fractal *fractal);
+void		init_events(t_fractal *fractal);
 
 #endif
