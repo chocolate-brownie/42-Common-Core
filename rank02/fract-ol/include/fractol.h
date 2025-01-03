@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:09:02 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/02 23:04:06 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 03:39:53 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 # define FRACTOL_H
 
 # include "../lib/libft/libft.h"
+# include "../mlx/mlx.h"
 # include <stdbool.h>
 # include <stdlib.h>
 
-# define WINDOW_WIDTH 700
-# define WINDOW_HEIGHT 700
+# define WIDTH 800
+# define HEIGHT 800
 
 typedef struct s_img
 {
@@ -30,20 +31,34 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
+typedef struct s_math
+{
+	int		shift_x;
+	int		shit_y;
+	double	zoom;
+	int		iterations;
+}			t_math;
+
 typedef struct s_param
 {
-	bool	is_julia;
 	bool	is_mandel;
+	bool	is_julia;
+	char	*program_name;
 }			t_param;
 
 typedef struct s_fractal
 {
 	void	*conn;
 	void	*win;
-	t_img	img;
+	double	julia_x;
+	double	julia_y;
 	t_param	param;
+	t_math	math;
+	t_img	img;
+
 }			t_fractal;
 
+void		error_exit(char *msg);
 bool		is_valid_number(char *str);
 
 #endif
