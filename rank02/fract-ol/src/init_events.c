@@ -6,13 +6,13 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 03:51:26 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/03 04:23:54 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 04:27:14 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-static int	end_fractol(t_fractal *fractal)
+static int	destroy(t_fractal *fractal)
 {
 	mlx_destroy_image(fractal->conn, fractal->img.img_ptr);
 	mlx_destroy_window(fractal->conn, fractal->win);
@@ -28,7 +28,7 @@ static int	key_hook(int keysym, t_fractal *fractal)
 	if (!fractal)
 		return (1);
 	if (keysym == KEY_ESC)
-		end_fractol(fractal);
+		destroy(fractal);
 	if (keysym == KEY_LEFT)
 		fractal->math.shift_x += (move_factor * fractal->math.zoom);
 	if (keysym == KEY_RIGHT)
@@ -83,5 +83,5 @@ void	init_events(t_fractal *fractal)
 
 	mlx_key_hook(fractal->win, key_hook, fractal);
 	mlx_mouse_hook(fractal->win, mouse_hook, fractal);
-	mlx_hook(fractal->win, DESTROY_NOTIFY, 0, end_fractol, fractal);
+	mlx_hook(fractal->win, DESTROY_NOTIFY, 0, destroy, fractal);
 }
