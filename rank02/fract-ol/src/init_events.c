@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 03:51:26 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/03 04:45:33 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 04:50:47 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	key_hook(int keysym, t_fractal *fractal)
 		fractal->math.iterations -= 10;
 	if (keysym == KEY_R)
 		data_init(fractal);
-	fractal_draw(fractal);
+	// fractal_draw(fractal);
 	return (0);
 }
 
@@ -72,7 +72,7 @@ static int	mouse_hook(int button, int x, int y, t_fractal *fractal)
 		handle_zoom(fractal, zoom_in_factor, x, y);
 	if (button == MOUSE_WHEEL_DOWN)
 		handle_zoom(fractal, zoom_out_factor, x, y);
-	fractal_draw(fractal);
+	// fractal_draw(fractal);
 	return (0);
 }
 

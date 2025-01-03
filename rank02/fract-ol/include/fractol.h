@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:09:02 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/03 04:47:58 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 20:06:06 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,6 @@ typedef struct s_img
 
 typedef struct s_math
 {
-	int		shift_x;
-	int		shift_y;
-	double	zoom;
-	int		iterations;
-	double	hypotenuse;
 }			t_math;
 
 typedef struct s_param
@@ -77,7 +72,8 @@ typedef struct s_fractal
 	void	*win;
 	t_param	param;
 	t_math	math;
-	t_img	img;
+	t_img	img[2];
+	int		curr_img;
 }			t_fractal;
 
 void		error_exit(char *msg, t_fractal *fractal, int error_stage);
@@ -85,5 +81,6 @@ bool		is_valid_number(char *str);
 void		init_mlx(t_fractal *fractal);
 void		init_events(t_fractal *fractal);
 void		data_init(t_fractal *fractal);
+int			init_image_buffers(t_fractal *fractal);
 
 #endif
