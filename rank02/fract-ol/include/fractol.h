@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:09:02 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/03 04:01:20 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 04:14:24 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,24 @@
 
 # define WIDTH 800
 # define HEIGHT 800
+
+# define KEY_PRESS 2
+# define KEY_RELEASE 3
+# define BUTTON_PRESS 4
+# define BUTTON_RELEASE 5
+# define DESTROY_NOTIFY 17
+
+# define KEY_ESC 65307
+# define KEY_LEFT 65361
+# define KEY_UP 65362
+# define KEY_RIGHT 65363
+# define KEY_DOWN 65364
+# define KEY_R 114
+# define KEY_PLUS 61
+# define KEY_MINUS 45
+
+# define MOUSE_WHEEL_UP 4
+# define MOUSE_WHEEL_DOWN 5
 
 # define ERR_MLX_INIT "[ERROR]: MLX initialization failed"
 # define ERR_WIN_INIT "[ERROR]: Window creation failed"
