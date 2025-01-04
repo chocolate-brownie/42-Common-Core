@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:09:02 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/03 20:06:06 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 20:22:08 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ bool		is_valid_number(char *str);
 void		init_mlx(t_fractal *fractal);
 void		init_events(t_fractal *fractal);
 void		data_init(t_fractal *fractal);
-int			init_image_buffers(t_fractal *fractal);
+int			render_frame(t_fractal *fractal);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 03:51:26 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/03 20:18:59 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 20:22:50 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ static int	destroy(t_fractal *fractal)
 
 static int	key_hook(int keysym, t_fractal *fractal)
 {
-	const double	move_factor = 0.1;
-
+	// const double	move_factor = 0.1;
 	if (!fractal)
 		return (1);
 	if (keysym == KEY_ESC)

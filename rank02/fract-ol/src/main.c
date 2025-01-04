@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:09:53 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/03 20:14:31 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/03 20:21:07 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ int	main(int argc, char *argv[])
 		exit_message(&fractal);
 	init_mlx(&fractal);
 	init_events(&fractal);
-	
+	render_frame(&fractal);
 	mlx_loop(fractal.conn);
 }

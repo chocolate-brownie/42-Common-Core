@@ -6,7 +6,7 @@
 #    By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 22:17:10 by mgodawat          #+#    #+#              #
-#    Updated: 2025/01/03 04:45:40 by mgodawat         ###   ########.fr        #
+#    Updated: 2025/01/04 11:34:35 by mgodawat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ OBJ_DIR = objs
 INC_DIR = include
 LIBFT_DIR = lib/libft
 
-SRC_FILES =	main.c valid.c init_mlx.c init_events.c fractals.c math.c \
+SRC_FILES =	main.c valid.c init_mlx.c init_events.c \
+			render_frame.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
