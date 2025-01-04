@@ -6,11 +6,11 @@
 #    By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 22:17:10 by mgodawat          #+#    #+#              #
-#    Updated: 2025/01/04 11:34:35 by mgodawat         ###   ########.fr        #
+#    Updated: 2025/01/04 14:36:20 by mgodawat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC      = cc
+CC      = gcc -g
 CFLAGS  = -Wall -Wextra -Werror -Og -Imlx -Iinclude -Ilib/libft
 LDFLAGS = -L./mlx -lmlx -Llib/libft -lft -lXext -lX11 -lm
 NAME    = fractol
@@ -20,8 +20,8 @@ OBJ_DIR = objs
 INC_DIR = include
 LIBFT_DIR = lib/libft
 
-SRC_FILES =	main.c valid.c init_mlx.c init_events.c \
-			render_frame.c \
+SRC_FILES =	main.c valid.c init_mlx.c init_events.c image_buffers.c\
+			render_frame.c utils.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
