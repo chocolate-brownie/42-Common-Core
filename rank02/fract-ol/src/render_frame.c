@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 20:11:20 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/04 19:55:09 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/04 19:57:23 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ static void	put_pixel(t_img *img, int x, int y, int color)
 static void	map_coordinates(int x, int y, t_complex *c, t_fractal *fractal)
 {
 	fractal->param.unscaled_num = x;
-	fractal->param.new_min = -2.5;
-	fractal->param.new_max = 1.0;
+	fractal->param.new_min = -2;
+	fractal->param.new_max = +2;
 	fractal->param.old_min = 0;
-	fractal->param.old_max = WIDTH - 1;
+	fractal->param.old_max = WIDTH;
 	c->x_real = map(fractal);
 	fractal->param.unscaled_num = y;
-	fractal->param.new_min = -1.5;
-	fractal->param.new_max = 1.5;
+	fractal->param.new_min = +2;
+	fractal->param.new_max = -2;
 	fractal->param.old_min = 0;
-	fractal->param.old_max = HEIGHT - 1;
+	fractal->param.old_max = HEIGHT;
 	c->y_imaginary = map(fractal);
 }
 
