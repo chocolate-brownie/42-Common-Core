@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:09:02 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/04 19:45:29 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/04 20:38:44 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@
 # define COLOR_VOID_PURPLE 0xFF9400D3
 # define COLOR_QUANTUM_TURQUOISE 0xFF40E0D0
 
+# define WIDTH 800
+# define HEIGHT 800
+
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -84,11 +87,11 @@ typedef struct s_param
 	bool	is_julia;
 	double	julia_x;
 	double	julia_y;
-	double	unscaled_num;
+/* 	double	unscaled_num;
 	double	new_min;
 	double	new_max;
 	double	old_min;
-	double	old_max;
+	double	old_max; */
 }			t_param;
 
 typedef struct s_fractal
@@ -107,7 +110,8 @@ typedef struct s_fractal
  */
 void		error_exit(char *msg, t_fractal *fractal, int error_stage);
 bool		is_valid_number(char *str);
-double		map(t_fractal *ptr);
+// double		map(t_fractal *ptr);
+double 		map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
 

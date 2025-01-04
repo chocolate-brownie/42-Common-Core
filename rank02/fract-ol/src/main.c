@@ -6,14 +6,20 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 22:09:53 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/04 19:52:24 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/04 20:57:05 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
+
 static int	parsing(int argc, char **argv, t_fractal *ptr)
 {
+	ptr->param.program_name = argv[0];
+	ptr->param.is_mandel = false;
+	ptr->param.is_julia = false;
+	ptr->param.julia_x = 0.0;
+	ptr->param.julia_y = 0.0;
 	if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 11))
 	{
 		ptr->param.is_mandel = true;
@@ -48,6 +54,7 @@ static void	exit_message(t_fractal *ptr)
 int	main(int argc, char *argv[])
 {
 	t_fractal	fractal;
+
 
 	ft_memset(&fractal, 0, sizeof(t_fractal));
 	if (parsing(argc, argv, &fractal) == 1)

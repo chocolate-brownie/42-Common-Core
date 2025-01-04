@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:41:56 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/04 19:43:09 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/04 20:50:05 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
  *
  * @return The input number mapped to the new range
  */
-double	map(t_fractal *ptr)
+/* double	map(t_fractal *ptr)
 {
 	double	result;
 
@@ -45,7 +45,10 @@ double	map(t_fractal *ptr)
 			* (ptr->param.unscaled_num - ptr->param.old_min)
 			/ (ptr->param.old_max - ptr->param.old_min) + ptr->param.new_min);
 	return (result);
-}
+} */
+
+
+
 
 t_complex	sum_complex(t_complex z1, t_complex z2)
 {

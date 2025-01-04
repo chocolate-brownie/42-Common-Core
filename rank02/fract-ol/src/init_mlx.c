@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 03:03:19 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/04 19:41:14 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/04 20:59:45 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	error_exit(char *msg, t_fractal *fractal, int error_stage)
 static void	data_init(t_fractal *fractal)
 {
 	fractal->escape_value = 4.0;
-	fractal->max_iteration = 42;
+	fractal->max_iteration = 50;
 }
 
 /**
