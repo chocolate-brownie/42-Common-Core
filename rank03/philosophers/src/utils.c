@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/21 15:49:37 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/21 19:17:15 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/01/21 18:57:53 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/01/21 19:01:53 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-bool init_setup(t_setup *setup, int argc, char **argv)
+int error_exit(const char *error_message)
 {
-    setup->error_flag = false;
-    if (parse_args(setup, argc, argv) == false)
-    {
-        setup->error_flag = true;
-        return false;
-    }
-
-}
-
-int main(int argc, char *argv[])
-{
-    t_setup *setup;
-    if (init_setup(&setup, argc, argv) == false)
-        return (error_exit("Invalid arguments"));
+    perror(error_message);
+    exit(1);
 }
