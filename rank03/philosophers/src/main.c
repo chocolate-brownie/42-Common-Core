@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 19:05:00 by mgodawat          #+#    #+#             */
-/*   Updated: 2024/06/11 19:06:42 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/01/21 15:49:37 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/01/21 15:51:58 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <unistd.h>
+#include "philo.h"
 
-void	ft_putchar_fd(char c, int fd)
+int main(void)
 {
-	write(fd, &c, 1);
+    printf("Hello World\n");
+    return 0;
 }
