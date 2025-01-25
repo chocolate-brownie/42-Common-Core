@@ -6,26 +6,26 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:49:37 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/21 19:17:15 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/25 01:22:51 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
-bool init_setup(t_setup *setup, int argc, char **argv)
+/** Main function
+ * 1) parsed() --> Error checking and filling the data of the program args
+ * 2) data_init() --> Initiate the data of all the structures
+ * 3) start_simulation() --> start the dining philo simulation */
+int	main(int argc, char *argv[])
 {
-    setup->error_flag = false;
-    if (parse_args(setup, argc, argv) == false)
-    {
-        setup->error_flag = true;
-        return false;
-    }
+	t_data	data;
 
-}
-
-int main(int argc, char *argv[])
-{
-    t_setup *setup;
-    if (init_setup(&setup, argc, argv) == false)
-        return (error_exit("Invalid arguments"));
+	if (argc == 5 || argc == 6)
+	{
+		printf(GREEN "Success" RESET ": Arguments\n");
+		parsing(&data, argv);
+	}
+	else
+		error_exit(RED "Error" RESET ": Invalid arguments\n");
+	return (0);
 }

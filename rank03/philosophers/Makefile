@@ -6,7 +6,7 @@
 #    By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 15:51:17 by mgodawat          #+#    #+#              #
-#    Updated: 2025/01/21 15:51:19 by mgodawat         ###   ########.fr        #
+#    Updated: 2025/01/23 22:35:47 by mgodawat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC_DIR	= src
 INC_DIR	= include
 OBJ_DIR	= obj
 
-SRC		= main.c
+SRC		= main.c utils.c
 BONUS_SRC	= bonus/main.c
 
 SRCS	= $(addprefix $(SRC_DIR)/, $(SRC))
