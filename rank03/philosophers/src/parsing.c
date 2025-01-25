@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 23:06:52 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/25 01:12:00 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/25 20:06:14 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static inline bool	ft_isdigit(char c)
 {
-	return (c >= '0' && c <= 9);
+	return (c >= '0' && c <= '9');
 }
 
 static inline bool	ft_isspace(char c)
@@ -29,7 +29,6 @@ static inline bool	ft_isspace(char c)
  *		" +&%42  " [NO]
  *	process all the scenarios like this and return a pointer to the first digit
  *		"      ++72^* &asd "*/
-
 static const char	*valid_input(const char *str)
 {
 	int			len;
@@ -46,7 +45,10 @@ static const char	*valid_input(const char *str)
 		error_exit(RED "Parsing" RESET ": Input is invalid digit\n");
 	number = str;
 	while (ft_isdigit(*str))
+	{
 		++len;
+		++str;
+	}
 	if (len > 10)
 		error_exit(RED "Parsing" RESET ": Input is greater than INT_MAX\n");
 	return (number);
@@ -69,16 +71,15 @@ static long	ft_atol(const char *str)
  * 1) check for correct data type
  * 2) check for int overflow
  * 3) check whether argv[2] argv[3] argv[4] are timestamps 60ms */
-
 void	parsing(t_data *data, char **argv)
 {
 	printf(BLUE "Ongoing" RESET ": Parsing\n");
 	data->philo_nbr = ft_atol(argv[1]);
-	data->time_to_die = ft_atol(argv[2]) * 1e3;
-	data->time_to_eat = ft_atol(argv[3]) * 1e3;
-	data->time_to_sleep = ft_atol(argv[4]) * 1e3;
-	if (data->time_to_die < 6e3 || data->time_to_eat > 6e3
-		|| data->time_to_sleep < 6e3)
+	data->time_to_die = ft_atol(argv[2]) * 1000;
+	data->time_to_eat = ft_atol(argv[3]) * 1000;
+	data->time_to_sleep = ft_atol(argv[4]) * 1000;
+	if (data->time_to_die < 60000 || data->time_to_eat < 60000
+		|| data->time_to_sleep < 60000)
 		error_exit(RED "Parsing" RESET ": Use timestamps major than 60ms\n");
 	if (argv[5])
 		data->nbr_limit_meals = ft_atol(argv[5]);

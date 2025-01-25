@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:42:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/25 01:09:44 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/25 23:46:02 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,30 @@
 # include <sys/time.h>
 # include <unistd.h>
 
-#define RED     "\033[31m"
-#define GREEN   "\033[32m"
-#define BLUE    "\033[34m"
-#define BOLD    "\033[1m"
-#define RESET   "\033[0m"
+# define RED "\033[31m"
+# define GREEN "\033[32m"
+# define BLUE "\033[34m"
+# define BOLD "\033[1m"
+# define RESET "\033[0m"
 
-struct s_data;
+struct	s_data;
+
+typedef enum e_mutexcode
+{
+	INIT,
+	LOCK,
+	UNLOCK,
+	DESTROY
+}					t_mutexcode;
+
+typedef enum e_threadcode
+{
+	CREATE,
+	EXIT,
+	JOIN,
+	DETACH
+}					t_threadcode;
+
 typedef struct s_fork
 {
 	pthread_mutex_t	fork;
@@ -42,7 +59,7 @@ typedef struct s_philo
 	long			meals_counter;
 	bool			full;
 	long			last_meal_time;
-	pthread_t		thread_id;
+	pthread_mutex_t	thread_id;
 	struct s_data	*data;
 }					t_philo;
 
@@ -59,7 +76,9 @@ typedef struct s_data
 	t_philo			*philos;
 }					t_data;
 
-void	error_exit(const char *message);
-void	parsing(t_data *data, char **argv);
+void				error_exit(const char *message);
+void				parsing(t_data *data, char **argv);
+void				struct_init(t_data *data);
+void				*safe_malloc(size_t bytes);
 
 #endif
