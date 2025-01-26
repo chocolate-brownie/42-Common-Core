@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:57:53 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/25 22:12:31 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/26 20:11:35 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void	error_exit(const char *message)
 	exit(EXIT_FAILURE);
 }
 
-void *safe_malloc(size_t bytes)
+void	*safe_malloc(size_t bytes)
 {
-	void *var = malloc(bytes);
+	void	*var;
+
+	var = malloc(bytes);
 	if (!var)
 		error_exit(RED "Error" RESET ": allocating memory\n");
-	return var;
+	return (var);
 }

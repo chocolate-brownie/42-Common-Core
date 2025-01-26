@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:42:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/25 23:46:02 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:19:48 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct s_philo
 	long			meals_counter;
 	bool			full;
 	long			last_meal_time;
+	t_fork			*left_fork;
+	t_fork			*right_fork;
 	pthread_mutex_t	thread_id;
 	struct s_data	*data;
 }					t_philo;
@@ -80,5 +82,8 @@ void				error_exit(const char *message);
 void				parsing(t_data *data, char **argv);
 void				struct_init(t_data *data);
 void				*safe_malloc(size_t bytes);
+void				safe_thread(pthread_t *thread, void *(*func)(void *),
+						void *data, t_threadcode code);
+void				safe_mutex(pthread_mutex_t *mutex, t_mutexcode code);
 
 #endif
