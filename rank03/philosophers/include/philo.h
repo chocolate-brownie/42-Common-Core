@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:42:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/26 21:19:48 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/28 00:28:46 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define BOLD "\033[1m"
 # define RESET "\033[0m"
 
-struct	s_data;
+struct s_data;
 
 typedef enum e_mutexcode
 {
@@ -85,5 +85,8 @@ void				*safe_malloc(size_t bytes);
 void				safe_thread(pthread_t *thread, void *(*func)(void *),
 						void *data, t_threadcode code);
 void				safe_mutex(pthread_mutex_t *mutex, t_mutexcode code);
+
+/*WARNING: Delete these functions before the last push (debugging)*/
+void				print_structure(t_data *data);
 
 #endif

@@ -5,27 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/21 15:49:37 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/26 23:39:49 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/01/27 18:46:00 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/01/27 23:12:06 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-/** Main function
- * 1) parsed() -> Error checking and filling the data of the program args
- * 2) data_init() -> Initiate the data of all the structures
- * 3) start_simulation() -> start the dining philo simulation */
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_data data;
-	int i = 0;
+	t_data	data;
+	int		i;
 
+	i = 0;
 	if (argc == 5 || argc == 6)
 	{
 		printf(GREEN "Success" RESET ": Arguments\n");
 		parsing(&data, argv);
 		struct_init(&data);
+		/* start_simulation(&data); // TODO: */
+		/* clean_up(&data); // TODO: */
 	}
 	else
 		error_exit(RED "Error" RESET ": Invalid arguments\n");

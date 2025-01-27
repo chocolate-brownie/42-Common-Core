@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/24 23:06:52 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/25 20:06:14 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/01/27 04:38:54 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/01/27 23:38:28 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,6 @@ static inline bool	ft_isspace(char c)
 	return (c == ' ' || (c >= 9 && c <= 13));
 }
 
-/** @brief make a clean string
- *	handle INT_MAX, no neg numbers are allowed
- *	check if the string is legit
- *		"  +77$$ " [YES]
- *		" +&%42  " [NO]
- *	process all the scenarios like this and return a pointer to the first digit
- *		"      ++72^* &asd "*/
 static const char	*valid_input(const char *str)
 {
 	int			len;
@@ -67,10 +60,6 @@ static long	ft_atol(const char *str)
 	return (num);
 }
 
-/** @brief Handles the parsing and checking each input is a valid input
- * 1) check for correct data type
- * 2) check for int overflow
- * 3) check whether argv[2] argv[3] argv[4] are timestamps 60ms */
 void	parsing(t_data *data, char **argv)
 {
 	printf(BLUE "Ongoing" RESET ": Parsing\n");
@@ -82,7 +71,11 @@ void	parsing(t_data *data, char **argv)
 		|| data->time_to_sleep < 60000)
 		error_exit(RED "Parsing" RESET ": Use timestamps major than 60ms\n");
 	if (argv[5])
+	{
 		data->nbr_limit_meals = ft_atol(argv[5]);
+		if (data->nbr_limit_meals <= 0)
+			error_exit(RED "Parsing" RESET ": Invalid number of meals\n");
+	}
 	else
 		data->nbr_limit_meals = -1;
 	printf(GREEN "Success" RESET ": Parsing\n");
