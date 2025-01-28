@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 18:46:00 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/27 23:12:06 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/28 01:14:55 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 int	main(int argc, char *argv[])
 {
 	t_data	data;
-	int		i;
 
-	i = 0;
 	if (argc == 5 || argc == 6)
 	{
 		printf(GREEN "Success" RESET ": Arguments\n");
