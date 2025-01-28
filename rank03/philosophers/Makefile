@@ -6,9 +6,11 @@
 #    By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 15:51:17 by mgodawat          #+#    #+#              #
-#    Updated: 2025/01/28 01:16:00 by mgodawat         ###   ########.fr        #
+#    Updated: 2025/01/28 22:13:17 by mgodawat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+## WARNING: Remove GCC and CC without -g, and remove the debug.c 
 
 CC		= gcc -g
 CFLAGS	= -Wall -Wextra -Werror -pthread
@@ -19,7 +21,7 @@ INC_DIR	= include
 OBJ_DIR	= obj
 
 SRC		= main.c utils.c parsing.c struct_init.c pthread_utils.c \
-		 debug.c\
+		 routine.c debug.c\
 
 BONUS_SRC	= bonus/main.c
 

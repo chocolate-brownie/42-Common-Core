@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 23:37:25 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/27 18:44:25 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:31:06 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	handle_mutex_error(int status, t_mutexcode code)
 {
-	if (status == 0)
+if (status == 0)
 		return ;
 	if (status == EINVAL && (code == LOCK || code == UNLOCK))
 		error_exit(RED "[MUTEX]" RESET ": The mutex has not been "

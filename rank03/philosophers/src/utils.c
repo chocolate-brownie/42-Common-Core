@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:57:53 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/26 20:11:35 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/28 01:24:24 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,9 @@ void	*safe_malloc(size_t bytes)
 	if (!var)
 		error_exit(RED "Error" RESET ": allocating memory\n");
 	return (var);
+}
+
+void clean_up(t_data *data)
+{
+	return;
 }
