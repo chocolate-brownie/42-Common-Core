@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:42:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/28 22:42:50 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/01/28 22:50:23 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void				safe_thread(pthread_t *thread, void *(*func)(void *),
 						void *data, t_threadcode code);
 void				safe_mutex(pthread_mutex_t *mutex, t_mutexcode code);
 long long			get_current_time(void);
+bool	start_simulation(t_data *data);
 
 /*WARNING: Delete these functions before the last push (debugging)*/
 void				print_structure(t_data *data);
