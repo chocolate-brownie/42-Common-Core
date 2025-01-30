@@ -1,74 +1,63 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-void handle_string(char *str, int *count)
+void ft_putchar(char c, int *count)
 {
-    if (!str)
-        str = "(null)";
-    while (*str)
-    {
-        write(1, str, 1);
-        (*count)++;
-        str++;
-    }
+	write(1,&c, 1);
+	(*count)++;
 }
 
-void handle_decimal(int n, int *count)
+void ft_putstr(char *str, int *count)
 {
-    char    *symbols;
-    long    num;
-
-    symbols = "0123456789";
-    num = n;
-    if (num < 0)
-    {
-        write(1, "-", 1);
-        (*count)++;
-        num = -num;
-    }
-    if (num >= 10)
-        handle_decimal(num / 10, count);
-    write(1, &symbols[num % 10], 1);
-    (*count)++;
+	if (!str)
+		str = "(null)";
+	while (*str)
+		ft_putchar(*str++, count);
 }
 
-void handle_hex(unsigned int n, int *count)
+void ft_putnbr(int number, int *count)
 {
-    char    *symbols;
+	char *symbols = "0123456789";
+	long n = number;
+	if (n < 0) {
+		ft_putchar('-', count);
+		n = -n;
+	}
+	if (n >= 10)
+		ft_putnbr(n / 10, count);
+	ft_putchar(symbols[n % 10], count);
+}
 
-    symbols = "0123456789abcdef";
-    if (n >= 16)
-        handle_hex(n / 16, count);
-    write(1, &symbols[n % 16], 1);
-    (*count)++;
+void ft_puthex(unsigned int number, int *count) {
+	char *symbols = "0123456789abcdef";
+	if (number >= 16)
+		ft_puthex(number / 16, count);
+	ft_putchar(symbols[number % 16], count);
 }
 
 int ft_printf(const char *format, ...)
 {
-    va_list args;
-    int     count;
+    int count = 0;
+    va_list arguments;
 
-    count = 0;
-    va_start(args, format);
+    va_start(arguments, format);
     while (*format)
     {
-        if (*format == '%')
-        {
-            format++;
-            if (*format == 's')
-                handle_string(va_arg(args, char *), &count);
-            else if (*format == 'd')
-                handle_decimal(va_arg(args, int), &count);
-            else if (*format == 'x')
-                handle_hex(va_arg(args, unsigned int), &count);
-        }
-        else
-        {
-            write(1, format, 1);
-            count++;
-        }
-        format++;
+    	if (*format == '%')
+    	{
+    		format++;
+    		if (*format == 's')
+    			ft_putstr(va_arg(arguments, char *), &count);
+    		else if (*format == 'd')
+    			ft_putnbr(va_arg(arguments, int), &count);
+    		else if (*format == 'x')
+    			ft_puthex(va_arg(arguments, unsigned int), &count);
+    	}
+    	else
+			ft_putchar(*format, &count);
+
+		format++;
     }
-    va_end(args);
-    return (count);
+    va_end(arguments);
+    return count;
 }
