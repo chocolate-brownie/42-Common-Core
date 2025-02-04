@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:42:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/28 22:50:23 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:44:48 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,68 +29,64 @@
 # define BOLD "\033[1m"
 # define RESET "\033[0m"
 
-struct s_data;
-
-typedef enum e_mutexcode
+typedef enum e_task
 {
+	THINKING,
+	EATING,
+	SLEEPING,
+	FORK,
+	DIED
+}		t_task;
+
+typedef enum s_controls
+{
+	CREATE,
+	JOIN,
+	DETACH,
 	INIT,
 	LOCK,
 	UNLOCK,
 	DESTROY
-}					t_mutexcode;
-
-typedef enum e_threadcode
-{
-	CREATE,
-	EXIT,
-	JOIN,
-	DETACH
-}					t_threadcode;
-
-typedef struct s_fork
-{
-	pthread_mutex_t	fork;
-	int				fork_id;
-
-}					t_fork;
+}		t_controls;
 
 typedef struct s_philo
 {
-	int				philo_id;
-	long			meals_counter;
-	bool			full;
-	long			last_meal_time;
-	t_fork			*left_fork;
-	t_fork			*right_fork;
-	pthread_t		thread;
-	struct s_data	*data;
-}					t_philo;
+	int id;                  // Each philosopher needs a unique identifier
+	t_task status;           // Current state (eating/thinking/sleeping)
+	unsigned int num_meals;  // Track meals for optional "must eat X times"
+	int is_full;             // Flag for when philosopher has eaten enough
+	struct s_setup *setting; // Access to shared resources and settings
+}		t_philo;
 
-typedef struct s_data
+typedef struct s_setup
 {
-	long			philo_nbr;
-	long			time_to_die;
-	long			time_to_eat;
-	long			time_to_sleep;
-	long			nbr_limit_meals;
-	long			start_simulation;
-	bool			end_simulation;
-	t_fork			*forks;
-	t_philo			*philos;
-	pthread_t		monitor;
-}					t_data;
+	// Time parameters
+	unsigned int phils;         // Total number of philosophers
+	unsigned int time_to_die;   // Max time without eating
+	unsigned int time_to_eat;   // How long eating takes
+	unsigned int time_to_sleep; // How long sleeping takes
 
-void				error_exit(const char *message);
-void				parsing(t_data *data, char **argv);
-void				struct_init(t_data *data);
-void				*safe_malloc(size_t bytes);
-void				safe_thread(pthread_t *thread, void *(*func)(void *),
-						void *data, t_threadcode code);
-void				safe_mutex(pthread_mutex_t *mutex, t_mutexcode code);
-long long			get_current_time(void);
-bool	start_simulation(t_data *data);
+	// Time tracking
+	struct timeval start;      // When simulation started
+	struct timeval *last_meal; // When each philosopher last ate
 
-/*WARNING: Delete these functions before the last push (debugging)*/
-void				print_structure(t_data *data);
+	// Status flags
+	int died;                  // Has anyone died?
+	unsigned int fulled_phils; // How many are done eating?
+
+	// Mutexes for synchronization
+	pthread_mutex_t *mtx_fork;  // Protect access to forks
+	pthread_mutex_t *mtx_full;  // Protect full status updates
+	pthread_mutex_t *mtx_dead;  // Protect death status
+	pthread_mutex_t *mtx_meal;  // Protect meal time updates
+	pthread_mutex_t *mtx_print; // Prevent mixed up messages
+								//
+}		t_setup;
+
+void	error_exit(const char *error);
+void	*safe_malloc(size_t size);
+void	safe_mutex_handle(pthread_mutex_t *ptr_mutex, t_controls opcode);
+
+bool	init_setup(int argc, char **argv, t_setup *setup);
 
 #endif

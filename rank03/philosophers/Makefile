@@ -6,7 +6,7 @@
 #    By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 15:51:17 by mgodawat          #+#    #+#              #
-#    Updated: 2025/01/28 22:13:17 by mgodawat         ###   ########.fr        #
+#    Updated: 2025/01/29 13:30:26 by mgodawat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INC_DIR	= include
 OBJ_DIR	= obj
 
 SRC		= main.c utils.c parsing.c struct_init.c pthread_utils.c \
-		 routine.c debug.c\
+		 routine.c simulation.c debug.c\
 
 BONUS_SRC	= bonus/main.c
 

@@ -5,78 +5,63 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 23:37:25 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/01/28 14:31:06 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/02/03 10:54:54 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/02/03 11:52:33 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-static void	handle_mutex_error(int status, t_mutexcode code)
-{
-if (status == 0)
-		return ;
-	if (status == EINVAL && (code == LOCK || code == UNLOCK))
-		error_exit(RED "[MUTEX]" RESET ": The mutex has not been "
-			"properly initialized.");
-	else if (status == EDEADLK)
-		error_exit(RED "[MUTEX]" RESET ": The mutex is already locked by the "
-			"calling thread (``error checking'' mutexes only).");
-	else if (status == EPERM)
-		error_exit(RED "[MUTEX]" RESET ":The calling thread does not own the "
-			"mutex (``error checking'' mutexes only).");
-	else if (status == EBUSY)
-		error_exit(RED "[MUTEX]" RESET "The mutex is currently locked.");
-	else if (status == ENOMEM)
-		error_exit(RED "[MUTEX]" RESET "The process cannot allocate enough "
-			"memory to create another mutex.");
-}
-
-void	safe_mutex(pthread_mutex_t *mutex, t_mutexcode code)
-{
-	if (code == LOCK)
-		handle_mutex_error(pthread_mutex_lock(mutex), code);
-	else if (code == UNLOCK)
-		handle_mutex_error(pthread_mutex_unlock(mutex), code);
-	else if (code == INIT)
-		handle_mutex_error(pthread_mutex_init(mutex, NULL), code);
-	else if (code == DESTROY)
-		handle_mutex_error(pthread_mutex_destroy(mutex), code);
-	else
-		error_exit(RED "Error" RESET ": wrong operation code for mutex");
-}
-
-static void	handle_thread_error(int status, t_threadcode code)
+static void	handle_mutex_error(int status, t_controls opcode)
 {
 	if (status == 0)
 		return ;
-	if (status == EAGAIN && code == CREATE)
-		error_exit(RED "[THREAD]" RESET ": Insufficient resources to "
-			"create another thread.");
-	else if (status == EPERM && code == CREATE)
-		error_exit(RED "[THREAD]" RESET ": No permission to set the "
-			"scheduling policy and parameters specified in attr.");
-	else if (status == EINVAL)
-		error_exit(RED "[THREAD]" RESET ": Invalid settings in attr or "
-			"thread is not a joinable thread.");
-	else if (status == EDEADLK)
-		error_exit(RED "[THREAD]" RESET ": A deadlock was detected");
-	else if (status == ESRCH)
-		error_exit(RED "[THREAD]" RESET ": No thread with the ID thread could "
-			"be found.");
+	if (opcode == INIT && status == EINVAL)
+		error_exit(RED "Mutex init failed" RESET ": Invalid value specified");
+	else if (opcode == INIT && status == EAGAIN)
+		error_exit(RED "Mutex init failed" RESET ": System lacked resources");
+	else if (opcode == LOCK && status == EINVAL)
+		error_exit(RED "Mutex lock failed" RESET ": Invalid mutex");
+	else if (opcode == LOCK && status == EDEADLK)
+		error_exit(RED "Mutex lock failed" RESET ": Deadlock detected");
+	else if (opcode == UNLOCK && status == EINVAL)
+		error_exit(RED "Mutex unlock failed" RESET ": Invalid mutex");
+	else if (opcode == UNLOCK && status == EPERM)
+		error_exit(RED "Mutex unlock failed" RESET ": Current thread does"
+						"not own mutex");
+	else if (opcode == DESTROY && status == EINVAL)
+		error_exit(RED "Mutex destroy failed" RESET ": Invalid mutex");
+	else if (opcode == DESTROY && status == EBUSY)
+		error_exit(RED "Mutex destroy failed" RESET ": Mutex is"
+						"currently locked");
 	else
-		error_exit(RED "Error" RESET ": wrong operation code for threads");
+		error_exit(RED "Unknown mutex error occurred" RESET);
 }
 
-void	safe_thread(pthread_t *thread, void *(*func)(void *), void *data,
-		t_threadcode code)
+void	safe_mutex_handle(pthread_mutex_t *ptr_mutex, t_controls opcode)
 {
-	if (code == CREATE)
-		handle_thread_error(pthread_create(thread, NULL, func, data), code);
-	else if (code == JOIN)
-		handle_thread_error(pthread_join(*thread, NULL), code);
-	else if (code == DETACH)
-		handle_thread_error(pthread_detach(*thread), code);
+	if (opcode == INIT)
+		handle_mutex_error(pthread_mutex_init(ptr_mutex, NULL), opcode);
+	else if (opcode == LOCK)
+		handle_mutex_error(pthread_mutex_lock(ptr_mutex), opcode);
+	else if (opcode == UNLOCK)
+		handle_mutex_error(pthread_mutex_unlock(ptr_mutex), opcode);
+	else if (opcode == DESTROY)
+		handle_mutex_error(pthread_mutex_destroy(ptr_mutex), opcode);
 	else
-		error_exit(RED "Error" RESET ": wrong operation code for threads");
+		error_exit(RED"Wrong opcode"RESET": Use INIT LOCK UNLOCK or DETACH");
+}
+
+void	safe_thread_handle(pthread_t *ptr_thread, void *(*function)(void *),
+		void *data, t_controls opcode)
+{
+	if (opcode == CREATE)
+		handle_thread_error(pthread_create(ptr_thread, NULL, function, data),
+			opcode);
+	else if (opcode == JOIN)
+		handle_thread_error(pthread_join(*ptr_thread, NULL), opcode);
+	else if (opcode == DETACH)
+		handle_thread_error(pthread_detach(*ptr_thread), opcode);
+	else
+		error_exit()
 }
