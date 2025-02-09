@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:54:54 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/03 11:52:33 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:19:44 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,29 @@ void	safe_mutex_handle(pthread_mutex_t *ptr_mutex, t_controls opcode)
 	else if (opcode == DESTROY)
 		handle_mutex_error(pthread_mutex_destroy(ptr_mutex), opcode);
 	else
-		error_exit(RED"Wrong opcode"RESET": Use INIT LOCK UNLOCK or DETACH");
+		error_exit(RED"Wrong opcode"RESET": Use INIT, LOCK, UNLOCK or DETACH");
+}
+
+void handle_thread_error(int status, t_controls opcode)
+{
+   if (status == 0)
+       return;
+   if (opcode == CREATE && status == EAGAIN)
+       error_exit(RED"Thread create failed"RESET": Insufficient resources");
+   else if (opcode == CREATE && status == EINVAL)
+       error_exit(RED"Thread create failed"RESET": Invalid attributes");
+   else if (opcode == JOIN && status == EDEADLK)
+       error_exit(RED"Thread join failed"RESET": Deadlock detected");
+   else if (opcode == JOIN && status == EINVAL)
+       error_exit(RED"Thread join failed"RESET": Thread not joinable");
+   else if (opcode == JOIN && status == ESRCH)
+       error_exit(RED"Thread join failed"RESET": No thread found");
+   else if (opcode == DETACH && status == EINVAL)
+       error_exit(RED"Thread detach failed"RESET": Invalid thread");
+   else if (opcode == DETACH && status == ESRCH)
+       error_exit(RED"Thread detach failed"RESET": No thread found");
+   else
+       error_exit(RED"Unknown thread error"RESET": Unexpected error code");
 }
 
 void	safe_thread_handle(pthread_t *ptr_thread, void *(*function)(void *),
@@ -63,5 +85,5 @@ void	safe_thread_handle(pthread_t *ptr_thread, void *(*function)(void *),
 	else if (opcode == DETACH)
 		handle_thread_error(pthread_detach(*ptr_thread), opcode);
 	else
-		error_exit()
+		error_exit(RED"Wrong opcode"RESET": Use CREATE, JOIN or DETACH");
 }

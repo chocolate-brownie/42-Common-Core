@@ -6,21 +6,34 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 22:39:03 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/02 00:18:10 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:04:22 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void *safe_malloc(size_t size)
+unsigned int	get_time(struct timeval *ref)
 {
-	void *ptr = malloc(size);
-	if (!ptr)
-		error_exit(RED"ERROR"RESET": malloc failed");
-	return ptr;
+	struct timeval	current;
+	unsigned int	diff;
+
+	gettimeofday(&current, NULL);
+	diff = (current.tv_sec - ref->tv_sec) * 1000;
+	diff += (current.tv_usec - ref->tv_usec) / 1000;
+	return (diff);
 }
 
-void error_exit(const char *error)
+void	*safe_malloc(size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(size);
+	if (!ptr)
+		error_exit(RED "ERROR" RESET ": malloc failed");
+	return (ptr);
+}
+
+void	error_exit(const char *error)
 {
 	printf("%s\n", error);
 	exit(1);
