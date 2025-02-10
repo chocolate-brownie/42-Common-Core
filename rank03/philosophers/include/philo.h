@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:42:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/09 19:23:19 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:43:04 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ unsigned int get_time(struct timeval *ref);
 bool	init_setup(int argc, char **argv, t_setup *setup);
 bool	create_phils(t_setup *setup);
 void	philo_routine(void *arg);
+void	print_message(t_setup *setup, int phil_id, t_task action);
 
 // FIX: delete these functions
 void	debug_print_setup(t_setup *setup);

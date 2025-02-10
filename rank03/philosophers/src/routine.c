@@ -6,26 +6,40 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 16:03:36 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/09 19:20:02 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:57:04 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-static void	print_message(t_setup *setup, int phil_id, t_task action)
+static bool	philo_dead(t_philo *philo); // TODO:
+
+static bool grabbing_forks(t_philo *philo)
 {
-	safe_mutex_handle(setup->mtx_print, LOCK);
-	if (action == THINKING)
-		printf("%05u %2d is thinking\n", get_time(&setup->start), phil_id);
-	else if (action == EATING)
-		printf("%05u %2d is eating\n", get_time(&setup->start), phil_id);
-	else if (action == SLEEPING)
-		printf("%05u %2d is sleeping\n", get_time(&setup->start), phil_id);
-	else if (action == FORK)
-		printf("%05u %2d has taken a fork\n", get_time(&setup->start), phil_id);
-	else if (action == DIED)
-		printf("%05u %2d has died\n", get_time(&setup->start), phil_id);
-	safe_mutex_handle(setup->mtx_print, UNLOCK);
+	if (philo->id % 2 == 0)
+	{
+		safe_mutex_handle(&philo->settings->mtx_fork[philo->id - 1], LOCK);
+		print_message(philo->settings, philo->id, FORK);
+		safe_mutex_handle(&philo->settings->mtx_fork[philo->id % philo->settings->phils], LOCK);
+		print_message(philo->settings, philo->id, FORK);
+	}
+	else if (philo->id % 2 != 0)
+	{
+		safe_mutex_handle(&philo->settings->mtx_fork[philo->id % philo->settings->phils], LOCK);
+		print_message(philo->settings, philo->id, FORK);
+		safe_mutex_handle(&philo->settings->mtx_fork[philo->id - 1], LOCK);
+		print_message(philo->settings, philo->id, FORK);
+
+	}
+	return true;
+}
+
+static void	thinking(t_philo *philo)
+{
+	print_message(philo->settings, philo->id, THINKING);
+	if (philo->settings->phils % 2 == 0)
+		usleep(2000);
+	philo->status = EATING;
 }
 
 /* HACK:
@@ -36,6 +50,13 @@ static void	print_message(t_setup *setup, int phil_id, t_task action)
  * They need to wait for time_to_eat duration
  * They need to release the forks
  * They need to increment their meal count*/
+static void	eating(t_philo *philo)
+{
+	if (grabbing_forks(philo)) {
+		print_message(philo->settings, philo->id, EATING);
+
+	}
+}
 
 void	philo_routine(void *arg)
 {
@@ -47,15 +68,10 @@ void	philo_routine(void *arg)
 	while (1)
 	{
 		/* FIX: OR when all philos have eaten enough times */
-		if (check_if_dead(philo->settings))
-			break ;
+		/* if (philo_dead(philo->settings->died)) */
+		/* 	break ; */
 		if (philo->status == THINKING)
-		{
-			print_message(philo->settings, philo->id, THINKING);
-			if (philo->settings->phils % 2 == 0)
-				usleep(2000);
-			philo->status = EATING;
-		}
+			thinking(philo);
 		else if (philo->status == EATING)
 		{
 			print_message(philo->settings, philo->id, EATING);
