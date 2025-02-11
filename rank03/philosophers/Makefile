@@ -6,7 +6,7 @@
 #    By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 15:51:17 by mgodawat          #+#    #+#              #
-#    Updated: 2025/02/09 16:03:13 by mgodawat         ###   ########.fr        #
+#    Updated: 2025/02/11 02:44:39 by mgodawat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC_DIR	= src
 INC_DIR	= include
 OBJ_DIR	= obj
 
-SRC		= main.c init.c utils.c pthread_utils.c debug.c create_phils.c routine.c
+SRC		= main.c init.c utils.c pthread_utils.c debug.c create_phils.c /
+		routine.c routine_utils.c cleanup.c 
 
 BONUS_SRC	= bonus/main.c
 

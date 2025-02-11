@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 22:43:05 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/09 17:27:20 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/10 21:27:42 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool	init_setup(int argc, char **argv, t_setup *setup)
 		setup->died = false;
 		setup->fulled_phils = 0;
 		init_mutexes(setup);
-		gettimeofday(&setup->start, NULL); // reference point time 0
+		gettimeofday(&setup->start, NULL);
 		i = -1;
 		while (++i < setup->phils)
 			setup->last_meal[i] = setup->start;
