@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:42:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/11 02:42:00 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/13 22:24:30 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef enum e_task
 	SLEEPING,
 	FORK,
 	DIED
-}		t_task;
+}					t_task;
 
 typedef enum s_controls
 {
@@ -47,24 +47,29 @@ typedef enum s_controls
 	LOCK,
 	UNLOCK,
 	DESTROY
-}		t_controls;
+}					t_controls;
 
 typedef struct s_philo
 {
-	int id;                  // Each philosopher needs a unique identifier NOTE: OK
-	t_task status;           // Current state (eating/thinking/sleeping) NOTE: OK
-	unsigned int num_meals;  // Track meals for optional "must eat X times" NOTE: OK
-	bool is_full;             // Flag for when philosopher has eaten enough NOTE: OK
-	struct s_setup *settings; // Access to shared resources and settings NOTE: OK
-}		t_philo;
+	int				id;
+	// Each philosopher needs a unique identifier NOTE: OK
+	t_task			status;
+	// Current state (eating/thinking/sleeping) NOTE: OK
+	unsigned int	num_meals;
+	// Track meals for optional "must eat X times" NOTE: OK
+	bool			is_full;
+	// Flag for when philosopher has eaten enough NOTE: OK
+	struct s_setup	*settings;
+	// Access to shared resources and settings NOTE: OK
+}					t_philo;
 
 typedef struct s_setup
 {
 	// Time parameters
-	unsigned int phils;         // Total number of philosophers NOTE: OK
-	unsigned int time_to_die;   // Max time without eating  NOTE: OK
-	unsigned int time_to_eat;   // How long eating takes  NOTE: OK
-	unsigned int time_to_sleep; // How long sleeping takes  NOTE: OK
+	unsigned int phils;          // Total number of philosophers NOTE: OK
+	unsigned int time_to_die;    // Max time without eating  NOTE: OK
+	unsigned int time_to_eat;    // How long eating takes  NOTE: OK
+	unsigned int time_to_sleep;  // How long sleeping takes  NOTE: OK
 	unsigned int must_eat_times; // 6th optional argmune  NOTE: OK
 
 	// Time tracking
@@ -72,7 +77,7 @@ typedef struct s_setup
 	struct timeval *last_meal; // When each philosopher last ate  NOTE: OK
 
 	// Status flags
-	bool died;                  // 	Has anyone died  NOTE: OK
+	bool died;                 // 	Has anyone died  NOTE: OK
 	unsigned int fulled_phils; // How many done eating?  NOTE: OK
 
 	// Mutexes for synchronization
@@ -81,28 +86,34 @@ typedef struct s_setup
 	pthread_mutex_t *mtx_dead;  // Protect death status  NOTE: OK
 	pthread_mutex_t *mtx_meal;  // Protect meal time updates  NOTE: OK
 	pthread_mutex_t *mtx_print; // Prevent mixed up messages  NOTE: OK
-	
-	pthread_t *threads;
 
-}		t_setup;
+	pthread_t *threads; // threads NOTE: Not OK
 
-void	error_exit(const char *error);
-void	*safe_malloc(size_t size);
-void	safe_mutex_handle(pthread_mutex_t *ptr_mutex, t_controls opcode);
-void	safe_thread_handle(pthread_t *ptr_thread, void *(*function)(void *),
-		void *data, t_controls opcode);
-unsigned int get_time(struct timeval *ref);
-void	clean_up(t_setup *setup);
+}					t_setup;
 
-bool	init_setup(int argc, char **argv, t_setup *setup);
-bool	create_phils(t_setup *setup);
-void	*philo_routine(void *arg);
-void	print_message(t_setup *setup, int phil_id, t_task action);
-bool	grabbing_forks(t_philo *philo);
-bool	philo_dead(t_setup *settings);
-bool	philo_starved(t_philo *philo);
 
-// FIX: delete these functions
-void	debug_print_setup(t_setup *setup);
+void				error_exit(const char *error);
+void				*safe_malloc(size_t size);
+void				safe_mutex_handle(pthread_mutex_t *ptr_mutex,
+						t_controls opcode);
+void				safe_thread_handle(pthread_t *ptr_thread,
+						void *(*function)(void *), void *data,
+						t_controls opcode);
+unsigned int		get_time(struct timeval *ref);
+void				clean_up(t_setup *setup);
+
+bool				init_setup(int argc, char **argv, t_setup *setup);
+bool				create_phils(t_setup *setup);
+
+void				*philo_routine(void *arg);
+void				thinking(t_philo *philo);
+void				eating(t_philo *philo);
+void				sleeping(t_philo *philo);
+bool				someone_died(t_setup *settings);
+void				print_message(t_setup *settings, int philo_id,
+						t_task action);
+
+// FIX: delete these function
+void				debug_print_setup(t_setup *setup);
 
 #endif

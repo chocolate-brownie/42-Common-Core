@@ -24,5 +24,5 @@ void	debug_print_setup(t_setup *setup)
 	printf("Dead mutex allocated: %s\n", setup->mtx_dead ? "Yes" : "No");
 	printf("Meal mutex allocated: %s\n", setup->mtx_meal ? "Yes" : "No");
 	printf("Print mutex allocated: %s\n", setup->mtx_print ? "Yes" : "No");
-	printf("\n===========================\n");
 }
+

@@ -5,58 +5,60 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 21:28:15 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/11 01:24:12 by mgodawat         ###   ########.fr       */
+/*   Created: 2025/02/13 21:26:38 by mgodawat          #+#    #+#             */
+/*   Updated: 2025/02/13 23:02:38 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-bool	grabbing_forks(t_philo *philo)
+/** NOTE: A philosopher could die if they havent eaten within time_to_die
+ * milliseconds
+ * 1. since their last meal
+ * 2. since the start of the simulation
+ *
+ * if (time since their last meal > time_to_die)
+ *		print_message()
+ *		died = true */
+
+bool	someone_died(t_setup *settings)
 {
-	if (philo->id % 2 == 0)
+	unsigned int				i;
+	unsigned int	current_time;
+
+	i = -1;
+	while (++i < settings->phils)
 	{
-		safe_mutex_handle(&philo->settings->mtx_fork[philo->id - 1], LOCK);
-		print_message(philo->settings, philo->id, FORK);
-		safe_mutex_handle(&philo->settings->mtx_fork[philo->id
-			% philo->settings->phils], LOCK);
-		print_message(philo->settings, philo->id, FORK);
+		safe_mutex_handle(settings->mtx_meal, LOCK);
+		current_time = get_time(&settings->last_meal[i]);
+		if (current_time > settings->time_to_die)
+		{
+			print_message(settings, i + 1, DIED);
+			safe_mutex_handle(settings->mtx_dead, LOCK);
+			settings->died = true;
+			safe_mutex_handle(settings->mtx_dead, UNLOCK);
+			safe_mutex_handle(settings->mtx_meal, UNLOCK);
+			return (true);
+		}
+		safe_mutex_handle(settings->mtx_meal, UNLOCK);
 	}
-	else if (philo->id % 2 != 0)
-	{
-		safe_mutex_handle(&philo->settings->mtx_fork[philo->id
-			% philo->settings->phils], LOCK);
-		print_message(philo->settings, philo->id, FORK);
-		safe_mutex_handle(&philo->settings->mtx_fork[philo->id - 1], LOCK);
-		print_message(philo->settings, philo->id, FORK);
-	}
-	return (true);
-}
 
-bool	philo_dead(t_setup *settings)
-{
-	bool	is_dead;
-
-	safe_mutex_handle(settings->mtx_dead, LOCK);
-	is_dead = settings->died;
-	safe_mutex_handle(settings->mtx_dead, UNLOCK);
-	return (is_dead);
-}
-
-bool	philo_starved(t_philo *philo)
-{
-	unsigned int	time_since_meal;
-
-	safe_mutex_handle(philo->settings->mtx_meal, LOCK);
-	time_since_meal = get_time(&philo->settings->last_meal[philo->id - 1]);
-	safe_mutex_handle(philo->settings->mtx_meal, UNLOCK);
-	if (time_since_meal > philo->settings->time_to_die)
-	{
-		safe_mutex_handle(philo->settings->mtx_dead, LOCK);
-		philo->settings->died = true;
-		safe_mutex_handle(philo->settings->mtx_dead, UNLOCK);
-		print_message(philo->settings, philo->id, DIED);
-		return (true);
-	}
 	return (false);
+}
+
+void	print_message(t_setup *settings, int philo_id, t_task action)
+{
+	safe_mutex_handle(settings->mtx_print, LOCK);
+	if (action == THINKING)
+		printf("%05u %2d is thinking\n", get_time(&settings->start), philo_id);
+	else if (action == EATING)
+		printf("%05u %2d is eating\n", get_time(&settings->start), philo_id);
+	else if (action == SLEEPING)
+		printf("%05u %2d is sleeping\n", get_time(&settings->start), philo_id);
+	else if (action == FORK)
+		printf("%05u %2d has taken a fork\n", get_time(&settings->start),
+			philo_id);
+	else if (action == DIED)
+		printf("%05u %2d has died\n", get_time(&settings->start), philo_id);
+	safe_mutex_handle(settings->mtx_print, UNLOCK);
 }
