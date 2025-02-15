@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 22:39:03 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/13 23:03:44 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/15 02:13:13 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,17 @@ void	error_exit(const char *error)
 {
 	printf("%s\n", error);
 	exit(1);
+}
+
+void	ft_usleep(unsigned int time, t_setup *settings)
+{
+	struct timeval	current;
+
+	gettimeofday(&current, NULL);
+	while (get_time(&current) < time)
+	{
+		if (someone_died(settings))
+			break ;
+		usleep(100);
+	}
 }

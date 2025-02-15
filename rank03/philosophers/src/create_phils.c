@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 01:49:42 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/13 22:14:38 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:06:15 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	printf("Thread for philo no: [%d] creating\n", philo->id); // FIX: debug state
 	
 	while (1)
 	{
@@ -50,7 +49,6 @@ bool	create_phils(t_setup *setup)
 	setup->threads = safe_malloc(setup->phils * sizeof(pthread_t));
 	philos = safe_malloc(setup->phils * sizeof(t_philo));
 	i = -1;
-	printf("\n=== Thread Verification ===\n");
 	while (++i < setup->phils)
 	{
 		init_philo(&philos[i], i + 1, setup);

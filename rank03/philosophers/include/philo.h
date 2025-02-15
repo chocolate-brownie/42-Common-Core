@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:42:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/13 22:24:30 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/15 02:18:48 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_setup
 	unsigned int time_to_die;    // Max time without eating  NOTE: OK
 	unsigned int time_to_eat;    // How long eating takes  NOTE: OK
 	unsigned int time_to_sleep;  // How long sleeping takes  NOTE: OK
-	unsigned int must_eat_times; // 6th optional argmune  NOTE: OK
+	unsigned int must_eat_times; // 6th optional argument  NOTE: OK
 
 	// Time tracking
 	struct timeval start;      // When simulation started  NOTE: OK
@@ -91,7 +91,6 @@ typedef struct s_setup
 
 }					t_setup;
 
-
 void				error_exit(const char *error);
 void				*safe_malloc(size_t size);
 void				safe_mutex_handle(pthread_mutex_t *ptr_mutex,
@@ -101,6 +100,7 @@ void				safe_thread_handle(pthread_t *ptr_thread,
 						t_controls opcode);
 unsigned int		get_time(struct timeval *ref);
 void				clean_up(t_setup *setup);
+void				ft_usleep(unsigned int time, t_setup *settings);
 
 bool				init_setup(int argc, char **argv, t_setup *setup);
 bool				create_phils(t_setup *setup);
@@ -112,6 +112,7 @@ void				sleeping(t_philo *philo);
 bool				someone_died(t_setup *settings);
 void				print_message(t_setup *settings, int philo_id,
 						t_task action);
+bool				forks_grabbed(t_philo *philo);
 
 // FIX: delete these function
 void				debug_print_setup(t_setup *setup);

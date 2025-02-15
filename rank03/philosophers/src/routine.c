@@ -12,7 +12,7 @@
 
 #include "../include/philo.h"
 
-/** NOTE: 
+/** NOTE:
 00000  1 has taken a fork
 00000  1 has taken a fork
 00000  1 is eating
@@ -38,9 +38,7 @@ And this cycle repeats until either:
 - A philosopher dies (if they don't eat within time_to_die)
 - All philosophers have eaten enough times (if must_eat_times is specified) */
 
-
 /** NOTE: Add a delay if the number of philosophers are odd to prevent deadlock
-using "usleep" function but the delay can be broken if someone dies 
 usleep(200000); - Sleeps for 200ms, but can't interrupt if someone dies
 ft_usleep(200, setting); - break early if someone dies, more precise timing */
 
@@ -50,5 +48,26 @@ void	thinking(t_philo *philo)
 	philo->status = EATING;
 }
 
-void		eating(t_philo *philo);
+/** NOTE:
+ * 2. If forks are successfully grabbed:
+ *    - Updates philosopher's last meal timestamp
+ *    - Prints "is eating" message
+ *    - Sleeps for time_to_eat duration
+ *    - Increments number of meals eaten
+ *    - Checks if philosopher has reached must_eat_times (if specified)
+ *    - Releases both forks in reverse order of acquisition
+ *    - Changes philosopher status to SLEEPING
+ * 
+ * During any step, if another philosopher dies, the function should:
+ *    - Release any held forks
+ *    - Return without completing the eating process
+ */
+
+void	eating(t_philo *philo)
+{
+	if (forks_grabbed(philo)) // TODO: function
+		print_message(philo->settings, philo->id, EATING);
+	philo->status = SLEEPING;
+}
+
 void		sleeping(t_philo *philo);
