@@ -6,13 +6,13 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:26:38 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/15 19:03:33 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/16 01:42:40 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-/** NOTE: A philosopher could die if they havent eaten within time_to_die
+/** A philosopher could die if they havent eaten within time_to_die
  * milliseconds
  * 1. since their last meal
  * 2. since the start of the simulation
@@ -70,36 +70,23 @@ void	print_message(t_setup *settings, int philo_id, t_task action)
  *		return false
  *    - For single philosopher case, returns false after fork grab attempt */
 
-static void	assign_forks(unsigned int *first_fork, unsigned int *second_fork,
-		t_philo *philo)
+static bool	grabbing_forks(t_philo *philo)
 {
-	if (philo->id % 2 == 0)
-	{
-		*first_fork = philo->id % philo->settings->phils;
-		*second_fork = philo->id - 1;
-	}
-	else
-	{
-		*first_fork = philo->id - 1;
-		*second_fork = philo->id % philo->settings->phils;
-	}
-}
-
-static bool	grabbing_forks(unsigned int first_fork, unsigned int second_fork,
-		t_philo *philo)
-{
-	safe_mutex_handle(&philo->settings->mtx_fork[first_fork], LOCK);
+	safe_mutex_handle(&philo->settings->mtx_fork[philo->first_fork], LOCK);
 	if (someone_died(philo->settings))
 	{
-		safe_mutex_handle(&philo->settings->mtx_fork[first_fork], UNLOCK);
+		safe_mutex_handle(&philo->settings->mtx_fork[philo->first_fork],
+			UNLOCK);
 		return (false);
 	}
 	print_message(philo->settings, philo->id, FORK);
-	safe_mutex_handle(&philo->settings->mtx_fork[second_fork], LOCK);
+	safe_mutex_handle(&philo->settings->mtx_fork[philo->second_fork], LOCK);
 	if (someone_died(philo->settings))
 	{
-		safe_mutex_handle(&philo->settings->mtx_fork[first_fork], UNLOCK);
-		safe_mutex_handle(&philo->settings->mtx_fork[second_fork], UNLOCK);
+		safe_mutex_handle(&philo->settings->mtx_fork[philo->first_fork],
+			UNLOCK);
+		safe_mutex_handle(&philo->settings->mtx_fork[philo->second_fork],
+			UNLOCK);
 		return (false);
 	}
 	print_message(philo->settings, philo->id, FORK);
@@ -108,19 +95,9 @@ static bool	grabbing_forks(unsigned int first_fork, unsigned int second_fork,
 
 bool	forks_grabbed(t_philo *philo)
 {
-	unsigned int	first_fork;
-	unsigned int	second_fork;
-
-	if (philo->settings->phils == 1)
-	{
-		safe_mutex_handle(&philo->settings->mtx_fork[0], LOCK);
-		print_message(philo->settings, philo->id, FORK);
-		ft_usleep(philo->settings->time_to_die + 10, philo->settings);
-		safe_mutex_handle(&philo->settings->mtx_fork[0], UNLOCK);
+	printf(BLUE "[Ongoing]" RESET " : forks_grabbed()");
+	if (!grabbing_forks(philo))
 		return (false);
-	}
-	assign_forks(&first_fork, &second_fork, philo);
-	if (!grabbing_forks(first_fork, second_fork, philo))
-		return (false);
+	printf(GREEN "[Success]" RESET " : forks_grabbed()");
 	return (true);
 }

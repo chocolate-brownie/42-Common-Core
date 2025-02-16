@@ -7,6 +7,7 @@ void	debug_print_setup(t_setup *setup)
 	printf("Time to die: %u ms\n", setup->time_to_die);
 	printf("Time to eat: %u ms\n", setup->time_to_eat);
 	printf("Time to sleep: %u ms\n", setup->time_to_sleep);
+	printf("Must eat times: %u\n", setup->must_eat_times);
 	printf("\n=== Initial State ===\n");
 	printf("Start time: %ld.%06ld\n", setup->start.tv_sec,
 		setup->start.tv_usec);
@@ -27,4 +28,3 @@ void	debug_print_setup(t_setup *setup)
 	printf("\n");
 	printf("\n");
 }
-

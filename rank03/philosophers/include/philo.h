@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:42:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/15 02:18:48 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/16 01:31:02 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,13 @@ typedef enum s_controls
 
 typedef struct s_philo
 {
-	int				id;
-	// Each philosopher needs a unique identifier NOTE: OK
-	t_task			status;
-	// Current state (eating/thinking/sleeping) NOTE: OK
-	unsigned int	num_meals;
-	// Track meals for optional "must eat X times" NOTE: OK
-	bool			is_full;
-	// Flag for when philosopher has eaten enough NOTE: OK
-	struct s_setup	*settings;
-	// Access to shared resources and settings NOTE: OK
+	int id;                 
+	t_task status;          
+	unsigned int num_meals; 
+	bool is_full;           
+	unsigned int	first_fork;
+	unsigned int	second_fork;
+	struct s_setup *settings; 
 }					t_philo;
 
 typedef struct s_setup
