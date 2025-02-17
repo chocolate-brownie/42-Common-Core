@@ -12,7 +12,7 @@
 
 #include "../include/philo.h"
 
-/**
+/** NOTE:
 00000  1 has taken a fork
 00000  1 has taken a fork
 00000  1 is eating
@@ -42,12 +42,14 @@ And this cycle repeats until either:
 usleep(200000); - Sleeps for 200ms, but can't interrupt if someone dies
 ft_usleep(200, setting); - break early if someone dies, more precise timing */
 
+/* HACK: find a way to keep the philosopher in the thinking state long enough
+for others to finish eating */
 void	thinking(t_philo *philo)
 {
 
 	print_message(philo->settings, philo->id, THINKING);
 	if (philo->settings->phils % 2)
-		ft_usleep(time_to_think, philo->settings);
+		ft_usleep(200, philo->settings);
 	philo->status = EATING;
 }
 

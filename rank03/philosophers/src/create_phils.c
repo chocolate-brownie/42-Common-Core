@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 01:49:42 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/16 01:38:19 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:05:40 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	*philo_routine(void *arg)
 			thinking(philo);
 		if (philo->status == EATING)
 			eating(philo);
-		/* if (philo->status == SLEEPING) */
-		/* 	sleeping(philo); */
+		if (philo->status == SLEEPING)
+			sleeping(philo);
 	}
 	return (NULL);
 }
