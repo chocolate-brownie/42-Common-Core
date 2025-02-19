@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:42:58 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/16 01:31:02 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/19 06:15:57 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,17 @@ typedef enum s_controls
 
 typedef struct s_philo
 {
-	int id;                 
-	t_task status;          
-	unsigned int num_meals; 
-	bool is_full;           
+	int				id;
+	t_task			status;
+	unsigned int	num_meals;
+	bool			is_full;
 	unsigned int	first_fork;
 	unsigned int	second_fork;
-	struct s_setup *settings; 
+	struct s_setup	*settings;
 }					t_philo;
 
 typedef struct s_setup
 {
-	// Time parameters
 	unsigned int phils;          // Total number of philosophers NOTE: OK
 	unsigned int time_to_die;    // Max time without eating  NOTE: OK
 	unsigned int time_to_eat;    // How long eating takes  NOTE: OK
@@ -98,6 +97,7 @@ void				safe_thread_handle(pthread_t *ptr_thread,
 unsigned int		get_time(struct timeval *ref);
 void				clean_up(t_setup *setup);
 void				ft_usleep(unsigned int time, t_setup *settings);
+bool				all_philosophers_full(t_setup *settings);
 
 bool				init_setup(int argc, char **argv, t_setup *setup);
 bool				create_phils(t_setup *setup);

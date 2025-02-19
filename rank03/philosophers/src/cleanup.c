@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 02:44:26 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/11 02:47:27 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/19 05:16:33 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	clean_up(t_setup *setup)
 {
 	unsigned int	i;
 
-	if (setup->mtx_fork)
 	{
 		i = -1;
 		while (++i < setup->phils)
@@ -48,7 +47,7 @@ void	clean_up(t_setup *setup)
 		free(setup->mtx_fork);
 	}
 	clean_other_mtxes(setup);
-	if (setup->threads) 
+	if (setup->threads)
 		free(setup->threads);
 	if (setup->last_meal)
 		free(setup->last_meal);

@@ -46,7 +46,6 @@ ft_usleep(200, setting); - break early if someone dies, more precise timing */
 for others to finish eating */
 void	thinking(t_philo *philo)
 {
-
 	print_message(philo->settings, philo->id, THINKING);
 	if (philo->settings->phils % 2)
 		ft_usleep(200, philo->settings);
@@ -76,8 +75,11 @@ void	eating(t_philo *philo)
 		print_message(philo->settings, philo->id, EATING);
 		ft_usleep(philo->settings->time_to_eat, philo->settings);
 		philo->num_meals++;
-		if (philo->num_meals >= philo->settings->must_eat_times)
+		if (philo->settings->must_eat_times > 0
+			&& philo->num_meals >= philo->settings->must_eat_times
+			&& !philo->is_full) 
 		{
+			philo->is_full = true; 
 			safe_mutex_handle(philo->settings->mtx_full, LOCK);
 			philo->settings->fulled_phils++;
 			safe_mutex_handle(philo->settings->mtx_full, UNLOCK);

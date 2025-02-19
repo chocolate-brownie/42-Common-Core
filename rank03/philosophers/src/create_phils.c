@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   create_phils.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 01:49:42 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/17 17:05:40 by mgodawat         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/philo.h"
 
 void	*philo_routine(void *arg)
@@ -19,8 +7,13 @@ void	*philo_routine(void *arg)
 	philo = (t_philo *)arg;
 	while (1)
 	{
-		if (someone_died(philo->settings))
-			break ;
+		if (someone_died(philo->settings) || all_philosophers_full(philo->settings))
+		{
+    		safe_mutex_handle(philo->settings->mtx_dead, LOCK);
+    		philo->settings->died = true;  // Signal all threads to exit
+    		safe_mutex_handle(philo->settings->mtx_dead, UNLOCK);
+    		break;
+		}
 		if (philo->status == THINKING)
 			thinking(philo);
 		if (philo->status == EATING)
