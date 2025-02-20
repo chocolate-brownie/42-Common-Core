@@ -6,7 +6,7 @@
 /*   By: mgodawat <mgodawat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:26:38 by mgodawat          #+#    #+#             */
-/*   Updated: 2025/02/19 06:14:13 by mgodawat         ###   ########.fr       */
+/*   Updated: 2025/02/19 20:39:53 by mgodawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,8 @@ static bool	grabbing_forks(t_philo *philo)
 
 bool	forks_grabbed(t_philo *philo)
 {
-	/* printf(BLUE "[Ongoing]" RESET " : forks_grabbed()"); */
 	if (!grabbing_forks(philo))
 		return (false);
-	/* printf(GREEN "[Success]" RESET " : forks_grabbed()"); */
 	return (true);
 }
 
